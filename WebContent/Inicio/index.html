@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+    <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png"/>
+		<title>BetaGaming-Welcome!!</title>
+		<style>
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+img.avatar {
+    width: 40%;
+}
+.container {
+    padding: 16px;
+}
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); 
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+
+	
+	
+    .cancelbtn {
+       width: 100%;
+    }
+}
+		.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+img.avatar {
+    width: 40%;
+}
+.container {
+    padding: 16px;
+}
+		button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd;
+}
+
+button.accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+button.accordion.active:after {
+    content: "\2212";
+}
+
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+		body{
+			background-color:#000000
+		}
+		
+			.button1 {
+				color: white; 
+				border: 2px solid #ffffff;
+				background-color: #000000;
+				color: white;
+				padding: 16px;
+				font-size: 16px;
+				border: none;
+				cursor: pointer;
+			}
+			
+			.dropbtn {
+				color: white; 
+				border: 2px solid #ffffff;
+				background-color: #000000;
+				color: white;
+				padding: 16px;
+				font-size: 16px;
+				border: none;
+				cursor: pointer;
+				
+			}
+
+
+			.dropdown {
+				position: relative;
+				display: inline-block;
+			}
+
+
+			.dropdown-content {
+				display: none;
+				position: absolute;
+				background-color: #f9f9f9;
+				min-width: 160px;
+				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+				z-index: 1;
+			}
+
+			.dropdown-content a {
+				color: black;
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block;
+			}
+
+			.dropdown-content a:hover {background-color: #f1f1f1}
+
+			.dropdown:hover .dropdown-content {
+				display: block;
+			}
+
+			.dropdown:hover .dropbtn {
+				background-color: #282828;
+				}
+				table td {
+				text-align: center;
+				}
+				table tr {
+				color:ffffff;
+			}
+
+			
+		</style>
+	</head>
+	<body>
+	<center>
+			<table bgcolor="#000000" style="width:100%" >
+				<tr>
+					<center>
+												<td>
+							<div class="dropdown">
+								<button class="dropbtn">Nuevo</button>
+								<div class="dropdown-content">
+									<a href="#">Amigo</a>
+									<a href="#">Partida</a>
+									<a href="#">Juego</a>
+									<a href="#">Jugador</a>
+								</div>
+							</div>
+						</td>
+						<td><button class="button button1" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button></td>
+						<td><button class="button button1">Mi Perfil</button></td>
+						<td><input class="button button1" type="image" src="lupa.png" width="24" height="24"></td>
+					</center>
+				</tr>
+			</table>
+			<table>
+				<tr>
+				<td bgcolor="#ffffff">
+				<h1>Bienvenido a Beta Gaming Mag</h1></td>
+				</tr>
+				<tr>
+				<td bgcolor="#ffffff"><h4>Preparado para nuebas experiencias y juegos</h4></td>
+				</tr>
+				<tr>
+				<td bgcolor="#ffffff"><div class="imgcontainer">
+      <img src="templogo.png" alt="logo" class="avatar" style="width:430px;height:350px;">
+    </div></td>
+				<td bgcolor="#ffffff"></td>
+				<td bgcolor="#ffffff"></td>
+				</tr>
+				</table>
+	
+	<script>			var modal = document.getElementById('id01');
+		window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+			}
+		}
+	</script>
+	<div id="id01" class="modal">
+  
+  <form class="modal-content animate" action="action_page.php">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png" alt="logo" class="avatar" style="width:250px;height:250px;">
+    </div>
+
+    <div class="container">
+      <label><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+        
+      <button style='width:70px; height:41px' type="submit" >Login</button>  
+      
+    </div>
+    </div>
+  </form>
+</div>
+	</body>
+</html>
