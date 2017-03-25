@@ -66,18 +66,11 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no está c
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		try {
-			System.out.println("Loading Driver...");
-			Class.forName("com.mysql.jdbc.Driver");
-			System.out.println("Done!\n");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		//Recibe los datos enviados por el usuario
-		String username = request.getParameter("nick");
-		String password = request.getParameter("pass");
+		String username = request.getParameter("nickname");
+		String password = request.getParameter("password");
+		String name = request.getParameter("name");
+		String surname = request.getParameter("surname");
 		String email = request.getParameter("mail");
 		String skype = request.getParameter("skype");
     	
@@ -106,10 +99,11 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no está c
     		validEMAIL = true;
     	};*/
     	
+    	validEMAIL = true;
+    	
     	if( validUsername && validPassword && validEMAIL )
     	{
     		//writeDatabase(); Writes Username, hash, etc..
-    		htmlDebug("hola", response);
     		//1 pedimos la fabrica
     		FabricaConexiones laFabria=FabricaConexiones.getFabrica();
     		//pedimios una conexión
@@ -121,7 +115,8 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no está c
 			}
     		
     		//RequestStatement rs;
-    		String myQuery = "insert into table usuarios(name,login,pass) values (?,?)";
+    		String myQuery = "insert into users(nickname, password, name, surname, email, skype_user) values (?,?)";
+    		
     		response.sendRedirect("loginSuccess.html");
     	}
     	else
