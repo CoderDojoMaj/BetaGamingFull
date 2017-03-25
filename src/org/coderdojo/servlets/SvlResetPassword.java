@@ -67,7 +67,7 @@ public class SvlResetPassword extends HttpServlet {
 		//sendRecoverEmail(targetEmail, newRandomPassword);
 		
 		//Limpia
-		htmlDebug("Recovery Completed", response);
+	//	htmlDebug("Recovery Completed", response);
 		response.sendRedirect("index.html");
 		
 		
