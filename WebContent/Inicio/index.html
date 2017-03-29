@@ -1,11 +1,55 @@
-
 <!DOCTYPE html>
 <html>
-	<head>
+<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
     <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png"/>
 		<title>BetaGaming-Welcome!!</title>
-		<style>
+<style>
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+/* Style the close button */
+.topright {
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.topright:hover {color: red;}
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -96,66 +140,21 @@ span.psw {
        display: block;
        float: none;
     }
-
-	
-	
     .cancelbtn {
        width: 100%;
     }
 }
-		.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-    position: relative;
-}
-img.avatar {
-    width: 40%;
-}
-.container {
-    padding: 16px;
-}
-		button.accordion {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-    transition: 0.4s;
-}
+	
+		body {font-family: "Lato", sans-serif;}
 
-button.accordion.active, button.accordion:hover {
-    background-color: #ddd;
-}
-
-button.accordion:after {
-    content: '\002B';
-    color: #777;
-    font-weight: bold;
-    float: right;
-    margin-left: 5px;
-}
-
-button.accordion.active:after {
-    content: "\2212";
-}
-
-div.panel {
-    padding: 0 18px;
-    background-color: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-}
-		body{
-			background-color:#000000
+		div.tab {
+			overflow: hidden;
+			border: 1px solid #ccc;
+			background-color: #f1f1f1;
 		}
-		
-			.button1 {
-				color: white; 
+
+		.button1 {
+			color: white; 
 				border: 2px solid #ffffff;
 				background-color: #000000;
 				color: white;
@@ -163,8 +162,55 @@ div.panel {
 				font-size: 16px;
 				border: none;
 				cursor: pointer;
+		}
+		
+		.button2 {
+			color: white; 
+				border: 2px solid #ffffff;
+				background-color: #000000;
+				color: white;
+				padding: 16px;
+				font-size: 16px;
+				border: none;
+				cursor: pointer;
+		}
+
+		div.tab button {
+			background-color: inherit;
+			float: left;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 14px 16px;
+			transition: 0.3s;
+			font-size: 17px;
+		}
+
+		div.tab button:hover {
+			background-color: #ddd;
+		}
+
+		div.tab button.active {
+			background-color: #ccc;
+		}
+
+		.tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
 			}
-			
+			.topright {
+				float: right;
+				cursor: pointer;
+				font-size: 20px;
+			}
+
+			.topright:hover {color: red;}
+
+
+			body{background-color:black}
+		 
 			.dropbtn {
 				color: white; 
 				border: 2px solid #ffffff;
@@ -216,56 +262,167 @@ div.panel {
 				color:ffffff;
 			}
 
-			
-		</style>
-	</head>
-	<body>
-	<center>
-			<table bgcolor="#000000" style="width:100%" >
+			{box-sizing:border-box}
+			body {font-family: Verdana,sans-serif;}
+			.mySlides {display:none}
+
+			.slideshow-container {
+				max-width: 1000px;
+				position: relative;
+				margin: auto;
+			}
+
+			.text {
+				color: #f2f2f2;
+				font-size: 15px;
+				padding: 8px 12px;
+				position: absolute;
+				bottom: 8px;
+				width: 100%;
+				text-align: center;
+			}
+
+
+			.numbertext {
+				color: #f2f2f2;
+				font-size: 12px;
+				padding: 8px 12px;
+				position: absolute;
+				top: 0;
+			}
+
+
+			.dot {
+				height: 13px;
+				width: 13px;
+				margin: 0 2px;
+				background-color: #bbb;
+				border-radius: 50%;
+				display: inline-block;
+				transition: background-color 0.6s ease;
+			}
+
+			.active {
+				background-color: #717171;
+			}
+
+			.fade {
+				-webkit-animation-name: fade;
+				-webkit-animation-duration: 1.5s;
+				animation-name: fade;
+				animation-duration: 1.5s;
+			}
+
+			@-webkit-keyframes fade {
+				from {opacity: .4} 
+				to {opacity: 1}
+			}
+
+			@keyframes fade {
+				from {opacity: .4} 
+				to {opacity: 1}
+			}
+
+			@media only screen and (max-width: 300px) {
+				.text {font-size: 11px}
+			}
+			.div {
+				background-color: #ffffff;
+			}
+</style>
+</head>
+<body>
+<center>
+			<table  bgcolor="#000000" style="width:100%" >
 				<tr>
 					<center>
 												<td>
 							<div class="dropdown">
-								<button class="dropbtn">Nuevo</button>
+								<button class="dropbtn">New...</button>
 								<div class="dropdown-content">
-									<a href="#">Amigo</a>
+									<a href="#">Friends</a>
 									<a href="#">Partida</a>
-									<a href="#">Juego</a>
-									<a href="#">Jugador</a>
+									<a href="#">Game</a>
+									<a href="#">Player</a>
 								</div>
 							</div>
 						</td>
 						<td><button class="button button1" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button></td>
-						<td><button class="button button1">Mi Perfil</button></td>
+						<td><button class="button button2">My profile</button></td>
 						<td><input class="button button1" type="image" src="lupa.png" width="24" height="24"></td>
 					</center>
 				</tr>
 			</table>
-			<table>
+			<table style="width:95%">
 				<tr>
-				<td bgcolor="#ffffff">
-				<h1>Bienvenido a Beta Gaming Mag</h1></td>
+					<td bgcolor="#ffffff"><h1>Welcome to</h1></td>
 				</tr>
 				<tr>
-				<td bgcolor="#ffffff"><h4>Preparado para nuebas experiencias y juegos</h4></td>
-				</tr>
-				<tr>
-				<td bgcolor="#ffffff"><div class="imgcontainer">
-      <img src="templogo.png" alt="logo" class="avatar" style="width:430px;height:350px;">
+				<td><div class="imgcontainer">
+      <img src="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png" alt="logo" class="avatar" style="width:250px;height:250px;">
     </div></td>
-				<td bgcolor="#ffffff"></td>
-				<td bgcolor="#ffffff"></td>
 				</tr>
-				</table>
-	
-	<script>			var modal = document.getElementById('id01');
-		window.onclick = function(event) {
+				<tr>
+					<td bgcolor="#ffffff">
+						<div class="tab">
+						<button class="tablinks" onclick="openCity(event, 'Best Games')" id="defaultOpen">Best Games</button>
+						<button class="tablinks" onclick="openCity(event, 'Best matches')">Best matches</button>
+						<button class="tablinks" onclick="openCity(event, 'Most followed people')">Most followed people</button>
+						</div>
+
+
+						<div id="Best Games" class="tabcontent">
+						<span onclick="this.parentElement.style.display='none'" class="topright">x</span>
+						<h3>Best Games</h3>
+						<p>Minecraft</p>
+						<p>Call of duty</p>
+						<p>Clash Royale</p>
+						</div>
+
+						<div id="Best matches" class="tabcontent">
+						<span onclick="this.parentElement.style.display='none'" class="topright">x</span>
+						<h3>Best matches</h3>
+						<p>El game-Minecraft;0:24</p> 
+						<p>Mag-Call Of Duty IW;3:23</p> 
+						</div>
+
+						<div id="Most followed people" class="tabcontent">
+						<span onclick="this.parentElement.style.display='none'" class="topright">x</span>
+						<h3>Most followed people</h3>
+						<p>Bill Gates</p>
+						<p>Larry Page</p>
+						<p>Steve Jobs</p>
+						<p>Serguéi Brin</p>
+					</div>
+					</td>
+				</tr>
+			</table>
+
+<script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+document.getElementById("defaultOpen").click();
+
+var modal = document.getElementById('id01');
+window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
-			}
-		}
-	</script>
-	<div id="id01" class="modal">
+    }
+}
+</script>
+<div id="id01" class="modal">
   
   <form class="modal-content animate" action="action_page.php">
     <div class="imgcontainer">
@@ -281,10 +438,8 @@ div.panel {
       <input type="password" placeholder="Enter Password" name="psw" required>
         
       <button style='width:70px; height:41px' type="submit" >Login</button>  
-      
-    </div>
     </div>
   </form>
 </div>
-	</body>
-</html>
+</body>
+</html> 
