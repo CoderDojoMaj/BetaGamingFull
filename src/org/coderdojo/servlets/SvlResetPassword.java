@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
+import org.coderdojo.bd.FabricaConexiones;
 import org.coderdojo.utils.SessionIdentifierGenerator;
+
 
 
 //Import DB Driver
@@ -40,11 +43,12 @@ public class SvlResetPassword extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//1 pedimos la fabrica
+		FabricaConexiones laFabria=FabricaConexiones.getFabrica();
+		//pedimios una conexión
 		try {
-			System.out.println("Loading Driver...");
-			Class.forName("com.mysql.jdbc.Driver");
-			System.out.println("Done!\n");
-		} catch (ClassNotFoundException e) {
+			Connection conexion=laFabria.dameConexion();
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

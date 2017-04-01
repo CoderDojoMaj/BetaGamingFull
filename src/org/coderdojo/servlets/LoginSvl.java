@@ -1,10 +1,5 @@
-
-
-
-import java.io.File;
-import java.io.FileNotFoundException;
+package org.coderdojo.servlets;
 import java.io.IOException;
-import java.util.Scanner;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

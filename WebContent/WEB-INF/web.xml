@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>Betagaming_Server2</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>SvlMainServlet</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
@@ -34,4 +34,15 @@
     <servlet-name>SvlChangePassword</servlet-name>
     <url-pattern>/SvlChangePassword</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description>Este servlet analiza la sesión del usuario y le redirecciona a la pagina correspondiente.</description>
+    <display-name>SvlMainServlet</display-name>
+    <servlet-name>SvlMainServlet</servlet-name>
+    <servlet-class>org.coderdojo.servlets.SvlMainServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SvlMainServlet</servlet-name>
+    <url-pattern>/SvlMainServlet</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
