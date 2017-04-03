@@ -44,5 +44,15 @@
     <servlet-name>SvlMainServlet</servlet-name>
     <url-pattern>/SvlMainServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description>Este servlet comprueba el login.</description>
+    <display-name>LoginSvl</display-name>
+    <servlet-name>LoginSvl</servlet-name>
+    <servlet-class>org.coderdojo.servlets.LoginSvl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginSvl</servlet-name>
+    <url-pattern>/LoginSvl</url-pattern>
+  </servlet-mapping>
   
 </web-app>
