@@ -36,6 +36,9 @@ public class SvlMainServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		//Test Log
+		System.out.println("Passed throught MainSvl");
+		
 		HttpSession laSesion=(HttpSession)request.getSession(false);
 		
 		//Si no hay sesion (no hay logeo) envialo a la pagina principal
@@ -43,7 +46,7 @@ public class SvlMainServlet extends HttpServlet {
 		{
 			response.sendRedirect("index1.html");
 		}
-		//Si hay una sesión disponible (usuario logeado) enviale a el index2
+		//Si hay una sesiï¿½n disponible (usuario logeado) enviale a el index2
 		else
 		{
 			response.sendRedirect("index2.html");
