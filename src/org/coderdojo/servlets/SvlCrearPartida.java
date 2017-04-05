@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -51,8 +52,9 @@ public class SvlCrearPartida extends HttpServlet {
 		// TODO Auto-generated method stub
 		random = new SecureRandom();
 		//HttpSession sesion=(HttpSession) request.getSession();
-		// TODO Get a numeric uuid instead of a random long
-		id=new BigInteger(130, random).longValueExact();
+		// Get a numeric uuid instead of a random long
+		//id=new BigInteger(130, random).longValueExact();
+		id=UUID.randomUUID().hashCode();
 		maxPlayers=(Integer) request.getAttribute("maxPlayers");
 		gameId=(Integer) request.getAttribute("gameId");
 		minPlayers=(Integer) request.getAttribute("minPlayers");
