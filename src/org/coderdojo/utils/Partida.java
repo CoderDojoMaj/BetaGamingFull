@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class Partida {
 	
-	private int id;
+	private long id;
 	private int maxPlayers;
 	private int gameId;
 	private int minPlayers;
 	private Date startDate;
 	private Date endDate;
 	
-	public Partida(int id, int maxPlayers, int gameId, int minPlayers, Date startDate, Date endDate) {
+	public Partida(long id, int maxPlayers, int gameId, int minPlayers, Date startDate, Date endDate) {
 		super();
 		this.id = id;
 		this.maxPlayers = maxPlayers;
@@ -87,7 +87,7 @@ public class Partida {
 		this.endDate = new Date(endDate);
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 	

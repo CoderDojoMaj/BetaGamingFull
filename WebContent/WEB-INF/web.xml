@@ -54,5 +54,14 @@
     <servlet-name>LoginSvl</servlet-name>
     <url-pattern>/LoginSvl</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <description></description>
+    <display-name>SvlCrearPartida</display-name>
+    <servlet-name>SvlCrearPartida</servlet-name>
+    <servlet-class>org.coderdojo.servlets.SvlCrearPartida</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SvlCrearPartida</servlet-name>
+    <url-pattern>/SvlCrearPartida</url-pattern>
+  </servlet-mapping>
 </web-app>
