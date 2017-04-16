@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+    <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png"/>
+		<title>BetaGaming-Create Account</title>
+		<style>	
+.button1 {
+			color: white; 
+				border: 2px solid #ffffff;
+				background-color: #000000;
+				color: white;
+				padding: 16px;
+				font-size: 16px;
+				border: none;
+				cursor: pointer;
+		}			
+			a { margin: 1em 0; float: left; clear: left; }
+			a.boton {
+			color: white; 
+				border: 2px solid #ffffff;
+				background-color: #000000;
+				color: white;
+				padding: 16px;
+				font-size: 16px;
+				border: none;
+				cursor: pointer;
+				}
+				body{background-color:black}
+				.h1{
+				
+				}
+		</style>
+	</head>
+	<body>
+		<center>
+			<table>
+				<tr>
+						<td bgcolor="#ffffff"><h1 bgcolor="#ffffff">Create an account in Beta Gaming</h1></td>
+				</tr>
+				</table>
+			<table bgcolor="#ffffff" style="width:50%">
+				<tr>
+					<td>Username</td>
+					<td>Email</td>
+					<td>Password</td>
+				</tr>
+				<tr>
+					<td><input id="field_username" title="Username must not be blank and contain only letters, numbers and underscores." type="text" required pattern="\w+" name="username"></td>
+					<td><input type="text" name="email"></td>
+					<td><input id="field_pwd1" title="Password must contain at least 8 characters, including UPPER/lowercase and numbers." type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="pwd1"></td>
+				</tr>
+				<tr>
+					<td>Repeat password</td>
+					<td>Languages you know</td>
+					<td>Day of birth</td>
+				</tr>
+				<tr>
+					<td><input id="field_pwd2" title="Please enter the same Password as above." type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="pwd2"></td>
+					<td><input type="text" size="15" maxlength="30" name="Lan"></td>
+					<td><input type="date" name="bday"></td>
+				</tr>
+					<tr>
+						<td>Games you play</td>
+					</tr>
+					<tr></tr>  
+						<td rowspan="2"><textarea name="games" rows="8" cols="22"></textarea></td>
+					</tr>
+					<tr>
+					<td></td>
+					</tr>
+					<tr>
+					<td><input type="checkbox" name="out" value="Bike" checked>Don´t sign out<br></td>
+					<td><input type="checkbox" name="out" value="Bike">I accept the terms and conditions<br></td>
+					</tr>
+			</table>
+			</center>
+				<a class="boton" href="http://www.magnitopic.com/">Return to Beta Gaming</a>
+				<div style="text-align:right;">
+			  <br><button class="button button1">Create an Account</button>
+				</div>
+		<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function() {
+    var checkPassword = function(str)
+    {
+      var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+      return re.test(str);
+    };
+    var checkForm = function(e)
+    {
+      if(this.username.value == "") {
+        alert("Error: Username cannot be blank!");
+        this.username.focus();
+        e.preventDefault(); // equivalent to return false
+        return;
+      }
+      re = /^\w+$/;
+      if(!re.test(this.username.value)) {
+        alert("Error: Username must contain only letters, numbers and underscores!");
+        this.username.focus();
+        e.preventDefault();
+        return;
+      }
+      if(this.pwd1.value != "" && this.pwd1.value == this.pwd2.value) {
+        if(!checkPassword(this.pwd1.value)) {
+          alert("The password you have entered is not valid!");
+          this.pwd1.focus();
+          e.preventDefault();
+          return;
+        }
+      } else {
+        alert("Error: Please check that you've entered and confirmed your password!");
+        this.pwd1.focus();
+        e.preventDefault();
+        return;
+      }
+      alert("Both username and password are VALID!");
+    };
+    var myForm = document.getElementById("myForm");
+    myForm.addEventListener("submit", checkForm, true);
+    var supports_input_validity = function()
+    {
+      var i = document.createElement("input");
+      return "setCustomValidity" in i;
+    }
+    if(supports_input_validity()) {
+      var usernameInput = document.getElementById("field_username");
+      usernameInput.setCustomValidity(usernameInput.title);
+      var pwd1Input = document.getElementById("field_pwd1");
+      pwd1Input.setCustomValidity(pwd1Input.title);
+      var pwd2Input = document.getElementById("field_pwd2");
+      usernameInput.addEventListener("keyup", function() {
+        usernameInput.setCustomValidity(this.validity.patternMismatch ? usernameInput.title : "");
+      }, false);
+      pwd1Input.addEventListener("keyup", function() {
+        this.setCustomValidity(this.validity.patternMismatch ? pwd1Input.title : "");
+        if(this.checkValidity()) {
+          pwd2Input.pattern = this.value;
+          pwd2Input.setCustomValidity(pwd2Input.title);
+        } else {
+          pwd2Input.pattern = this.pattern;
+          pwd2Input.setCustomValidity("");
+        }
+      }, false);
+      pwd2Input.addEventListener("keyup", function() {
+        this.setCustomValidity(this.validity.patternMismatch ? pwd2Input.title : "");
+      }, false);
+    }
+  }, false);
+</script>
+	</body>
+</html>
