@@ -109,20 +109,22 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no está c
     		//pedimios una conexión
     		try {
 				Connection conexion=laFabria.dameConexion();
+				//RequestStatement rs;
+	    		String myQuery = "insert into users(nickname, password, name, surname, email, skype_user) values (?,?)";
+	    		conexion.prepareStatement(myQuery);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
     		
-    		//RequestStatement rs;
-    		String myQuery = "insert into users(nickname, password, name, surname, email, skype_user) values (?,?)";
     		
-    		response.sendRedirect("loginSuccess.html");
+    		
+    		response.sendRedirect("regSuccess.html");
     	}
     	else
     	{
     		
-    		response.sendRedirect("loginError.html");
+    		response.sendRedirect("regError.html");
     	};
 		
     	
