@@ -73,7 +73,7 @@ public class SvlCrearPartida extends HttpServlet {
 	
 	void addPartida(Partida p){
 		// TODO Add connection to database
-		FabricaConexiones f;
+		FabricaConexiones f = FabricaConexiones.getFabrica();
 		try {
 			Connection conn = f.dameConexion();
 			String query = " insert into partidas (id, maxPlayers, gameId, minPlayers, startDate, endDate)"
