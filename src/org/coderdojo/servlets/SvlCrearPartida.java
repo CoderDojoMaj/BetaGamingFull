@@ -68,11 +68,10 @@ public class SvlCrearPartida extends HttpServlet {
 		
 		partida = new Partida(id,maxPlayers,gameId,minPlayers,startDate,endDate);
 		
-		addPartida(partida);
+		addPartida();
 	}
 	
-	void addPartida(Partida p){
-		// TODO Add connection to database
+	void addPartida(){
 		FabricaConexiones f = FabricaConexiones.getFabrica();
 		try {
 			Connection conn = f.dameConexion();
@@ -85,6 +84,9 @@ public class SvlCrearPartida extends HttpServlet {
 			preStm.setInt(4, minPlayers);
 			preStm.setDate(5, (java.sql.Date) startDate);
 			preStm.setDate(6, (java.sql.Date) endDate);
+			
+			preStm.execute();
+			conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
