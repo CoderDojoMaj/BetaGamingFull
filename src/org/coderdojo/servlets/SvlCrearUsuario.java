@@ -64,6 +64,7 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
 	    	ResultSet resultSet = ps.executeQuery();
 	    	conn.close();
 	    	while (true){
+	    		//TODO Add a tester
 	    		Object r = resultSet.next();
 	    		System.out.println(r.toString());
 	    		if((Boolean)r == false){
