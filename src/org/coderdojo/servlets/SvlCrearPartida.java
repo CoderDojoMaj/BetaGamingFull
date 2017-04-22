@@ -3,6 +3,9 @@ package org.coderdojo.servlets;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.UUID;
 
@@ -12,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.coderdojo.bd.FabricaConexiones;
 import org.coderdojo.utils.Partida;
 
 /**
@@ -69,6 +73,22 @@ public class SvlCrearPartida extends HttpServlet {
 	
 	void addPartida(Partida p){
 		// TODO Add connection to database
+		FabricaConexiones f;
+		try {
+			Connection conn = f.dameConexion();
+			String query = " insert into partidas (id, maxPlayers, gameId, minPlayers, startDate, endDate)"
+			        + " values (?, ?, ?, ?, ?, ?)";
+			PreparedStatement preStm = conn.prepareStatement(query);
+			preStm.setLong(1, id);
+			preStm.setInt(2, maxPlayers);
+			preStm.setLong(3, gameId);
+			preStm.setInt(4, minPlayers);
+			preStm.setDate(5, (java.sql.Date) startDate);
+			preStm.setDate(6, (java.sql.Date) endDate);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
