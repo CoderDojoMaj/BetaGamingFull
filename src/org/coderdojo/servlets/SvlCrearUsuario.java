@@ -4,6 +4,8 @@ import java.io.IOException;
 //Import DB Driver
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
@@ -18,7 +20,7 @@ import org.coderdojo.bd.FabricaConexiones;
 
 
 
-public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no está cargado correctamente si da error aquí
+public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no estï¿½ cargado correctamente si da error aquï¿½
 	private static final long serialVersionUID = 1L;
 
 	
@@ -29,14 +31,14 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no está c
     }
 
     public boolean isStrongPassword(String inputPassword) {
-        // Comprueba si una contraseña es suficientemente fuerte
+        // Comprueba si una contraseï¿½a es suficientemente fuerte
     	boolean check1 = false, check2 = false, check3 = false;
     	
     	//Texto suficientemente largo
     	if (inputPassword.length() >= 7)
     	{check1=true;}; 
     	
-    	//Contiene algún numero
+    	//Contiene algï¿½n numero
     	if (inputPassword.matches(".*\\d+.*"))
     	{check2=true;};
     	
@@ -52,6 +54,26 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no está c
     }
     
     public boolean userInDB(String inputUser){
+    	FabricaConexiones f = FabricaConexiones.getFabrica();
+    	Connection conn;
+		try {
+			conn = f.dameConexion();
+			String queryCheck = "SELECT * from users WHERE user = ?";
+	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
+	    	ps.setString(1, inputUser);
+	    	ResultSet resultSet = ps.executeQuery();
+	    	conn.close();
+	    	while (true){
+	    		Object r = resultSet.next();
+	    		System.out.println(r.toString());
+	    		if((Boolean)r == false){
+	    			break;
+	    		}
+	    	}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	
     	return false;
     }
@@ -93,7 +115,7 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no está c
     	
     	//Check if the function is imported correctly
     	/*
-    	EmailValidator validator = EmailValidator.getInstance(); Añadir if email not in database
+    	EmailValidator validator = EmailValidator.getInstance(); Aï¿½adir if email not in database
     	if (validator.isValid(email))
     	{
     		validEMAIL = true;
@@ -106,7 +128,7 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no está c
     		//writeDatabase(); Writes Username, hash, etc..
     		//1 pedimos la fabrica
     		FabricaConexiones laFabria=FabricaConexiones.getFabrica();
-    		//pedimios una conexión
+    		//pedimios una conexiï¿½n
     		try {
 				Connection conexion=laFabria.dameConexion();
 				//RequestStatement rs;
