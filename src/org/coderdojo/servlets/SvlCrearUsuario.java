@@ -66,7 +66,7 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
 	    	while (true){
 	    		//TODO Add a tester
 	    		Object r = resultSet.next();
-	    		System.out.println(r.toString());
+	    		System.out.println("userInDB loop ->" + r.toString());
 	    		if((Boolean)r == false){
 	    			break;
 	    		}
@@ -133,8 +133,18 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
     		try {
 				Connection conexion=laFabria.dameConexion();
 				//RequestStatement rs;
-	    		String myQuery = "insert into users(nickname, password, name, surname, email, skype_user) values (?,?)";
-	    		conexion.prepareStatement(myQuery);
+	    		String myQuery = "insert into users(nickname, password, name, surname, email, skype_user) values (?,?,?,?,?,?)";
+	    		PreparedStatement preStm = conexion.prepareStatement(myQuery);
+	    		
+	    		preStm.setString(1, username);
+	    		preStm.setString(2, password);
+	    		preStm.setString(3, name);
+	    		preStm.setString(4, surname);
+	    		preStm.setString(5, email);
+	    		preStm.setString(6, skype);
+	    		
+	    		preStm.execute();
+	    		conexion.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
