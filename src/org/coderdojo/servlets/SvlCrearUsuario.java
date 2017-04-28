@@ -101,7 +101,7 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no estï¿½
     	boolean validPassword = false;
     	boolean validEMAIL = false;
     	
-    	//Esta logica puede estar mal
+    	//Comprueba si el usuario ya está registrado
     	if ( (username.length() >= 4) && ( !userInDB(username) ) )
     	{
     		validUsername = true;
