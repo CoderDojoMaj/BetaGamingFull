@@ -37,19 +37,20 @@ public class SvlMainServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		//Test Log
-		System.out.println("Passed throught MainSvl");
+		System.out.println("Passed - throught MainSvl");
 		
 		HttpSession laSesion=(HttpSession)request.getSession(false);
-		
+		System.out.println("Hola caracola");
 		//Si no hay sesion (no hay logeo) envialo a la pagina principal
 		if (laSesion==null)
 		{
-			response.sendRedirect("index1.html");
+			System.out.println("Jo, qué chungo");
+			response.sendRedirect("inicioNoLogIn.html");
 		}
 		//Si hay una sesiï¿½n disponible (usuario logeado) enviale a el index2
 		else
 		{
-			response.sendRedirect("index2.html");
+			response.sendRedirect("welcomePage.jps"); //Nope
 		}
 		
 	}

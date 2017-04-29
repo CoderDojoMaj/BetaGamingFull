@@ -1,11 +1,17 @@
 package org.coderdojo.servlets;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.coderdojo.bd.FabricaConexiones;
 
 /**
  * Servlet implementation class LoginSvl
@@ -29,8 +35,8 @@ public class LoginSvl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		System.out.print("Incorrenct way of login");
-		doPost(request,response);
+		System.out.print("<html><body><h1> GET REQUEST NOT ACCEPTED</h1></body></html>");
+		//doPost(request,response);
 	}
 
 	/**
@@ -39,14 +45,14 @@ public class LoginSvl extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String user = request.getParameter("usuario");
 		String pass = request.getParameter("clave");
-		HttpSession sesion=(HttpSession) request.getSession();
 		if(checkUser(user, pass)){
+			HttpSession sesion=(HttpSession) request.getSession();
 			sesion.setAttribute("uuid", uuid);
 			sesion.setAttribute("usuario",user);
 			sesion.setAttribute("clave", pass);
 			sesion.setAttribute("loggedIn", true);
-			response.sendRedirect("loginSuccess.html");
-			System.out.println("LOGGING IN");
+			response.sendRedirect("welcomePage.jsp");
+			System.out.println("LOGGING IN"); //Baia Baia 
 			//response.sendRedirect("/BetaGamingServlet/HTMLFiles/LoggedIn.html?sesion=" + sesion.getId());
 		}else{
 			response.sendRedirect("loginError.html");
@@ -55,7 +61,40 @@ public class LoginSvl extends HttpServlet {
 	}
 	
 	private boolean checkUser(String user, String pass){
-		Boolean r=false;
+		Boolean resultado=false;
+    	FabricaConexiones f = FabricaConexiones.getFabrica();
+    	Connection conn=null;
+		try
+		{
+			conn = f.dameConexion();
+			String queryCheck = "SELECT password from users WHERE nickname = ?";
+	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
+	    	ps.setString(1, user);
+	    	ResultSet resultSet = ps.executeQuery();
+	    	while (resultSet.next()){
+	    		//TODO Add a tester
+	    		String claveBuena=resultSet.getString("password");
+
+	    		if(claveBuena.equals( pass))
+	    		{
+	    			resultado = true;
+	    		}
+
+	    		
+	    	}
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{
+			if (conn!=null){try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}}
+		}
 //		try {
 //			File usersDat = new File("/Users/juan/Desktop/coder dojo/Workspace/BetaGamingServlet/WebContent/Data/Users.csv");
 //			Scanner usersSc = new Scanner(usersDat);
@@ -78,7 +117,7 @@ public class LoginSvl extends HttpServlet {
 //		if(user.equals(correctUser) && pass.equals(correctPass)){
 //			r = true;
 //		}
-		return r;
+		return resultado;
 	}
 
 }
