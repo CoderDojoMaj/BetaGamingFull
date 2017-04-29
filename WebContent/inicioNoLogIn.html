@@ -388,7 +388,7 @@ window.onclick = function(event) {
 </script>
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="action_page.php">
+  <form class="modal-content animate" action="LoginSvl" method="POST">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
       <img src="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png" alt="logo" class="avatar" style="width:250px;height:250px;">
@@ -396,12 +396,11 @@ window.onclick = function(event) {
 
     <div class="container">
       <label><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+      <input type="text" placeholder="Enter Username" name="usuario" required>
 
       <label><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input type="password" placeholder="Enter Password" name="clave" required>
 			
-			<input type="checkbox" name="out" value="Bike" checked>Don´t sign out<br>
         
       <button style='width:70px; height:41px' type="submit" >Login</button>  
     </div>
