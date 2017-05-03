@@ -1,21 +1,134 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
-    <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png"/>
-		<title>BetaGaming-HelloDave</title>
-		<style>
-		body{background-color:black}
+  <head>
+    <style type="text/css" media="screen">
+					body{background-color:black}
 			.active {
 			background-color: #E60026;
 			}
-		</style>
-	</head>
-	<body>
-		<center>
-			<br><br><br><h1 class="active">I'm sorry Dave, I'm afraid can´t find that</h1>
-			<div class="imgcontainer">
+			
+      body,
+      input,
+      button {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+      .container { margin: 30px auto 40px auto; width: 800px; text-align: center; }
+			
+      input[type=text],
+      input[type=password] {
+        font-size: 13px;
+        min-height: 32px;
+        margin: 0;
+        padding: 7px 8px;
+        outline: none;
+        color: #333;
+        background-color: #fff;
+        background-repeat: no-repeat;
+        background-position: right center;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition: all 0.15s ease-in;
+        transition: all 0.15s ease-in;
+        vertical-align: middle;
+      }
+      .btn {
+        position: relative;
+        display: inline-block;
+        padding: 6px 12px;
+        font-size: 13px;
+        font-weight: bold;
+        line-height: 20px;
+        color: #333;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: #EEE;
+        background-image: -webkit-linear-gradient(#FCFCFC, #EEE);
+        background-image: linear-gradient(#FCFCFC, #EEE);
+        background-repeat: repeat-x;
+        border: 1px solid #d5d5d5;
+        border-radius: 3px;
+        user-select: none;
+        -webkit-appearance: none;
+      }
+
+      .btn:focus,
+      input[type=text]:focus,
+      input[type=password]:focus {
+        text-decoration: none;
+        border-color: #51a7e8;
+        outline: none;
+        box-shadow: 0 0 5px rgba(81, 167, 232, 0.5);
+      }
+
+      .btn:hover,
+      .btn:active {
+        text-decoration: none;
+        background-color: #ddd;
+        background-image: -webkit-linear-gradient(#eee, #ddd);
+        background-image: linear-gradient(#eee, #ddd);
+        background-repeat: repeat-x;
+        border-color: #ccc;
+      }
+
+      .btn:active {
+        background-color: #dcdcdc;
+        background-image: none;
+        border-color: #b5b5b5;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+      }
+
+      label[for=search] {
+        display: block;
+        text-align: left;
+      }
+      #search label {
+        font-weight: 200;
+        padding: 5px 0;
+      }
+      #search input[type=text] {
+        font-size: 18px;
+        width: 705px;
+      }
+      #search .btn {
+        padding: 10px;
+        width: 90px;
+      }
+      #suggestions {
+        margin-top: 35px;
+        color: #ccc;
+      }
+      #suggestions a {
+        color: #666666;
+        font-weight: 200;
+        font-size: 14px;
+        margin: 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+			<center>
+			<br><br><br><br><br><br><br><br><br><br<div class="imgcontainer">
 			<img src="hal9000.png" alt="logo" style="width:250px;height:250px;">
-		</center>
-	</body>
+			<br><br><br><font color="white" size=7 face="Comic Sans MS,arial,verdana">I'm sorry Dave, I'm afraid can´t find that</font><br><br>
+			</center>
+    <div class="container">
+      <form accept-charset="UTF-8" id="search" action="/search" method="get">
+        <font color="white">Find games, people and matches:</font>
+        <input type="text" name="q">
+
+        <input class="btn" type="submit" value="Search">
+      </form>
+
+      <div id="suggestions">
+        <a href="#">Contact Support</a> &mdash;
+        <a href="#">Homepage</a>
+      </div>
+      <a>
+    </div>
+    <script type="text/javascript" src="/_error.js"></script>
+  </body>
 </html>
