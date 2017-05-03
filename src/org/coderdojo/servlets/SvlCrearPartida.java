@@ -29,7 +29,7 @@ public class SvlCrearPartida extends HttpServlet {
 	private int minPlayers;
 	private Date startDate;
 	private Date endDate;
-	private Partida partida;
+	//private Partida partida;
 	private SecureRandom random;
        
     /**
@@ -66,7 +66,7 @@ public class SvlCrearPartida extends HttpServlet {
 		startDate=(Date) request.getAttribute("startDate");
 		endDate=(Date) request.getAttribute("endDate");
 		
-		partida = new Partida(id,maxPlayers,gameId,minPlayers,startDate,endDate);
+		//partida = new Partida(id,maxPlayers,gameId,minPlayers,startDate,endDate);
 		
 		addPartida();
 	}

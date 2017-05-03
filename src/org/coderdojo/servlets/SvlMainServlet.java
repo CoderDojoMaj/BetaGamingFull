@@ -44,13 +44,13 @@ public class SvlMainServlet extends HttpServlet {
 		//Si no hay sesion (no hay logeo) envialo a la pagina principal
 		if (laSesion==null)
 		{
-			System.out.println("Jo, qué chungo");
+			System.out.println("Jo, quï¿½ chungo");
 			response.sendRedirect("inicioNoLogIn.html");
 		}
 		//Si hay una sesiï¿½n disponible (usuario logeado) enviale a el index2
 		else
 		{
-			response.sendRedirect("welcomePage.jps"); //Nope
+			response.sendRedirect("welcomePage.jsp"); //Nope
 		}
 		
 	}

@@ -64,4 +64,14 @@
     <servlet-name>SvlCrearPartida</servlet-name>
     <url-pattern>/SvlCrearPartida</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BuscadorSvl</display-name>
+    <servlet-name>BuscadorSvl</servlet-name>
+    <servlet-class>org.coderdojo.servlets.BuscadorSvl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BuscadorSvl</servlet-name>
+    <url-pattern>/BuscadorSvl</url-pattern>
+  </servlet-mapping>
 </web-app>

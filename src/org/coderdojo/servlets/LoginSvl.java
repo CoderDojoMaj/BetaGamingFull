@@ -55,7 +55,7 @@ public class LoginSvl extends HttpServlet {
 			System.out.println("LOGGING IN"); //Baia Baia 
 			//response.sendRedirect("/BetaGamingServlet/HTMLFiles/LoggedIn.html?sesion=" + sesion.getId());
 		}else{
-			response.sendRedirect("loginError.html");
+			response.sendRedirect("");
 		}
 		//response.getWriter().append("Usuario: " + user + "\nClave: " + pass);
 	}
