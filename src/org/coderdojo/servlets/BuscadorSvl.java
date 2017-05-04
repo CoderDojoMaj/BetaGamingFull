@@ -60,8 +60,16 @@ public class BuscadorSvl extends HttpServlet {
 			case 2:
 				result = buscarJuegos(term);
 				break;
+			case 3:
+				ArrayList<Object> r = new ArrayList<Object>();
+				r.add(buscarPartidas(term));
+				r.add(buscarUsuarios(term));
+				r.add(buscarJuegos(term));
+				result = r.toArray();
+				break;
 			default:
 				result = null;
+				break;
 		}
 		sesion.setAttribute("searchResult", result);
 	}
