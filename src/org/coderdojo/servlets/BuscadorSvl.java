@@ -62,6 +62,7 @@ public class BuscadorSvl extends HttpServlet {
 				break;
 			case 3:
 				ArrayList<Object> r = new ArrayList<Object>();
+				//May not work
 				r.add(buscarPartidas(term));
 				r.add(buscarUsuarios(term));
 				r.add(buscarJuegos(term));
