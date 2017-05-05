@@ -21,7 +21,7 @@ import org.coderdojo.utils.Partida;
 /**
  * Servlet implementation class SvlCrearPartida
  */
-public class SvlCrearPartida extends HttpServlet {
+public class CrearPartidaSvl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private long id;
 	private int maxPlayers;
@@ -35,7 +35,7 @@ public class SvlCrearPartida extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SvlCrearPartida() {
+    public CrearPartidaSvl() {
         super();
         // TODO Auto-generated constructor stub
     }

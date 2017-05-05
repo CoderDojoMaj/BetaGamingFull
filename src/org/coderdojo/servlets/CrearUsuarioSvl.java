@@ -20,12 +20,12 @@ import org.coderdojo.bd.FabricaConexiones;
 
 
 
-public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no estï¿½ cargado correctamente si da error aquï¿½
+public class CrearUsuarioSvl extends HttpServlet { //Creo que el jboss no estï¿½ cargado correctamente si da error aquï¿½
 	private static final long serialVersionUID = 1L;
 
 	
 	
-    public SvlCrearUsuario() {
+    public CrearUsuarioSvl() {
         // TODO Auto-generated constructor stub
     	
     }
@@ -101,7 +101,7 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no estï¿½
     	boolean validPassword = false;
     	boolean validEMAIL = false;
     	
-    	//Comprueba si el usuario ya está registrado
+    	//Comprueba si el usuario ya estï¿½ registrado
     	if ( (username.length() >= 4) && ( !userInDB(username) ) )
     	{
     		validUsername = true;
