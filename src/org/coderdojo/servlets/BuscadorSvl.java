@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.coderdojo.bd.FabricaConexiones;
+import org.coderdojo.utils.Buscable;
 import org.coderdojo.utils.Game;
 import org.coderdojo.utils.Partida;
 import org.coderdojo.utils.User;
@@ -49,24 +50,22 @@ public class BuscadorSvl extends HttpServlet {
 		int type = (Integer) request.getAttribute("type");
 		String term = (String) request.getAttribute("term");
 		HttpSession sesion = request.getSession();
-		Object[] result;
+		ArrayList<Buscable> result = new ArrayList<Buscable>();
 		switch (type){
 			case 0:
-				result = buscarPartidas(term);
+				result.addAll(buscarPartidas(term));
 				break;
 			case 1:
-				result = buscarUsuarios(term);
+				result.addAll(buscarUsuarios(term));
 				break;
 			case 2:
-				result = buscarJuegos(term);
+				result.addAll(buscarJuegos(term));
 				break;
 			case 3:
-				ArrayList<Object> r = new ArrayList<Object>();
 				//May not work
-				r.add(buscarPartidas(term));
-				r.add(buscarUsuarios(term));
-				r.add(buscarJuegos(term));
-				result = r.toArray();
+				result.addAll(buscarPartidas(term));
+				result.addAll(buscarUsuarios(term));
+				result.addAll(buscarJuegos(term));
 				break;
 			default:
 				result = null;
@@ -75,7 +74,7 @@ public class BuscadorSvl extends HttpServlet {
 		sesion.setAttribute("searchResult", result);
 	}
 	
-	private Partida[] buscarPartidas(String term){
+	private ArrayList<Partida> buscarPartidas(String term){
 		ArrayList<Partida> result = new ArrayList<Partida>();
 		
 		FabricaConexiones f = FabricaConexiones.getFabrica();
@@ -114,11 +113,11 @@ public class BuscadorSvl extends HttpServlet {
 			}}
 		}
 		
-		return (Partida[]) result.toArray();
+		return result;
 		
 	}
 	
-	private User[] buscarUsuarios(String term){
+	private ArrayList<User> buscarUsuarios(String term){
 		ArrayList<User> result = new ArrayList<User>();
 		
 		FabricaConexiones f = FabricaConexiones.getFabrica();
@@ -159,11 +158,11 @@ public class BuscadorSvl extends HttpServlet {
 			}}
 		}
 		
-		return (User[]) result.toArray();
+		return result;
 		
 	}
 	
-	private Game[] buscarJuegos(String term){
+	private ArrayList<Game> buscarJuegos(String term){
 		ArrayList<Game> result = new ArrayList<Game>();
 		
 		FabricaConexiones f = FabricaConexiones.getFabrica();
@@ -202,7 +201,7 @@ public class BuscadorSvl extends HttpServlet {
 			}}
 		}
 		
-		return (Game[]) result.toArray();
+		return result;
 		
 	}
 

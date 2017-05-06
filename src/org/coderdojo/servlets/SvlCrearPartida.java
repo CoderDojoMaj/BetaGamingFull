@@ -23,14 +23,12 @@ import org.coderdojo.utils.Partida;
  */
 public class SvlCrearPartida extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private long id;
 	private int maxPlayers;
 	private int gameId;
 	private int minPlayers;
 	private Date startDate;
 	private Date endDate;
 	//private Partida partida;
-	private SecureRandom random;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -54,11 +52,9 @@ public class SvlCrearPartida extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		random = new SecureRandom();
 		//HttpSession sesion=(HttpSession) request.getSession();
 		// Get a numeric uuid instead of a random long
 		//id=new BigInteger(130, random).longValueExact();
-		id=UUID.randomUUID().hashCode();
 		maxPlayers=(Integer) request.getAttribute("maxPlayers");
 		gameId=(Integer) request.getAttribute("gameId");
 		minPlayers=(Integer) request.getAttribute("minPlayers");
@@ -75,15 +71,14 @@ public class SvlCrearPartida extends HttpServlet {
 		FabricaConexiones f = FabricaConexiones.getFabrica();
 		try {
 			Connection conn = f.dameConexion();
-			String query = " insert into partidas (id, maxPlayers, gameId, minPlayers, startDate, endDate)"
-			        + " values (?, ?, ?, ?, ?, ?)";
+			String query = " insert into partidas (maxPlayers, gameId, minPlayers, startDate, endDate)"
+			        + " values (?, ?, ?, ?, ?)";
 			PreparedStatement preStm = conn.prepareStatement(query);
-			preStm.setLong(1, id);
-			preStm.setInt(2, maxPlayers);
-			preStm.setLong(3, gameId);
-			preStm.setInt(4, minPlayers);
-			preStm.setDate(5, (java.sql.Date) startDate);
-			preStm.setDate(6, (java.sql.Date) endDate);
+			preStm.setInt(1, maxPlayers);
+			preStm.setLong(2, gameId);
+			preStm.setInt(3, minPlayers);
+			preStm.setDate(4, (java.sql.Date) startDate);
+			preStm.setDate(5, (java.sql.Date) endDate);
 			
 			preStm.execute();
 			conn.close();
