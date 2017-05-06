@@ -11,14 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
 import org.coderdojo.bd.FabricaConexiones;
 import org.coderdojo.utils.SessionIdentifierGenerator;
+
 
 
 
 //Import DB Driver
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
@@ -67,11 +71,29 @@ public class SvlResetPassword extends HttpServlet {
 		SessionIdentifierGenerator var = new SessionIdentifierGenerator();
 		String newRandomPassword = var.nextSessionId();
 		
+		//Escribe a la DB la nueva password
+		FabricaConexiones f = FabricaConexiones.getFabrica();
+    	Connection conn=null;
+    	
+    	conn = f.dameConexion();
+		String queryCheck = "insert into users(password) WHERE nickname = ?";
+    	PreparedStatement ps = conn.prepareStatement(queryCheck);
+    	ps.setString(1, user);
+    	ResultSet resultSet = ps.executeQuery();
+    	while (resultSet.next()){
+    		//TODO Add a tester
+    		String claveBuena=resultSet.getString("password");
+
+    		if(claveBuena.equals(pass))
+    		{
+    			resultado = true;
+    		}
+
+		
 		//Envia email TODO
 		//sendRecoverEmail(targetEmail, newRandomPassword);
 		
 		//Limpia
-	//	htmlDebug("Recovery Completed", response);
 		response.sendRedirect("index.html");
 		
 		
