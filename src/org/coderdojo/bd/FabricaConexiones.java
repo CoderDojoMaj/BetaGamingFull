@@ -29,6 +29,7 @@ public class FabricaConexiones {
 	public Connection dameConexion() throws SQLException{
 		return DriverManager.getConnection("jdbc:mysql://localhost:3306/betagaming","root","root");	
 		//pi@83.44.175.174
+		//pi@betagaming.zapto.org
 		//pass: percot
 		//mysql user: root 
 		//mysql pass: root
