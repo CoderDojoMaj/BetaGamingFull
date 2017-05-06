@@ -2,9 +2,8 @@ package org.coderdojo.utils;
 
 import java.util.Date;
 
-public class User {
+public class User extends Buscable{
 	
-	private int id;
 	private String nickname;
 	private String passwordHash;
 	private String name;
@@ -15,10 +14,10 @@ public class User {
 	private Date bornDate;
 	private String skypeUser;
 	
-	public User(int id, String nickname, String passwordHash, String name, String surnames, String email,
+	public User(long id, String nickname, String passwordHash, String name, String surnames, String email,
 			Date registerDate, Date bornDate, String skypeUser) {
+		super(id);
 		this.reputation = 0;
-		this.id = id;
 		this.nickname = nickname;
 		this.passwordHash = passwordHash;
 		this.name = name;
@@ -29,10 +28,10 @@ public class User {
 		this.skypeUser = skypeUser;
 	}
 	
-	public User(int id, String nickname, String passwordHash, String name, String surnames, String email,
+	public User(long id, String nickname, String passwordHash, String name, String surnames, String email,
 			long registerLong, long bornLong, String skypeUser) {
+		super(id);
 		this.reputation = 0;
-		this.id = id;
 		this.nickname = nickname;
 		this.passwordHash = passwordHash;
 		this.name = name;
@@ -115,7 +114,7 @@ public class User {
 		this.skypeUser = skypeUser;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -123,8 +122,13 @@ public class User {
 		return registerDate;
 	}
 	
-	public Long getRegisterDateLong() {
+	public long getRegisterDateLong() {
 		return registerDate.getTime();
+	}
+	
+	@Override
+	public int getType() {
+		return 3;
 	}
 	
 }

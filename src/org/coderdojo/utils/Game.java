@@ -1,16 +1,14 @@
 package org.coderdojo.utils;
 
-public class Game {
+public class Game extends Buscable{
 	
-	int id;
 	String name;
 	int minAge;
 	String imgLink;
 	String description;
 	
-	public Game(int id, String name, int minAge, String imgLink, String description) {
-		super();
-		this.id = id;
+	public Game(long id, String name, int minAge, String imgLink, String description) {
+		super(id);
 		this.name = name;
 		this.minAge = minAge;
 		this.imgLink = imgLink;
@@ -49,8 +47,13 @@ public class Game {
 		this.description = description;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
+	}
+	
+	@Override
+	public int getType() {
+		return 2;
 	}
 	
 }

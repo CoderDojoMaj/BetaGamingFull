@@ -2,9 +2,8 @@ package org.coderdojo.utils;
 
 import java.util.Date;
 
-public class Partida {
+public class Partida extends Buscable{
 	
-	private long id;
 	private int maxPlayers;
 	private int gameId;
 	private int minPlayers;
@@ -12,8 +11,7 @@ public class Partida {
 	private Date endDate;
 	
 	public Partida(long id, int maxPlayers, int gameId, int minPlayers, Date startDate, Date endDate) {
-		super();
-		this.id = id;
+		super(id);
 		this.maxPlayers = maxPlayers;
 		this.gameId = gameId;
 		this.minPlayers = minPlayers;
@@ -22,8 +20,7 @@ public class Partida {
 	}
 	
 	public Partida(int id, int maxPlayers, int gameId, int minPlayers, long startDate, long endDate) {
-		super();
-		this.id = id;
+		super(id);
 		this.maxPlayers = maxPlayers;
 		this.gameId = gameId;
 		this.minPlayers = minPlayers;
@@ -89,6 +86,11 @@ public class Partida {
 
 	public long getId() {
 		return id;
+	}
+
+	@Override
+	public int getType() {
+		return 1;
 	}
 	
 }
