@@ -13,7 +13,7 @@ public class FabricaConexiones {
 			laFabrica=new FabricaConexiones();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
-			throw new RuntimeException("Arrea, el driver no se había cargado");
+			throw new RuntimeException("Arrea, el driver no se habï¿½a cargado");
 		}
 	}
 	private FabricaConexiones() throws ClassNotFoundException{
@@ -28,5 +28,9 @@ public class FabricaConexiones {
 	}
 	public Connection dameConexion() throws SQLException{
 		return DriverManager.getConnection("jdbc:mysql://localhost:3306/betagaming","root","root");	
+		//pi@83.44.175.174
+		//pass: percot
+		//mysql user: root 
+		//mysql pass: root
 	}
 }
