@@ -2,47 +2,47 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>Betagaming_Server2</display-name>
   <welcome-file-list>
-    <welcome-file>EntradaPrincipalSvl</welcome-file>
+    <welcome-file>SvlMainServlet</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>CrearUsuarioSvl</display-name>
-    <servlet-name>CrearUsuarioSvl</servlet-name>
-    <servlet-class>org.coderdojo.servlets.CrearUsuarioSvl</servlet-class>
+    <display-name>SvlCrearUsuario</display-name>
+    <servlet-name>SvlCrearUsuario</servlet-name>
+    <servlet-class>org.coderdojo.servlets.SvlCrearUsuario</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CrearUsuarioSvl</servlet-name>
-    <url-pattern>/CrearUsuarioSvl</url-pattern>
+    <servlet-name>SvlCrearUsuario</servlet-name>
+    <url-pattern>/SvlCrearUsuario</url-pattern>
   </servlet-mapping>
   <servlet>
     <description>Reset Password Code</description>
-    <display-name>ResetContraseñaSvl</display-name>
-    <servlet-name>ResetContraseñaSvl</servlet-name>
-    <servlet-class>org.coderdojo.servlets.ResetContraseñaSvl</servlet-class>
+    <display-name>SvlResetPassword</display-name>
+    <servlet-name>SvlResetPassword</servlet-name>
+    <servlet-class>org.coderdojo.servlets.SvlResetPassword</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ResetContraseñaSvl</servlet-name>
-    <url-pattern>/ResetContraseñaSvl</url-pattern>
+    <servlet-name>SvlResetPassword</servlet-name>
+    <url-pattern>/SvlResetPassword</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>CambiarContraseñaSvl</display-name>
-    <servlet-name>CambiarContraseñaSvl</servlet-name>
-    <servlet-class>org.coderdojo.servlets.CambiarContraseñaSvl</servlet-class>
+    <display-name>SvlChangePassword</display-name>
+    <servlet-name>SvlChangePassword</servlet-name>
+    <servlet-class>org.coderdojo.servlets.SvlChangePassword</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CambiarContraseñaSvl</servlet-name>
-    <url-pattern>/CambiarContraseñaSvl</url-pattern>
+    <servlet-name>SvlChangePassword</servlet-name>
+    <url-pattern>/SvlChangePassword</url-pattern>
   </servlet-mapping>
   <servlet>
     <description>Este servlet analiza la sesión del usuario y le redirecciona a la pagina correspondiente.</description>
-    <display-name>EntradaPrincipalSvl</display-name>
-    <servlet-name>EntradaPrincipalSvl</servlet-name>
-    <servlet-class>org.coderdojo.servlets.EntradaPrincipalSvl</servlet-class>
+    <display-name>SvlMainServlet</display-name>
+    <servlet-name>SvlMainServlet</servlet-name>
+    <servlet-class>org.coderdojo.servlets.SvlMainServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>EntradaPrincipalSvl</servlet-name>
-    <url-pattern>/EntradaPrincipalSvl</url-pattern>
+    <servlet-name>SvlMainServlet</servlet-name>
+    <url-pattern>/SvlMainServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description>Este servlet comprueba el login.</description>
@@ -56,13 +56,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>CrearPartidaSvl</display-name>
-    <servlet-name>CrearPartidaSvl</servlet-name>
-    <servlet-class>org.coderdojo.servlets.CrearPartidaSvl</servlet-class>
+    <display-name>SvlCrearPartida</display-name>
+    <servlet-name>SvlCrearPartida</servlet-name>
+    <servlet-class>org.coderdojo.servlets.SvlCrearPartida</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CrearPartidaSvl</servlet-name>
-    <url-pattern>/CrearPartidaSvl</url-pattern>
+    <servlet-name>SvlCrearPartida</servlet-name>
+    <url-pattern>/SvlCrearPartida</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
