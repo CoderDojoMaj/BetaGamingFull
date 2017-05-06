@@ -56,13 +56,24 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
     public boolean userInDB(String inputUser){
     	FabricaConexiones f = FabricaConexiones.getFabrica();
     	Connection conn;
+    	
+    	boolean result = true;
+    	
 		try {
 			conn = f.dameConexion();
-			String queryCheck = "SELECT * from users WHERE user = ?";
+			String queryCheck = "SELECT * from users WHERE nickname = ?";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
 	    	ps.setString(1, inputUser);
 	    	ResultSet resultSet = ps.executeQuery();
 	    	conn.close();
+	    	
+	    	
+	    	//El usuario no existe
+	    	if (resultSet.next() == false){result = false;}
+	    	//El usuario existe
+	    	else{result = true;}
+	    	
+	    	/*
 	    	while (true){
 	    		//TODO Add a tester
 	    		Object r = resultSet.next();
@@ -70,7 +81,7 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
 	    		if((Boolean)r == false){
 	    			break;
 	    		}
-	    	}
+	    	}*/
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
