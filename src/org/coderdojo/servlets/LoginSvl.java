@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.coderdojo.bd.FabricaConexiones;
+import org.coderdojo.utils.User;
 
 /**
  * Servlet implementation class LoginSvl
@@ -19,7 +20,7 @@ import org.coderdojo.bd.FabricaConexiones;
 public class LoginSvl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private String uuid;
+	private User user;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -47,10 +48,7 @@ public class LoginSvl extends HttpServlet {
 		String pass = request.getParameter("clave");
 		if(checkUser(user, pass)){
 			HttpSession sesion=(HttpSession) request.getSession();
-			sesion.setAttribute("uuid", uuid);
-			sesion.setAttribute("usuario",user);
-			sesion.setAttribute("clave", pass);
-			sesion.setAttribute("loggedIn", true);
+			sesion.setAttribute("user", this.user);
 			response.sendRedirect("welcomePage.jsp");
 			System.out.println("LOGGING IN"); //Baia Baia 
 			//response.sendRedirect("/BetaGamingServlet/HTMLFiles/LoggedIn.html?sesion=" + sesion.getId());
@@ -78,9 +76,22 @@ public class LoginSvl extends HttpServlet {
 	    		if(claveBuena.equals( pass))
 	    		{
 	    			resultado = true;
+	    			queryCheck = "SELECT * from users WHERE nickname = ?";
+	    			ps = conn.prepareStatement(queryCheck);
+	    			ps.setString(1, user);
+	    			ResultSet resultSetUser = ps.executeQuery();
+	    			while (resultSetUser.next()){
+	    				//Load the user
+	    				
+	    				this.user = new User(resultSetUser.getInt("user_id"), user, pass, resultSetUser.getString("name"), 
+	    						resultSetUser.getString("surname"), resultSetUser.getString("email"), resultSetUser.getDate("registry_date"),
+	    						resultSetUser.getDate("born_date"), resultSetUser.getString("skype_user"));
+	    				this.user.setReputation(resultSetUser.getInt("rep"));
+
+	    			}
+
 	    		}
 
-	    		
 	    	}
 		}
 		catch (SQLException e) {
