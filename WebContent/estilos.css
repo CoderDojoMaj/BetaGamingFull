@@ -1,0 +1,351 @@
+body {
+    font-size: 100%;
+    background:#32373d
+}
+a {
+    text-decoration: none
+}
+ul, 
+ul ul {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+#wrapper {  
+    width: 220px;
+    font-size: 0.8125em;
+	float:left
+}
+
+.menu > li > a {
+    height: 2.75em;         /* 36/13 ˜ 2.75*/
+    line-height: 2.75em;    /* 36/13 ˜ 2.75*/
+    text-indent: 2.75em   /* 36/13 ˜ 2.75*/
+}
+.menu {
+    width: auto;
+    height: auto;
+    -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,.73), 0px 0px 18px 0px rgba(0,0,0,.13);
+    -moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,.73), 0px 0px 18px 0px rgba(0,0,0,.13);
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,.73), 0px 0px 18px 0px rgba(0,0,0,.13)
+}
+.menu > li > a {
+    background-color: #616975;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(114, 122, 134)),to(rgb(80, 88, 100)));
+    background-image: -webkit-linear-gradient(top, rgb(114, 122, 134), rgb(80, 88, 100));
+    background-image: -moz-linear-gradient(top, rgb(114, 122, 134), rgb(80, 88, 100));
+    background-image: -o-linear-gradient(top, rgb(114, 122, 134), rgb(80, 88, 100));
+    background-image: -ms-linear-gradient(top, rgb(114, 122, 134), rgb(80, 88, 100));
+    background-image: linear-gradient(top, rgb(114, 122, 134), rgb(80, 88, 100));
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#727a86', EndColorStr='#505864');
+    border-bottom: 1px solid #33373d;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #878e98;
+    -moz-box-shadow: inset 0px 1px 0px 0px #878e98;
+    box-shadow: inset 0px 1px 0px 0px #878e98;
+    width: 100%;
+    height: 2.75em;
+    line-height: 2.75em;
+    text-indent: 2.75em;
+    display: block;
+    position: relative;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0px 1px 0px rgba(0,0,0,.5)
+}
+.menu ul li a {
+    background: #fff;
+    border-bottom: 1px solid #efeff0;
+    width: 100%;
+    height: 2.75em;
+    line-height: 2.75em;
+    text-indent: 2.75em;
+    display: block;
+    position: relative;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.923em;
+    font-weight: 400;
+    color: #878d95
+}
+.menu ul li:last-child a {
+    border-bottom: 1px solid #33373d
+}
+.menu > li > a:hover, 
+.menu > li > a.active {
+    background-color: #35afe3;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(69, 199, 235)),to(rgb(38, 152, 219)));
+    background-image: -webkit-linear-gradient(top, rgb(69, 199, 235), rgb(38, 152, 219));
+    background-image: -moz-linear-gradient(top, rgb(69, 199, 235), rgb(38, 152, 219));
+    background-image: -o-linear-gradient(top, rgb(69, 199, 235), rgb(38, 152, 219));
+    background-image: -ms-linear-gradient(top, rgb(69, 199, 235), rgb(38, 152, 219));
+    background-image: linear-gradient(top, rgb(69, 199, 235), rgb(38, 152, 219));
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#45c7eb', EndColorStr='#2698db');
+    border-bottom: 1px solid #103c56;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #6ad2ef;
+    -moz-box-shadow: inset 0px 1px 0px 0px #6ad2ef;
+    box-shadow: inset 0px 1px 0px 0px #6ad2ef
+}
+.menu > li > a.active {
+    border-bottom: 1px solid #1a638f
+}
+.menu > li > a:before {
+    content: '';
+    background-image: url(../images/sprite.png);
+    background-repeat: no-repeat;
+    font-size: 36px;
+    height: 1em;
+    width: 1em;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin: -.5em 0 0 0
+}
+.item1 > a:before {
+    background-position: 0 0
+}
+.item2 > a:before {
+    background-position: -38px 0
+}
+.item3 > a:before {
+    background-position: 0 -38px
+}
+.item4 > a:before {
+    background-position: -38px -38px
+}
+.item5 > a:before {
+    background-position: -76px 0
+}
+.menu > li > a span {
+    font-size: 0.857em; 
+    display: inline-block;
+    position: absolute;
+    right: 1em;
+    top: 50%; 
+    background: #48515c;
+    line-height: 1em;
+    height: 1em;
+    padding: .4em .6em;
+    margin: -.8em 0 0 0; 
+    color: #fff;
+    text-indent: 0;
+    text-align: center;
+    -webkit-border-radius: .769em;
+    -moz-border-radius: .769em;
+    border-radius: .769em;
+    -webkit-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, .26), 0px 1px 0px 0px rgba(255, 255, 255, .15);
+    -moz-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, .26), 0px 1px 0px 0px rgba(255, 255, 255, .15);
+    box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, .26), 0px 1px 0px 0px rgba(255, 255, 255, .15);
+    text-shadow: 0px 1px 0px rgba(0,0,0,.5);
+    font-weight: 500
+}
+.menu > li > a:hover span, .menu > li a.active span {
+    background: #2173a1
+}
+
+#formulario {
+	float:left;
+	width:1000px;
+	background-color: #ffffff;
+	padding:10px
+}
+
+#formulario div{
+	float:left;
+	padding:20px;
+	width:100%
+}
+
+#formulario div label{
+	float:left;
+	
+	border:10px;
+	width:150px
+}
+	body {font-family: "Lato", sans-serif}
+
+		div.tab {
+			overflow: hidden;
+			border: 1px solid #ccc;
+			background-color: #f1f1f1
+		}
+
+		.button1 {
+			color: white; 
+				border: 2px solid #ffffff;
+				background-color: #000000;
+				color: white;
+				padding: 16px;
+				font-size: 16px;
+				border: none;
+				cursor: pointer
+		}
+		
+		.button2 {
+			color: white; 
+				border: 2px solid #ffffff;
+				background-color: #000000;
+				color: white;
+				padding: 16px;
+				font-size: 16px;
+				border: none;
+				cursor: pointer
+		}
+
+		div.tab button {
+			background-color: inherit;
+			float: left;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 14px 16px;
+			transition: 0.3s;
+			font-size: 17px
+		}
+
+		div.tab button.active {
+			background-color: #ccc;
+		}
+
+		.tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none
+			}
+			.topright {
+				float: right;
+				cursor: pointer;
+				font-size: 20px
+			}
+
+			.topright:hover {color: red}
+
+
+			body{background-color:black}
+		 
+			.dropbtn {
+				color: white; 
+				border: 2px solid #ffffff;
+				background-color: #000000;
+				color: white;
+				padding: 16px;
+				font-size: 16px;
+				border: none;
+				cursor: pointer
+			}
+
+			.dropdown {
+				position: relative;
+				display: inline-block
+			}
+
+
+			.dropdown-content {
+				display: none;
+				position: absolute;
+				background-color: #f9f9f9;
+				min-width: 160px;
+				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+				z-index: 1
+			}
+
+			.dropdown-content a {
+				color: black;
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block
+			}
+
+			.dropdown-content a:hover {background-color: #f1f1f1}
+
+			.dropdown:hover .dropdown-content {
+				display: block
+			}
+
+			.dropdown:hover .dropbtn {
+				background-color: #282828
+				}
+				table td {
+				text-align: center
+				}
+				table tr {
+				color:ffffff
+			}
+
+			{box-sizing:border-box}
+			body {font-family: Verdana,sans-serif}
+			.mySlides {display:none}
+
+			.slideshow-container {
+				max-width: 1000px;
+				position: relative;
+				margin: auto
+			}
+
+			.text {
+				color: #f2f2f2;
+				font-size: 15px;
+				padding: 8px 12px;
+				position: absolute;
+				bottom: 8px;
+				width: 100%;
+				text-align: center
+			}
+
+
+			.numbertext {
+				color: #f2f2f2;
+				font-size: 12px;
+				padding: 8px 12px;
+				position: absolute;
+				top: 0
+			}
+
+
+			.dot {
+				height: 13px;
+				width: 13px;
+				margin: 0 2px;
+				background-color: #bbb;
+				border-radius: 50%;
+				display: inline-block;
+				transition: background-color 0.6s ease
+			}
+
+			.active {
+				background-color: #717171
+			}
+
+			.fade {
+				-webkit-animation-name: fade;
+				-webkit-animation-duration: 1.5s;
+				animation-name: fade;
+				animation-duration: 1.5s
+			}
+
+			@-webkit-keyframes fade {
+				from {opacity: .4} 
+				to {opacity: 1}
+			}
+
+			@keyframes fade {
+				from {opacity: .4} 
+				to {opacity: 1}
+			}
+
+			@media only screen and (max-width: 300px) {
+				.text {font-size: 11px}
+			}
+			.div {
+				background-color: #ffffff
+			}		
+			a.boton {
+			color: white; 
+				border: 2px solid #ffffff;
+				background-color: #000000;
+				color: white;
+				padding: 16px;
+				font-size: 16px;
+				border: none;
+				cursor: pointer;
+				}
