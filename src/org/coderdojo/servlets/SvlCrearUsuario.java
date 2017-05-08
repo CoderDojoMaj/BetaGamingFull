@@ -112,7 +112,7 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no estï¿½
     	boolean validPassword = false;
     	boolean validEMAIL = false;
     	
-    	//Comprueba si el usuario ya está registrado
+    	//Comprueba si el usuario ya estï¿½ registrado
     	if ( (username.length() >= 4) && ( !userInDB(username) ) )
     	{
     		validUsername = true;
@@ -155,6 +155,7 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no estï¿½
 	    		preStm.setString(6, skype);
 	    		
 	    		preStm.execute();
+	    		//TODO get id and log the user in
 	    		conexion.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

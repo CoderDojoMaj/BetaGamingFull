@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="org.coderdojo.utils.User"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -324,7 +324,7 @@ span.psw {
 								</div>
 							</div>
 						</td>
-						<td><button class="button button2"><% out.println(session.getAttribute("usuario")); %></button></td>
+						<td><button class="button button2"><% out.println(((User)session.getAttribute("user")).getNickname()); %></button></td>
 						<td><input class="button button1" type="image" src="imagenes/lupa.png" width="24" height="24"></td>
 					</center>
 				</tr>

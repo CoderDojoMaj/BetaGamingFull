@@ -93,4 +93,6 @@ public class Partida extends Buscable{
 		return 1;
 	}
 	
+	
+	
 }
