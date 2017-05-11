@@ -47,9 +47,8 @@ public class BuscadorSvl extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int type = (Integer) request.getAttribute("type");
-		String term = (String) request.getAttribute("term");
-		HttpSession sesion = request.getSession();
+		int type = 3;//= (Integer) request.getAttribute("type");
+		String term = (String) request.getParameter("term");
 		ArrayList<Buscable> result = new ArrayList<Buscable>();
 		switch (type){
 			case 0:
@@ -71,7 +70,9 @@ public class BuscadorSvl extends HttpServlet {
 				result = null;
 				break;
 		}
-		sesion.setAttribute("searchResult", result);
+		request.setAttribute("searchResult", result);
+		request.setAttribute("term", term);
+		response.sendRedirect("searchResult.jsp");
 	}
 	
 	private ArrayList<Partida> buscarPartidas(String term){

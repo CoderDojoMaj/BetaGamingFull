@@ -149,8 +149,7 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
     		try {
 				Connection conexion=laFabria.dameConexion();
 				//RequestStatement rs;
-				//TODO Add the dates
-	    		String myQuery = "insert into users(nickname, password, name, surname, email, skype_user) values (?,?,?,?,?,?)";
+	    		String myQuery = "insert into users(nickname, password, name, surname, email, registry_date, born_date, skype_user) values (?,?,?,?,?,?,?,?)";
 	    		PreparedStatement preStm = conexion.prepareStatement(myQuery);
 	    		
 	    		preStm.setString(1, username);
@@ -158,10 +157,12 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
 	    		preStm.setString(3, name);
 	    		preStm.setString(4, surname);
 	    		preStm.setString(5, email);
-	    		preStm.setString(6, skype);
+	    		preStm.setDate(6, (java.sql.Date) regDate);
+	    		preStm.setDate(7, (java.sql.Date) bornDate);
+	    		preStm.setString(8, skype);
 	    		
 	    		preStm.execute();
-	    		//TODO get id and log the user in
+	    		//get id and log the user in
 	    		myQuery = "select user_id from users where nickname = ?";
 	    		preStm = conexion.prepareStatement(myQuery);
 	    		
@@ -169,7 +170,8 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
 	    		
 	    		ResultSet rs = preStm.executeQuery();
 	    		
-	    		long id = (Long) null;
+	    		@SuppressWarnings("null")
+				long id = (Long) null;
 	    		
 	    		while(rs.next()){
 	    			id = rs.getLong("user_id");
