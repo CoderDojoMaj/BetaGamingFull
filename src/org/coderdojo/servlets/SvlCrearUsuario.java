@@ -7,15 +7,18 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.util.Calendar;
+import java.util.Date;
 
 //import org.apache.commons.validator.EmailValidator;//Not working from servlet?
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.coderdojo.bd.FabricaConexiones;
+import org.coderdojo.utils.User;
 
 
 
@@ -23,7 +26,7 @@ import org.coderdojo.bd.FabricaConexiones;
 public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est� cargado correctamente si da error aqu�
 	private static final long serialVersionUID = 1L;
 
-	
+	private User user;
 	
     public SvlCrearUsuario() {
         // TODO Auto-generated constructor stub
@@ -106,6 +109,8 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
 		String name = request.getParameter("name");
 		String surname = request.getParameter("surname");
 		String email = request.getParameter("mail");
+		Date regDate = Calendar.getInstance().getTime();
+		Date bornDate = new Date(Long.valueOf(request.getParameter("bornDateLong")));
 		String skype = request.getParameter("skype");
     	
     	boolean validUsername = false;
@@ -144,6 +149,7 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
     		try {
 				Connection conexion=laFabria.dameConexion();
 				//RequestStatement rs;
+				//TODO Add the dates
 	    		String myQuery = "insert into users(nickname, password, name, surname, email, skype_user) values (?,?,?,?,?,?)";
 	    		PreparedStatement preStm = conexion.prepareStatement(myQuery);
 	    		
@@ -156,15 +162,33 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
 	    		
 	    		preStm.execute();
 	    		//TODO get id and log the user in
+	    		myQuery = "select user_id from users where nickname = ?";
+	    		preStm = conexion.prepareStatement(myQuery);
+	    		
+	    		preStm.setString(0, username);
+	    		
+	    		ResultSet rs = preStm.executeQuery();
+	    		
+	    		long id = (Long) null;
+	    		
+	    		while(rs.next()){
+	    			id = rs.getLong("user_id");
+	    		}
+	    		
+	    		user = new User(id, username,password,name,surname,email,regDate,bornDate,skype);
+	    		
 	    		conexion.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
     		
+    		HttpSession sesion = request.getSession();
+    		sesion.setAttribute("user", user);
     		
+    		//Log the user in
     		
-    		response.sendRedirect("regSuccess.html");
+    		response.sendRedirect("welcomePage.jsp");
     	}
     	else
     	{
