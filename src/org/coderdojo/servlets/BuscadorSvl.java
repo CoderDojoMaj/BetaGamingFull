@@ -91,12 +91,13 @@ public class BuscadorSvl extends HttpServlet {
 	    		
 	    		long id = resultSet.getLong(0);
 	    		int maxPlayers = resultSet.getInt(1);
-	    		int gameId = resultSet.getInt(2);
-	    		int minPlayers = resultSet.getInt(3);
-	    		Date startDate = resultSet.getDate(4);
-	    		Date endDate = resultSet.getDate(5);
+	    		int minPlayers = resultSet.getInt(2);
+	    		Date startDate = resultSet.getDate(3);
+	    		Date endDate = resultSet.getDate(4);
+	    		long ownerId = resultSet.getLong(5);
+	    		int gameId = resultSet.getInt(6);
 	    		
-	    		Partida p = new Partida(id, maxPlayers, gameId, minPlayers, startDate, endDate);
+	    		Partida p = new Partida(id, maxPlayers, gameId, ownerId, minPlayers, startDate, endDate);
 	    		result.add(p);
 	    	}
 		}
@@ -181,9 +182,10 @@ public class BuscadorSvl extends HttpServlet {
 	    		int minAge = resultSet.getInt(2);
 	    		String imgLink = resultSet.getString(3);
 	    		String desc = resultSet.getString(4);
+	    		long genreId = resultSet.getLong(5);
 	    		
 	    		
-	    		Game g = new Game(id,name,minAge,imgLink,desc);
+	    		Game g = new Game(id,name,minAge,imgLink,desc,genreId);
 	    		result.add(g);
 	    		
 	    	}

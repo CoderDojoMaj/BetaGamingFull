@@ -1,28 +1,37 @@
 package org.coderdojo.utils;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
+
+import org.coderdojo.bd.FabricaConexiones;
 
 public class Partida extends Buscable{
 	
 	private int maxPlayers;
 	private int gameId;
+	private long ownerId;
 	private int minPlayers;
 	private Date startDate;
 	private Date endDate;
 	
-	public Partida(long id, int maxPlayers, int gameId, int minPlayers, Date startDate, Date endDate) {
+	public Partida(long id, int maxPlayers, int gameId, long ownerId, int minPlayers, Date startDate, Date endDate) {
 		super(id);
 		this.maxPlayers = maxPlayers;
 		this.gameId = gameId;
+		this.getOwnerId(ownerId);
 		this.minPlayers = minPlayers;
 		this.startDate = startDate;
 		this.endDate = endDate;
 	}
 	
-	public Partida(int id, int maxPlayers, int gameId, int minPlayers, long startDate, long endDate) {
+	public Partida(int id, int maxPlayers, int gameId, long ownerId, int minPlayers, long startDate, long endDate) {
 		super(id);
 		this.maxPlayers = maxPlayers;
 		this.gameId = gameId;
+		this.getOwnerId(ownerId);
 		this.minPlayers = minPlayers;
 		this.startDate = new Date(startDate);
 		this.endDate = new Date(endDate);
@@ -92,7 +101,51 @@ public class Partida extends Buscable{
 	public int getType() {
 		return 1;
 	}
+
+	public long getOwnerId() {
+		return ownerId;
+	}
+
+	public void getOwnerId(long ownerId) {
+		this.ownerId = ownerId;
+	}
 	
-	
+	@Override
+	public String getDisplayName(){
+		String gameName = "Error (DB DID NOT RESPOND)";
+		String ownerNickname = "Error (DB DID NOT RESPOND)";
+		
+		FabricaConexiones laFabria=FabricaConexiones.getFabrica();
+		//pedimios una conexi�n
+		try {
+			Connection conexion=laFabria.dameConexion();
+			//RequestStatement rs;
+    		String myQuery = "select nickname from users where user_id = ?";
+    		PreparedStatement preStm = conexion.prepareStatement(myQuery);
+    		
+    		preStm.setLong(0, ownerId);
+    		
+    		ResultSet result = preStm.executeQuery();
+    		while (result.next()){
+    			ownerNickname = result.getString("nickname");
+    		}
+    		
+    		myQuery = "select game_name from games where game_id = ?";
+    		preStm = conexion.prepareStatement(myQuery);
+    		
+    		preStm.setInt(0, gameId);
+    		
+    		result = preStm.executeQuery();
+    		while (result.next()){
+    			gameName = result.getString("game_name");
+    		}
+    		conexion.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "Partida de " + gameName + " creada por " + ownerNickname;
+	}
 	
 }

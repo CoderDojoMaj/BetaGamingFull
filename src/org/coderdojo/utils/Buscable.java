@@ -10,4 +10,8 @@ public abstract class Buscable {
 	public int getType(){
 		return 0;
 	}
+	
+	public String getDisplayName(){
+		return "un objeto buscable (" + this.toString() + ")";
+	}
 }

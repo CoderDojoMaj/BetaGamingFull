@@ -131,4 +131,9 @@ public class User extends Buscable{
 		return 3;
 	}
 	
+	@Override
+	public String getDisplayName() {
+		return nickname;
+	}
+	
 }

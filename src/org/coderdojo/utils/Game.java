@@ -6,13 +6,15 @@ public class Game extends Buscable{
 	int minAge;
 	String imgLink;
 	String description;
+	long genreId;
 	
-	public Game(long id, String name, int minAge, String imgLink, String description) {
+	public Game(long id, String name, int minAge, String imgLink, String description, long genreId) {
 		super(id);
 		this.name = name;
 		this.minAge = minAge;
 		this.imgLink = imgLink;
 		this.description = description;
+		this.genreId = genreId;
 	}
 
 	public String getName() {
@@ -54,6 +56,11 @@ public class Game extends Buscable{
 	@Override
 	public int getType() {
 		return 2;
+	}
+
+	@Override
+	public String getDisplayName() {
+		return name;
 	}
 	
 }
