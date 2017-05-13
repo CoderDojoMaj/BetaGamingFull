@@ -1,7 +1,5 @@
 body {
     font-size: 100%;
-    background:#32373d;
-
 }
 a {
     text-decoration: none;
@@ -142,27 +140,34 @@ ul ul {
 .menu > li > a:hover span, .menu > li a.active span {
     background: #2173a1;
 }
-
-#formulario {
-	float:left;
-	width:1000px;
-	background-color: #ffffff;
-	padding:10px
-}
-
-#formulario div{
-	float:left;
-	padding:20px;
-	width:100%
-}
-
-#formulario div label{
-	float:left;
-	
-	border:10px;
-	width:150px
-}
-#contenido{
-	float:left;
-	padding:50px
+#contenedor{  
+        background-color:#F4ABF2;  
+        border:2px solid #FF0000;  
+}  
+#cabecera{  
+        background-color:#000000;  
+        height:10%; 
+}  
+#izquierda{  
+        height:85%;  
+        background-color:#BDD2EF;  
+        float:left;  
+        width:15%;  
+}  
+#derecha{  
+        height:85%;  
+        background-color:#DAF7E2;  
+        float:right;  
+        width:85%;  
+}  
+#pie{  
+        height:5%;  
+        background-color:#ffffff;  
+        clear:both;  
+}  
+#usuario{
+				color: white; 
+				background-color: #000000;
+				border: none;
+				cursor: pointer;
 }
