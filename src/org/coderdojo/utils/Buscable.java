@@ -14,4 +14,6 @@ public abstract class Buscable {
 	public String getDisplayName(){
 		return "un objeto buscable (" + this.toString() + ")";
 	}
+	
+	public abstract boolean insertInDB();
 }

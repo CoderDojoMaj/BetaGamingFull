@@ -74,4 +74,14 @@
     <servlet-name>BuscadorSvl</servlet-name>
     <url-pattern>/BuscadorSvl</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SvlViewGames</display-name>
+    <servlet-name>SvlViewGames</servlet-name>
+    <servlet-class>org.coderdojo.servlets.SvlViewGames</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SvlViewGames</servlet-name>
+    <url-pattern>/SvlViewGames</url-pattern>
+  </servlet-mapping>
 </web-app>
