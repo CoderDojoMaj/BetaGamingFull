@@ -163,8 +163,9 @@ public class User extends Buscable{
 		
 		}
 		
-		catch
+		catch(Exception e)
 		{	
+			e.printStackTrace();
 		};
 		
 		return true;
