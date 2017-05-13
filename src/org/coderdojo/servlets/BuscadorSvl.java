@@ -183,7 +183,7 @@ public class BuscadorSvl extends HttpServlet {
 	    		int minAge = resultSet.getInt(2);
 	    		String imgLink = resultSet.getString(3);
 	    		String desc = resultSet.getString(4);
-	    		long genreId = resultSet.getLong(5);
+	    		int genreId = resultSet.getInt(5);
 	    		
 	    		
 	    		Game g = new Game(id,name,minAge,imgLink,desc,genreId);
