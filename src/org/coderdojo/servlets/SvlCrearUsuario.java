@@ -147,9 +147,10 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
     		FabricaConexiones laFabria=FabricaConexiones.getFabrica();
     		//pedimios una conexi�n
     		try {
+    			/**/
 				Connection conexion=laFabria.dameConexion();
 				//RequestStatement rs;
-	    		String myQuery = "insert into users(nickname, password, name, surname, email, registry_date, born_date, skype_user) values (?,?,?,?,?,?,?,?)";
+	    		String myQuery = "insert into users(nickname, password, name, surname, email, rep, registry_date, born_date, skype_user) values (?,?,?,?,?,0,?,?,?)";
 	    		PreparedStatement preStm = conexion.prepareStatement(myQuery);
 	    		
 	    		preStm.setString(1, username);
@@ -157,9 +158,10 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
 	    		preStm.setString(3, name);
 	    		preStm.setString(4, surname);
 	    		preStm.setString(5, email);
-	    		preStm.setDate(6, (java.sql.Date) regDate);
-	    		preStm.setDate(7, (java.sql.Date) bornDate);
-	    		preStm.setString(8, skype);
+	    		//6 is reputation
+	    		preStm.setDate(7, (java.sql.Date) regDate);
+	    		preStm.setDate(8, (java.sql.Date) bornDate);
+	    		preStm.setString(9, skype);
 	    		
 	    		preStm.execute();
 	    		//get id and log the user in

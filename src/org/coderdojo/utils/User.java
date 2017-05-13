@@ -132,46 +132,6 @@ public class User extends Buscable{
 	}
 	
 	@Override
-	public boolean insertInDB()
-	{
-		try{
-		
-		FabricaConexiones f = FabricaConexiones.getFabrica();
-    	Connection conn;
-    	
-    	conn = f.dameConexion();
-		String queryCheck = "insert into users(nickname, password, name, surname, email, rep, registry_date, born_date, skype_user) values (?,?,?,?,?,0,?,?,?)";
-	
-    	PreparedStatement ps = conn.prepareStatement(queryCheck);
-    	
-    	ps.setString(1, this.nickname);
-    	ps.setString(2, this.passwordHash);
-    	ps.setString(3, this.name);
-    	ps.setString(4, this.surname);
-    	ps.setString(5, this.email);
-    	//6 is reputation
-    	ps.setDate(7, (java.sql.Date) this.registerDate);
-    	ps.setDate(8, (java.sql.Date) this.bornDate);
-    	ps.setString(9, this.skypeUser);
-    	
-    	System.out.println("Usuario metido en la DB correctamente (supongo)");
-    	
-    	ResultSet resultSet = ps.executeQuery();
-    	conn.close();
-    	
-		return true;
-		
-		}
-		
-		catch
-		{	
-		};
-		
-		return true;
-	}
-	
-	
-	@Override
 	public int getType() {
 		return 3;
 	}
