@@ -25,6 +25,7 @@ public class SvlCrearPartida extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private int maxPlayers;
 	private int gameId;
+	private int ownerId;
 	private int minPlayers;
 	private Date startDate;
 	private Date endDate;
@@ -57,35 +58,15 @@ public class SvlCrearPartida extends HttpServlet {
 		//id=new BigInteger(130, random).longValueExact();
 		maxPlayers=(Integer) request.getAttribute("maxPlayers");
 		gameId=(Integer) request.getAttribute("gameId");
+		ownerId=(Integer) request.getAttribute("ownerId");
 		minPlayers=(Integer) request.getAttribute("minPlayers");
 		// TODO get the correct type for input in dates
 		startDate=(Date) request.getAttribute("startDate");
 		endDate=(Date) request.getAttribute("endDate");
 		
-		//partida = new Partida(id,maxPlayers,gameId,minPlayers,startDate,endDate);
+		Partida partida = new Partida(0,maxPlayers,gameId,ownerId,minPlayers,startDate,endDate);
+		partida.insertInDB();
 		
-		addPartida();
 	}
 	
-	void addPartida(){
-		FabricaConexiones f = FabricaConexiones.getFabrica();
-		try {
-			Connection conn = f.dameConexion();
-			String query = " insert into partidas (maxPlayers, gameId, minPlayers, startDate, endDate)"
-			        + " values (?, ?, ?, ?, ?)";
-			PreparedStatement preStm = conn.prepareStatement(query);
-			preStm.setInt(1, maxPlayers);
-			preStm.setLong(2, gameId);
-			preStm.setInt(3, minPlayers);
-			preStm.setDate(4, (java.sql.Date) startDate);
-			preStm.setDate(5, (java.sql.Date) endDate);
-			
-			preStm.execute();
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
 }

@@ -147,5 +147,43 @@ public class Partida extends Buscable{
 		
 		return "Partida de " + gameName + " creada por " + ownerNickname;
 	}
+
+	@Override
+	public boolean insertInDB() {
+		FabricaConexiones f = FabricaConexiones.getFabrica();
+    	Connection conn=null;
+    	boolean result = false;
+		try
+		{
+			conn = f.dameConexion();
+			String queryCheck = "INSERT INTO matches(max_players, min_players, start_date, end_date, owner_id, selected_game_id) values(?,?,?,?,?,?)";
+	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
+	    	ps.setInt(1, maxPlayers);
+	    	ps.setInt(2, minPlayers);
+	    	ps.setDate(3, (java.sql.Date) startDate);
+	    	ps.setDate(4, (java.sql.Date) endDate);
+	    	ps.setLong(5, ownerId);
+	    	ps.setLong(5, gameId);
+	    	ps.executeQuery();
+	    	
+	    	result = true;
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{
+			if (conn!=null){try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}}
+		}
+		
+		return result;
+	}
+	
+	
 	
 }
