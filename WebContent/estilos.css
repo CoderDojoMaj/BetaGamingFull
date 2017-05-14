@@ -1,32 +1,32 @@
 body {
-    font-size: 100%;
+    font-size: 100%
 }
 a {
-    text-decoration: none;
+    text-decoration: none
 }
 ul, 
 ul ul {
     margin: 0;
     padding: 0;
-    list-style: none;
+    list-style: none
 }
 #wrapper {  
     width: 220px;
     font-size: 0.8125em;
-	float:left;
+	float:left
 }
 
 .menu > li > a {
     height: 2.75em;         /* 36/13 ˜ 2.75*/
     line-height: 2.75em;    /* 36/13 ˜ 2.75*/
-    text-indent: 2.75em;    /* 36/13 ˜ 2.75*/
+    text-indent: 2.75em     /* 36/13 ˜ 2.75*/
 }
 .menu {
     width: auto;
     height: auto;
     -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,.73), 0px 0px 18px 0px rgba(0,0,0,.13);
     -moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,.73), 0px 0px 18px 0px rgba(0,0,0,.13);
-    box-shadow: 0px 1px 3px 0px rgba(0,0,0,.73), 0px 0px 18px 0px rgba(0,0,0,.13);
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,.73), 0px 0px 18px 0px rgba(0,0,0,.13)
 }
 .menu > li > a {
     background-color: #616975;
@@ -50,7 +50,7 @@ ul ul {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 600;
     color: #fff;
-    text-shadow: 0px 1px 0px rgba(0,0,0,.5);
+    text-shadow: 0px 1px 0px rgba(0,0,0,.5)
 }
 .menu ul li a {
     background: #fff;
@@ -64,10 +64,10 @@ ul ul {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 0.923em;
     font-weight: 400;
-    color: #878d95;
+    color: #878d95
 }
 .menu ul li:last-child a {
-    border-bottom: 1px solid #33373d;
+    border-bottom: 1px solid #33373d
 }
 .menu > li > a:hover, 
 .menu > li > a.active {
@@ -82,10 +82,10 @@ ul ul {
     border-bottom: 1px solid #103c56;
     -webkit-box-shadow: inset 0px 1px 0px 0px #6ad2ef;
     -moz-box-shadow: inset 0px 1px 0px 0px #6ad2ef;
-    box-shadow: inset 0px 1px 0px 0px #6ad2ef;
+    box-shadow: inset 0px 1px 0px 0px #6ad2ef
 }
 .menu > li > a.active {
-    border-bottom: 1px solid #1a638f;
+    border-bottom: 1px solid #1a638f
 }
 .menu > li > a:before {
     content: '';
@@ -97,22 +97,22 @@ ul ul {
     position: absolute;
     left: 0;
     top: 50%;
-    margin: -.5em 0 0 0;
+    margin: -.5em 0 0 0
 }
 .item1 > a:before {
-    background-position: 0 0;
+    background-position: 0 0
 }
 .item2 > a:before {
-    background-position: -38px 0;
+    background-position: -38px 0
 }
 .item3 > a:before {
-    background-position: 0 -38px;
+    background-position: 0 -38px
 }
 .item4 > a:before {
-    background-position: -38px -38px;
+    background-position: -38px -38px
 }
 .item5 > a:before {
-    background-position: -76px 0;
+    background-position: -76px 0
 }
 .menu > li > a span {
     font-size: 0.857em; 
@@ -135,39 +135,36 @@ ul ul {
     -moz-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, .26), 0px 1px 0px 0px rgba(255, 255, 255, .15);
     box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, .26), 0px 1px 0px 0px rgba(255, 255, 255, .15);
     text-shadow: 0px 1px 0px rgba(0,0,0,.5);
-    font-weight: 500;
+    font-weight: 500
 }
 .menu > li > a:hover span, .menu > li a.active span {
-    background: #2173a1;
-}
-#contenedor{  
-        background-color:#F4ABF2;  
-        border:2px solid #FF0000;  
+    background: #2173a1
 }  
 #cabecera{  
         background-color:#000000;  
-        height:10%; 
+        height:10%
 }  
 #izquierda{  
-        height:85%;  
-        background-color:#BDD2EF;  
         float:left;  
-        width:15%;  
+        width:12%  
 }  
-#derecha{  
-        height:85%;  
-        background-color:#DAF7E2;  
+#derecha{
         float:right;  
-        width:85%;  
+        width:88% 
 }  
 #pie{  
         height:5%;  
         background-color:#ffffff;  
-        clear:both;  
+        clear:both 
 }  
 #usuario{
 				color: white; 
 				background-color: #000000;
 				border: none;
 				cursor: pointer;
+				text-align: center;
+}
+#crear{
+	background-color: #d3d3d3;
+	font-size: 15px
 }
