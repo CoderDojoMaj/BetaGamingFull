@@ -90,13 +90,13 @@ public class BuscadorSvl extends HttpServlet {
 	    	ResultSet resultSet = ps.executeQuery();
 	    	while (resultSet.next()){
 	    		
-	    		long id = resultSet.getLong(0);
-	    		int maxPlayers = resultSet.getInt(1);
-	    		int minPlayers = resultSet.getInt(2);
-	    		Date startDate = resultSet.getDate(3);
-	    		Date endDate = resultSet.getDate(4);
-	    		long ownerId = resultSet.getLong(5);
-	    		int gameId = resultSet.getInt(6);
+	    		long id = resultSet.getLong(1);
+	    		int maxPlayers = resultSet.getInt(2);
+	    		int minPlayers = resultSet.getInt(3);
+	    		Date startDate = resultSet.getDate(4);
+	    		Date endDate = resultSet.getDate(5);
+	    		long ownerId = resultSet.getLong(6);
+	    		int gameId = resultSet.getInt(7);
 	    		
 	    		Partida p = new Partida(id, maxPlayers, gameId, ownerId, minPlayers, startDate, endDate);
 	    		result.add(p);
@@ -133,15 +133,15 @@ public class BuscadorSvl extends HttpServlet {
 	    	ResultSet resultSet = ps.executeQuery();
 	    	while (resultSet.next()){
 	    		//TODO Add a tester
-	    		int id = resultSet.getInt(0);
-	    		String nickname = resultSet.getString(1);
-	    		String passwordHash = resultSet.getString(2);
-	    		String name = resultSet.getString(3);
-	    		String surname = resultSet.getString(4);
-	    		String email = resultSet.getString(5);
-	    		Date regDate = resultSet.getDate(6);
-	    		Date bornDate = resultSet.getDate(7);
-	    		String skypeUser = resultSet.getString(8);
+	    		int id = resultSet.getInt(1);
+	    		String nickname = resultSet.getString(2);
+	    		String passwordHash = resultSet.getString(3);
+	    		String name = resultSet.getString(4);
+	    		String surname = resultSet.getString(5);
+	    		String email = resultSet.getString(6);
+	    		Date regDate = resultSet.getDate(7);
+	    		Date bornDate = resultSet.getDate(8);
+	    		String skypeUser = resultSet.getString(9);
 	    		
 	    		User p = new User(id, nickname, passwordHash, name, surname, email, regDate, bornDate, skypeUser);
 	    		result.add(p);
@@ -178,12 +178,12 @@ public class BuscadorSvl extends HttpServlet {
 	    	ResultSet resultSet = ps.executeQuery();
 	    	while (resultSet.next()){
 	    		//TODO Add a tester
-	    		int id = resultSet.getInt(0);
-	    		String name = resultSet.getString(1);
-	    		int minAge = resultSet.getInt(2);
-	    		String imgLink = resultSet.getString(3);
-	    		String desc = resultSet.getString(4);
-	    		int genreId = resultSet.getInt(5);
+	    		int id = resultSet.getInt(1);
+	    		String name = resultSet.getString(2);
+	    		int minAge = resultSet.getInt(3);
+	    		String imgLink = resultSet.getString(4);
+	    		String desc = resultSet.getString(5);
+	    		int genreId = resultSet.getInt(6);
 	    		
 	    		
 	    		Game g = new Game(id,name,minAge,imgLink,desc,genreId);

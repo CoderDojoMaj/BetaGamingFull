@@ -1,40 +1,30 @@
 package org.coderdojo.servlets;
 
 import java.io.IOException;
-import java.math.BigInteger;
-import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.coderdojo.bd.FabricaConexiones;
+import org.coderdojo.utils.Game;
 import org.coderdojo.utils.Partida;
 
 /**
- * Servlet implementation class SvlCrearPartida
+ * Servlet implementation class SvlAddGame
  */
-public class SvlCrearPartida extends HttpServlet {
+public class SvlAddGame extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private int maxPlayers;
-	private int gameId;
-	private int ownerId;
-	private int minPlayers;
-	private Date startDate;
-	private Date endDate;
-	//private Partida partida;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SvlCrearPartida() {
+    public SvlAddGame() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,8 +34,7 @@ public class SvlCrearPartida extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request, response);
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Get request not available");
 	}
 
 	/**
@@ -53,37 +42,30 @@ public class SvlCrearPartida extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//HttpSession sesion=(HttpSession) request.getSession();
-		// Get a numeric uuid instead of a random long
-		//id=new BigInteger(130, random).longValueExact();
-		maxPlayers=(Integer) request.getAttribute("maxPlayers");
-		gameId=(Integer) request.getAttribute("gameId");
-		ownerId=(Integer) request.getAttribute("ownerId");
-		minPlayers=(Integer) request.getAttribute("minPlayers");
-		// TODO get the correct type for input in dates
-		startDate=(Date) request.getAttribute("startDate");
-		endDate=(Date) request.getAttribute("endDate");
+		String name=(String) request.getAttribute("name");
+		int minAge=(Integer) request.getAttribute("minAge");
+		String imgLink=(String) request.getAttribute("imgLink");
+		String desc=(String) request.getAttribute("description");
+		int genreId=(Integer) request.getAttribute("genreId");
 		
-		Partida partida = new Partida(0,maxPlayers,gameId,ownerId,minPlayers,startDate,endDate);
-		addPartida(partida);
-		
+		Game game = new Game(0,name,minAge,imgLink,desc,genreId);
+		addGame(game);
 	}
 	
-	public boolean addPartida(Partida p) {
+	public boolean addGame(Game g) {
 		FabricaConexiones f = FabricaConexiones.getFabrica();
     	Connection conn=null;
     	boolean result = false;
 		try
 		{
 			conn = f.dameConexion();
-			String queryCheck = "INSERT INTO matches(max_players, min_players, start_date, end_date, owner_id, selected_game_id) values(?,?,?,?,?,?)";
+			String queryCheck = "INSERT INTO games(game_name,min_age,img_url,game_desc,genre_id) values(?,?,?,?,?)";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
-	    	ps.setInt(1, p.getMaxPlayers());
-	    	ps.setInt(2, p.getMinPlayers());
-	    	ps.setDate(3, (java.sql.Date) p.getStartDate());
-	    	ps.setDate(4, (java.sql.Date) p.getEndDate());
-	    	ps.setLong(5, p.getOwnerId());
-	    	ps.setLong(5, p.getGameId());
+	    	ps.setString(1, g.getName());
+	    	ps.setInt(2, g.getMinAge());
+	    	ps.setString(3, g.getImgLink());
+	    	ps.setString(4, g.getDescription());
+	    	ps.setInt(5, g.getGenreId());
 	    	ps.executeQuery();
 	    	
 	    	result = true;
@@ -105,3 +87,4 @@ public class SvlCrearPartida extends HttpServlet {
 	}
 	
 }
+

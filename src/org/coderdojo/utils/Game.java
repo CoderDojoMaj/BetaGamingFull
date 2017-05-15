@@ -10,13 +10,13 @@ import java.util.Date;
 import org.coderdojo.bd.FabricaConexiones;
 
 public class Game extends Buscable{
-	
+
 	String name;
 	int minAge;
 	String imgLink;
 	String description;
 	int genreId;
-	
+
 	public Game(long id, String name, int minAge, String imgLink, String description, int genreId) {
 		super(id);
 		this.name = name;
@@ -61,7 +61,15 @@ public class Game extends Buscable{
 	public long getId() {
 		return id;
 	}
-	
+
+	public void setGenreId(int genreId){
+		this.genreId = genreId;
+	}
+
+	public int getGenreId(){
+		return this.genreId;
+	}
+
 	@Override
 	public int getType() {
 		return 2;
@@ -72,11 +80,11 @@ public class Game extends Buscable{
 		return name;
 	}
 
-	@Override
+	/*
 	public boolean insertInDB() {
-		
-		
-		
+
+
+
 		FabricaConexiones f = FabricaConexiones.getFabrica();
     	Connection conn=null;
     	boolean result = false;
@@ -91,7 +99,7 @@ public class Game extends Buscable{
 	    	ps.setString(4, description);
 	    	ps.setInt(5, genreId);
 	    	ps.executeQuery();
-	    	
+
 	    	result = true;
 //	    	while (resultSet.next()){
 //	    		//TODO Add a tester
@@ -101,8 +109,8 @@ public class Game extends Buscable{
 //	    		String imgLink = resultSet.getString(3);
 //	    		String desc = resultSet.getString(4);
 //	    		long genreId = resultSet.getLong(5);
-//	    		
-//	    		
+//
+//
 //	    	}
 		}
 		catch (SQLException e) {
@@ -117,10 +125,11 @@ public class Game extends Buscable{
 				e.printStackTrace();
 			}}
 		}
-		
+
 		return result;
 	}
-	
-	
-	
+	*/
+
+
+
 }

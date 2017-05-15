@@ -148,7 +148,7 @@ public class Partida extends Buscable{
 		return "Partida de " + gameName + " creada por " + ownerNickname;
 	}
 
-	@Override
+	/*
 	public boolean insertInDB() {
 		FabricaConexiones f = FabricaConexiones.getFabrica();
     	Connection conn=null;
@@ -183,6 +183,7 @@ public class Partida extends Buscable{
 		
 		return result;
 	}
+	*/
 	
 	
 	
