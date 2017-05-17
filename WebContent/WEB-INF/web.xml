@@ -4,6 +4,10 @@
   <welcome-file-list>
     <welcome-file>SvlMainServlet</welcome-file>
   </welcome-file-list>
+  <error-page>
+        <error-code>404</error-code>
+        <location>/9000.html</location>
+</error-page>
   <servlet>
     <description></description>
     <display-name>SvlCrearUsuario</display-name>
