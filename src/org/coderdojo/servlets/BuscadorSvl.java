@@ -39,7 +39,7 @@ public class BuscadorSvl extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append(" CANNOT USE GET REQUEST ");
+		doPost(request, response);
 	}
 
 	/**
@@ -48,7 +48,7 @@ public class BuscadorSvl extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int type = 3;//= (Integer) request.getAttribute("type");
-		String term = (String) request.getParameter("term");
+		String term = (String) request.getParameter("q");
 		ArrayList<Buscable> result = new ArrayList<Buscable>();
 		switch (type){
 			case 0:

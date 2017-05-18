@@ -76,7 +76,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>BuscadorSvl</servlet-name>
-    <url-pattern>/BuscadorSvl</url-pattern>
+    <url-pattern>/search</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
