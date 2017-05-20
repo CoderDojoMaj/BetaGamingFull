@@ -43,17 +43,20 @@ public class SvlAddGame extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String name=(String) request.getAttribute("name");
-		int minAge=(Integer) request.getAttribute("minAge");
-		String imgLink=(String) request.getAttribute("imgLink");
-		String desc=(String) request.getAttribute("description");
-		int genreId=0;//(Integer) request.getAttribute("genreId");
+		String name=(String) request.getParameter("game_name");
+		int minAge=Integer.parseInt((String) request.getParameter("min_age"));
+		String imgLink=(String) request.getParameter("img_link");
+		String desc=(String) request.getParameter("game_desc");
+		int genreId=1;//(Integer) request.getAttribute("genreId");
 		
 		Game game = new Game(0,name,minAge,imgLink,desc,genreId);
 		if(checkGame(game)){
 			System.out.println("SvlAddGame --> Game already exists");
+			response.getWriter().append("GAME ALREADY EXISTS");
 		}else{
+			System.out.println("SvlAddGame --> Adding game");
 			addGame(game);
+			response.getWriter().append("GAME ADDED");
 		}
 	}
 	
@@ -71,7 +74,7 @@ public class SvlAddGame extends HttpServlet {
 	    	ps.setString(3, g.getImgLink());
 	    	ps.setString(4, g.getDescription());
 	    	ps.setInt(5, g.getGenreId());
-	    	ps.executeQuery();
+	    	ps.execute();
 	    	
 	    	result = true;
 		}
@@ -98,13 +101,12 @@ public class SvlAddGame extends HttpServlet {
 		try
 		{
 			conn = f.dameConexion();
-			String queryCheck = "SELECT game_name FROM games";
+			String queryCheck = "SELECT game_name FROM games WHERE game_name=?";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
+	    	ps.setString(1, g.getName());
 	    	ResultSet rs = ps.executeQuery();
-	    	String name = rs.getString("game_name");
-	    	
-	    	if(g.getName().equals(name)){
-	    		result = true;
+	    	if(rs.next()){
+	    		result=true;
 	    	}
 		}
 		catch (SQLException e) {
