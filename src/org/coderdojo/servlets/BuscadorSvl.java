@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -62,7 +63,7 @@ public class BuscadorSvl extends HttpServlet {
 				break;
 			case 3:
 				//May not work
-				result.addAll(buscarPartidas(term));
+				//result.addAll(buscarPartidas(term));
 				result.addAll(buscarUsuarios(term));
 				result.addAll(buscarJuegos(term));
 				break;
@@ -70,9 +71,10 @@ public class BuscadorSvl extends HttpServlet {
 				result = null;
 				break;
 		}
-		request.setAttribute("searchResult", result);
-		request.setAttribute("term", term);
-		response.sendRedirect("searchResult.jsp");
+		HttpSession sesion = request.getSession();
+		sesion.setAttribute("searchResult", result);
+		System.out.println("Searched correctly " + result.toArray());
+		response.sendRedirect("searchResult.jsp?term="+term);
 	}
 	
 	private ArrayList<Partida> buscarPartidas(String term){
@@ -84,7 +86,7 @@ public class BuscadorSvl extends HttpServlet {
 		{
 			conn = f.dameConexion();
 			//TODO change the query to select the correct matches
-			String queryCheck = "SELECT * from partidas WHERE name = ?";
+			String queryCheck = "SELECT * from matches WHERE name = ?";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
 	    	ps.setString(1, term);
 	    	ResultSet resultSet = ps.executeQuery();
@@ -139,11 +141,13 @@ public class BuscadorSvl extends HttpServlet {
 	    		String name = resultSet.getString(4);
 	    		String surname = resultSet.getString(5);
 	    		String email = resultSet.getString(6);
-	    		Date regDate = resultSet.getDate(7);
-	    		Date bornDate = resultSet.getDate(8);
-	    		String skypeUser = resultSet.getString(9);
+	    		int rep = resultSet.getInt(7);
+	    		Date regDate = resultSet.getDate(8);
+	    		Date bornDate = resultSet.getDate(9);
+	    		String skypeUser = resultSet.getString(10);
 	    		
 	    		User p = new User(id, nickname, passwordHash, name, surname, email, regDate, bornDate, skypeUser);
+	    		p.setReputation(rep);
 	    		result.add(p);
 	    	}
 		}
@@ -172,7 +176,7 @@ public class BuscadorSvl extends HttpServlet {
 		try
 		{
 			conn = f.dameConexion();
-			String queryCheck = "SELECT * from juegos WHERE name = ?";
+			String queryCheck = "SELECT * from games WHERE game_name = ?";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
 	    	ps.setString(1, term);
 	    	ResultSet resultSet = ps.executeQuery();

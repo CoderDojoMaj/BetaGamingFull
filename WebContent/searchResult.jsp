@@ -331,7 +331,7 @@ span.psw {
 			</table>
 			<table style="width:95%">
 				<tr>
-					<td bgcolor="#ffffff"><h1><% out.println(request.getAttribute("term"));%></h1></td>
+					<td bgcolor="#ffffff"><h1><% out.println(request.getParameter("term"));%></h1></td>
 				</tr>
 				<tr>
 				<td><div class="imgcontainer">
@@ -342,8 +342,12 @@ span.psw {
 					<td bgcolor="#ffffff">
 						<div class="tab">
 						<% 
-						@SuppressWarnings("unchecked")
-						ArrayList<Buscable> r = (ArrayList<Buscable>) request.getAttribute("searchResult");
+						System.out.println("Getting the search result");
+						//@SuppressWarnings("unchecked")
+						HttpSession sesion = request.getSession();
+						ArrayList<Buscable> r = (ArrayList<Buscable>) sesion.getAttribute("searchResult");
+						System.out.println("Got the search result -> " + r.toArray());
+						sesion.removeAttribute("searchResult");
 						for(Buscable b:r){
 						out.println("<button class=\"tablinks\" id=\"defaultOpen\">" + b.getDisplayName() + "</button>");
 						}
