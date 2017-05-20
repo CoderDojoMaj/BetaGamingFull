@@ -12,8 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
+
 import org.coderdojo.bd.FabricaConexiones;
 import org.coderdojo.utils.SessionIdentifierGenerator;
+
+
 
 
 
@@ -75,20 +79,29 @@ public class SvlResetPassword extends HttpServlet {
 		FabricaConexiones f = FabricaConexiones.getFabrica();
     	Connection conn=null;
     	
+    	try{
+    	
     	conn = f.dameConexion();
 		String queryCheck = "insert into users(password) WHERE nickname = ?";
     	PreparedStatement ps = conn.prepareStatement(queryCheck);
-    	ps.setString(1, user);
+    	String user = null;
+		ps.setString(1, user);
     	ResultSet resultSet = ps.executeQuery();
     	while (resultSet.next()){
     		//TODO Add a tester
     		String claveBuena=resultSet.getString("password");
 
-    		if(claveBuena.equals(pass))
+    		Object pass = null;
+			if(claveBuena.equals(pass))
     		{
-    			resultado = true;
+    			boolean resultado = true;
     		}
-
+    	}
+    	}
+    	catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}
 		
 		//Envia email TODO
 		//sendRecoverEmail(targetEmail, newRandomPassword);
