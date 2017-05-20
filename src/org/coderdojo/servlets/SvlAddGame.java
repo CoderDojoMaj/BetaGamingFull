@@ -50,7 +50,11 @@ public class SvlAddGame extends HttpServlet {
 		int genreId=0;//(Integer) request.getAttribute("genreId");
 		
 		Game game = new Game(0,name,minAge,imgLink,desc,genreId);
-		addGame(game);
+		if(checkGame(game)){
+			System.out.println("SvlAddGame --> Game already exists");
+		}else{
+			addGame(game);
+		}
 	}
 	
 	public boolean addGame(Game g) {
