@@ -26,6 +26,8 @@
             <div id="formulario">
 						<br><hr color="#d3d3d3" width="100%">
 							<center>
+	<form action="SvlCrearUsuario" >
+						
 				<table bgcolor="white">
 					<tr>
 							<td><h1>Create an account in Beta Gaming</h1></td>
@@ -38,25 +40,25 @@
 						<td>Password</td>
 					</tr>
 					<tr>
-						<td><input id="field_username" title="Username must not be blank and contain only letters, numbers and underscores." type="text" required pattern="\w+" name="username"></td>
-						<td><input type="text" name="email"></td>
-						<td><input id="field_pwd1" title="Password must contain at least 8 characters, including UPPER/lowercase and numbers." type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="pwd1"></td>
+						<td><input id="field_username" title="Username must not be blank and contain only letters, numbers and underscores." type="text" required pattern="\w+" name="nickname"></td>
+						<td><input type="text" name="mail"></td>
+						<td><input id="field_pwd1" title="Password must contain at least 8 characters, including UPPER/lowercase and numbers." type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="password"></td>
 					</tr>
 					<tr>
-						<td>Repeat password</td>
-						<td>Languages you know</td>
+						<td>Surname</td>
+						<td>Name</td>
 						<td>Day of birth</td>
 					</tr>
 					<tr>
-						<td><input id="field_pwd2" title="Please enter the same Password as above." type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="pwd2"></td>
-						<td><input type="text" size="15" maxlength="30" name="Lan"></td>
-						<td><input type="date" name="bday"></td>
+						<td><input id="field_pwd2" title="Tu apellido ." type="password" name="surname"></td>
+						<td><input type="text" size="15" maxlength="30" name="name"></td>
+						<td><input type="date" name="bornDateLong"></td>
 					</tr>
 						<tr>
-							<td>Games you play</td>
+							<td>Skype account</td>
 						</tr>
 						<tr></tr>  
-							<td rowspan="2"><textarea name="games" rows="8" cols="22"></textarea></td>
+							<td><input type="text" name="skype" ></td> 
 						</tr>
 						<tr>
 						<td></td>
@@ -65,9 +67,8 @@
 						<td><input type="checkbox" name="out" value="Bike" checked>Don´t sign out<br></td>
 						<td><input type="checkbox" name="out" value="Bike" required>I accept the terms and conditions<br></td>
 						<td>
-							<form action="/action_page.php">
 								<input type="file" name="pic" accept="image/*">
-							</form>
+							
 						</td>
 						</tr>
 						<tr>
@@ -76,6 +77,7 @@
 							</td>
 						</tr>
 				</table>
+				</form>
 				</center>
 						</div> 
 						
