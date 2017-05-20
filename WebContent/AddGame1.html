@@ -2,7 +2,7 @@
 <html>  
     <head>		
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
-		<link href="css//estilos.css" rel="stylesheet" type="text/css">
+		<link href="estilos.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png"/>
 		<title>BetaGaming-</title>
 	</head>
@@ -10,7 +10,7 @@
         <div id ="contenedor">  
             <div id ="cabecera">
 									<img src="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png" alt="logo" class="avatar" style="width:70px;height:70px;">
-								<button align="center" id="usuario"><% out.println(session.getAttribute("usuario")); %></button>
+								<button align="center" id="usuario"><!-- <% out.println(session.getAttribute("usuario")); %> --></button>
 								<input align="right" type="image" src="Imagenes/lupa.png" width="30" height="30">
 						</div> 
 
@@ -71,7 +71,7 @@
 						<td><input id="game_name" title="Insert a game you want to play." type="text" required pattern="\w+" name="game_name"></td>
 					</tr>
 					<tr>
-						<td>Minimal Age</td>
+						<td>Minimum Age</td>
 					</tr>
 					<tr>
 						<td><input id="min_age" title="Please enter title's recomended age." type="text" required pattern="\w+" name="min_age"></td>
@@ -80,9 +80,9 @@
 						<td>Game image</td>
 					</tr>
 						<td>
-							<form action="/action_page.php">
+							<!--  <form action="/action_page.php">-->
 								<input type="file" name="pic" accept="image/*">
-							</form>
+							<!--  </form>-->
 						</td>
 					<tr>
 						<td>Game description</td>
@@ -93,7 +93,7 @@
 					</tr>
 					<tr>
 						<td>
-							<button id="add_game">Add game</button>
+							<button id="add_game" formaction="post" formmethod="/SvlAddGame">Add game</button>
 						</td>
 					</tr>
 				</table>
