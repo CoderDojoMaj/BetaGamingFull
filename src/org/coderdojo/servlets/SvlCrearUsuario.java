@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 
+
+
 //import org.apache.commons.validator.EmailValidator;//Not working from servlet?
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -113,6 +115,9 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
 		Date bornDate = new Date(Long.valueOf(request.getParameter("bornDateLong")));
 		String skype = request.getParameter("skype");
     	
+		System.out.println("Datos recibidos");
+		System.out.println("email: "+email+" password: "+password);
+		
     	boolean validUsername = false;
     	boolean validPassword = false;
     	boolean validEMAIL = false;
