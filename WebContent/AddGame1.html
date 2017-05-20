@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>  
+    <head>		
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+		<link href="css//estilos.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png"/>
+		<title>BetaGaming-</title>
+	</head>
+    <body>  
+        <div id ="contenedor">  
+            <div id ="cabecera">
+									<img src="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png" alt="logo" class="avatar" style="width:70px;height:70px;">
+								<button align="center" id="usuario"><% out.println(session.getAttribute("usuario")); %></button>
+								<input align="right" type="image" src="Imagenes/lupa.png" width="30" height="30">
+						</div> 
+
+            <div id ="izquierda">
+							<br><br>
+									<div id="wrapper">
+								<ul class="menu">
+									<li class="item1"><a href="#">Friends <span>340</span></a>
+										<ul>
+											<li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
+											<li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+											<li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
+										</ul>
+									</li>
+									<li class="item2"><a href="#">Videos <span>147</span></a>
+										<ul>
+											<li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
+											<li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+											<li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
+										</ul>
+									</li>
+									<li class="item3"><a href="#">Galleries <span>340</span></a>
+										<ul>
+											<li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
+											<li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+											<li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
+										</ul>
+									</li>
+									<li class="item4"><a href="#">Podcasts <span>222</span></a>
+										<ul>
+											<li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
+											<li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+											<li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
+										</ul>
+									</li>
+									<li class="item5"><a href="#">Robots <span>16</span></a>
+										<ul>
+											<li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
+											<li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+											<li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+				
+            <div id ="derecha">
+							<center>
+				<table>
+					<tr>
+							<td><h1>Create an account in Beta Gaming</h1></td>
+					</tr>
+				<table style="width:50%">
+					<tr>
+						<td>Game name</td>
+					</tr>
+					<tr>
+						<td><input id="game_name" title="Insert a game you want to play." type="text" required pattern="\w+" name="game_name"></td>
+					</tr>
+					<tr>
+						<td>Minimal Age</td>
+					</tr>
+					<tr>
+						<td><input id="min_age" title="Please enter title's recomended age." type="text" required pattern="\w+" name="min_age"></td>
+					</tr>
+					<tr>
+						<td>Game image</td>
+					</tr>
+						<td>
+							<form action="/action_page.php">
+								<input type="file" name="pic" accept="image/*">
+							</form>
+						</td>
+					<tr>
+						<td>Game description</td>
+						
+					</tr>
+					<tr>
+						<td><textarea name="game_description" rows="8" cols="75"></textarea></td>
+					</tr>
+					<tr>
+						<td>
+							<button id="add_game">Add game</button>
+						</td>
+					</tr>
+				</table>
+			</center>
+						</div> 
+						
+            <div id ="pie">
+						<br><hr color="#d3d3d3" width="80%">
+						<center>
+							© BetaGaming 2017 &mdash; Terms <a href="#"><img style="width:154px;height:33px;" src="Imagenes/templogoB.png" border="0"></a> Help &mdash; Contact BetaGaming
+							</center>
+						</div> 
+						
+        </div>  
+    </body>  
+</html> 
