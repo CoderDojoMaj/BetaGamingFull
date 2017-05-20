@@ -3,6 +3,7 @@ package org.coderdojo.servlets;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
@@ -46,7 +47,7 @@ public class SvlAddGame extends HttpServlet {
 		int minAge=(Integer) request.getAttribute("minAge");
 		String imgLink=(String) request.getAttribute("imgLink");
 		String desc=(String) request.getAttribute("description");
-		int genreId=(Integer) request.getAttribute("genreId");
+		int genreId=0;//(Integer) request.getAttribute("genreId");
 		
 		Game game = new Game(0,name,minAge,imgLink,desc,genreId);
 		addGame(game);
@@ -69,6 +70,38 @@ public class SvlAddGame extends HttpServlet {
 	    	ps.executeQuery();
 	    	
 	    	result = true;
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{
+			if (conn!=null){try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}}
+		}
+		
+		return result;
+	}
+	
+	public boolean checkGame(Game g) {
+		FabricaConexiones f = FabricaConexiones.getFabrica();
+    	Connection conn=null;
+    	boolean result = false;
+		try
+		{
+			conn = f.dameConexion();
+			String queryCheck = "SELECT game_name FROM games";
+	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
+	    	ResultSet rs = ps.executeQuery();
+	    	String name = rs.getString("game_name");
+	    	
+	    	if(g.getName().equals(name)){
+	    		result = true;
+	    	}
 		}
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
