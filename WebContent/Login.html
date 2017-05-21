@@ -1,44 +1,38 @@
 <!DOCTYPE html>
 <html>  
     <head>		
-			<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
-			<link rel="stylesheet" type="text/css"  href="css/style.css">
-			<link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png"/>
-			<title>Log in to BetaGaming</title>
-			<style>
-			</style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+		<link rel="stylesheet" type="text/css"  href="css/style.css">
+		<link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png"/>
+		<title>Log in to BetaGaming</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
 
-</head>
-
-<body>
-  <div class="login-page">
-  <div class="form">
-    <form class="register-form">
-      <input type="text" placeholder="Name"/>
-	  <input type="text" placeholder="Email address"/>
-      <input type="password" placeholder="Password"/>
-      <input type="password" placeholder="Repeat password"/>
-      <button>Create account</button>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
-    </form>
-    <form class="login-form">
-      <input type="text" placeholder="Username"/>
-      <input type="password" placeholder="Password"/>
-      <button>login</button>
-      <p class="message">Not registered? <a href="#">Create an account</a></p>
-    </form>
-  </div>
-</div>
+	<body>
+		<div class="login-page">
+		<div class="form">
+			<form class="register-form">
+				<input type="text" placeholder="Name"/>
+				<input type="text" placeholder="Email address"/>
+				<input type="password" placeholder="Password"/>
+				<input type="password" placeholder="Repeat password"/>
+				<button>Create account</button>
+				<p class="message">Already registered? <a href="#">Sign In</a></p>
+			</form>
+			<form class="login-form">
+				<input type="text" placeholder="Username"/>
+				<input type="password" placeholder="Password"/>
+				<button>login</button>
+				<p class="message">Not registered? <a href="#">Create an account</a></p>
+			</form>
+		</div>
+		</div>
 		<div class="footer">
-						<br><hr color="#FFFFFF" width="100%">
-						<center>
-							© BetaGaming 2017 Terms and conditions <a href="#"><img style="width:154px;height:33px;" src="images/Logo.png" border="0"></a> Help &mdash; Contact
-						</center>
-						<br>
-					</div>    
+			<br> <hr color="#FFFFFF" width="100%">
+			<center>© BetaGaming 2017 Terms and conditions <a href="#"><img style="width:154px;height:33px;" src="images/Logo.png" border="0"></a> Help &mdash; Contact us</center>
+			<br>
+		</div>    
 <script>
-//$("form").hide()
 $('.message a').click(function(){
    $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
 });

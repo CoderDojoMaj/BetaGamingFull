@@ -325,7 +325,7 @@ span.psw {
 							</div>
 						</td>
 						<td><button class="button button2"></button></td>
-						<td><input class="button button1" type="image" src="imagenes/lupa.png" width="24" height="24"></td>
+						<td><input class="button button1" type="image" src="images/lupa.png" width="24" height="24"></td>
 					</center>
 				</tr>
 			</table>
