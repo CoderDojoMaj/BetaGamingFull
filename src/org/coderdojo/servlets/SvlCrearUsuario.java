@@ -7,6 +7,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -106,13 +108,20 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
 		// TODO Auto-generated method stub
 		
 		//Recibe los datos enviados por el usuario
+		DateFormat df = DateFormat.getDateInstance();
 		String username = request.getParameter("nickname");
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
 		String surname = request.getParameter("surname");
 		String email = request.getParameter("mail");
 		Date regDate = Calendar.getInstance().getTime();
-		Date bornDate = new Date(Long.valueOf(request.getParameter("bornDateLong")));
+		Date bornDate = null;
+		try {
+			bornDate = df.parse(request.getParameter("bornDateLong"));
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		String skype = request.getParameter("skype");
     	
 		System.out.println("Datos recibidos");
