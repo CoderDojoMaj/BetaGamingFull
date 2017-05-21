@@ -63,6 +63,7 @@
 					<tr>
 							<td><h1>Create an account in Beta Gaming</h1></td>
 					</tr>
+					<form action="SvlAddGame" method="post">
 				<table style="width:50%">
 					<tr>
 						<td>Game name</td>
@@ -77,11 +78,11 @@
 						<td><input id="min_age" title="Please enter title's recomended age." type="text" required pattern="\w+" name="min_age"></td>
 					</tr>
 					<tr>
-						<td>Game image</td>
+						<td>Game image direct URL</td>
 					</tr>
 						<td>
 							<!--  <form action="/action_page.php">-->
-								<input type="file" name="pic" accept="image/*">
+								<input type="text" name="img_link">
 							<!--  </form>-->
 						</td>
 					<tr>
@@ -89,14 +90,15 @@
 						
 					</tr>
 					<tr>
-						<td><textarea name="game_description" rows="8" cols="75"></textarea></td>
+						<td><textarea name="game_desc" rows="8" cols="75"></textarea></td>
 					</tr>
 					<tr>
 						<td>
-							<button id="add_game" formaction="post" formmethod="/SvlAddGame">Add game</button>
+							<input type="submit" id="add_game" value="Add game">
 						</td>
 					</tr>
 				</table>
+				</form>
 			</center>
 						</div> 
 						
