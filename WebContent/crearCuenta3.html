@@ -2,16 +2,33 @@
 <html>  
     <head>		
 			<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
-			<link href="css/style.css" rel="stylesheet" type="text/css">
+			<link href="estilos.css" rel="stylesheet" type="text/css">
 			<link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png"/>
 			<title>BetaGaming-Welcome to BetaGaming!!</title>
     </head>
     <body>  
 			<div id ="contenedor">  
         <div id ="cabecera">
-					<img src="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png" alt="logo" class="avatar" style="width:70px;height:70px;">
+					<center>
+					<table bgcolor="#3f3f3f">
+					<tr>
+						<td rowspan="3"><img src="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png" alt="logo" class="avatar" style="width:70px;height:70px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>E-mail</td>
+						<td>Passwors</td>
+					</tr>
+						<tr>
+							<td><input type="text" size="15" maxlength="30" name="name"></td>
+							<td><input type="text" size="15" maxlength="30" name="name"></td>
+						</tr>
+						<tr>
+						<td><a href="url">Have you forgotten your account?</a></td>
+							<td><button id="crear">Iniciar sesion</button></td>
+						</tr>
+					</table>
+					</center>
 					<button align="center" id="usuario"><!--<% out.println(session.getAttribute("usuario")); %>--></button>
 					<input align="right" type="image" src="images/lupa.png" width="30" height="30">
+
 				</div> 
 				<div id ="motivos">
 				<br><hr color="#d3d3d3" width="100%">
@@ -24,67 +41,68 @@
 				</div>
 				
             <div id="formulario">
-						<br><hr color="#d3d3d3" width="100%">
-							<center>
-	<form method="post" action="SvlCrearUsuario">
-						
-				<table bgcolor="white">
-					<tr>
-							<td><h1>Create an account in Beta Gaming</h1></td>
-					</tr>
-					</table>
-				<table bgcolor="white" style="width:50%">
-					<tr>
-						<td>Username</td>
-						<td>Email</td>
-						<td>Password</td>
-					</tr>
-					<tr>
-						<td><input id="field_username" title="Username must not be blank and contain only letters, numbers and underscores." type="text" required pattern="\w+" name="nickname"></td>
-						<td><input type="text" name="mail"></td>
-						<td><input id="field_pwd1" title="Password must contain at least 8 characters, including UPPER/lowercase and numbers." type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="password"></td>
-					</tr>
-					<tr>
-						<td>Surname</td>
-						<td>Name</td>
-						<td>Day of birth</td>
-					</tr>
-					<tr>
-						<td><input id="field_pwd2" title="Tu apellido ." type="password" name="surname"></td>
-						<td><input type="text" size="15" maxlength="30" name="name"></td>
-						<td><input type="date" name="bornDateLong"></td>
-					</tr>
-						<tr>
-							<td>Skype account</td>
-						</tr>
-						<tr></tr>  
-							<td><input type="text" name="skype" ></td> 
-						</tr>
-						<tr>
-						<td></td>
-						</tr>
-						<tr>
-						<td><input type="checkbox" name="out" value="Bike" checked>Don´t sign out<br></td>
-						<td><input type="checkbox" name="out" value="Bike" required>I accept the terms and conditions<br></td>
-						<td>
-								<input type="file" name="pic" accept="image/*">
-							
-						</td>
-						</tr>
-						<tr>
-							<td>
-								<br><br><button id="crear">Create account in BetaGaming</button>
-							</td>
-						</tr>
-				</table>
-				</form>
-				</center>
+										<br><hr color="#d3d3d3" width="100%">
+											<center>
+									<form method="post" action="SvlCrearUsuario">
+										
+								<table bgcolor="white">
+									<tr>
+											<td><h1>Create an account in Beta Gaming</h1></td>
+									</tr>
+									</table>
+								<table bgcolor="white" style="width:50%">
+									<tr>
+										<td>Username</td>
+										<td>Email</td>
+										<td>Password</td>
+									</tr>
+									<tr>
+										<td><input id="field_username" title="Username must not be blank and contain only letters, numbers and underscores." type="text" required pattern="\w+" name="nickname"></td>
+										<td><input type="text" name="mail" required pattern="\w+"></td>
+										<td><input id="field_pwd1" title="Password must contain at least 8 characters, including UPPER/lowercase and numbers." type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="password"></td>
+									</tr>
+									<tr>
+										<td>Surname</td>
+										<td>Name</td>
+										<td>Day of birth</td>
+									</tr>
+									<tr>
+										<td><input id="field_pwd2" title="Tu apellido ." type="password" name="surname" required pattern="\w+"></td>
+										<td><input type="text" size="15" maxlength="30" name="name" required pattern="\w+"></td>
+										<td><input type="date" name="bornDateLong" required pattern="\w+"></td>
+									</tr>
+										<tr>
+											<td>Skype account</td>
+										</tr>
+										<tr></tr>  
+											<td><input type="text" name="skype" required pattern="\w+"></td> 
+										</tr>
+										<tr>
+										<td></td>
+										</tr>
+										<tr>
+										<td><input type="checkbox" name="out" value="Bike" checked>Don´t sign out<br></td>
+										<td><input type="checkbox" name="out" value="Bike" required>I accept the terms and conditions<br></td>
+										<td>
+												<input type="file" name="pic" accept="image/*">
+											
+										</td>
+										</tr>
+										
+										<tr>
+											<td>
+												<br><br><button id="crear">Create account in BetaGaming</button>
+											</td>
+										</tr>
+								</table>
+								</form>
+								</center>
 						</div> 
 						
             <div id ="pie">
 						<br><hr color="#d3d3d3" width="80%">
 						<center>
-							© BetaGaming 2017 &mdash; Terms <a href="#"><img style="width:154px;height:33px;" src="images/templogoB.png" border="0"></a> Help &mdash; Contact BetaGaming
+							© BetaGaming 2017 &mdash; Terms <a href="#"><img style="width:154px;height:33px;" src="Images/templogoB.png" border="0"></a> Help &mdash; Contact BetaGaming
 							</center>
 						</div> 
 						
