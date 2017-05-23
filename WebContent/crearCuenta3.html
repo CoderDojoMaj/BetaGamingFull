@@ -2,7 +2,7 @@
 <html>  
     <head>		
 			<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
-			<link href="css/style.css" rel="stylesheet" type="text/css">
+			<link href="estilos.css" rel="stylesheet" type="text/css">
 			<link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png"/>
 			<title>BetaGaming-Welcome to BetaGaming!!</title>
     </head>
@@ -10,24 +10,22 @@
 			<div id ="contenedor">  
         <div id ="cabecera">
 					<img src="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png" alt="logo" class="avatar" style="width:70px;height:70px;">
-					<button align="center" id="usuario"><!--<% out.println(session.getAttribute("usuario")); %>--></button>
-					<input align="right" type="image" src="images/lupa.png" width="30" height="30">
+					<button align="center" id="usuario"><% out.println(session.getAttribute("usuario")); %></button>
+					<input align="right" type="image" src="Imagenes/lupa.png" width="30" height="30">
 				</div> 
 				<div id ="motivos">
 				<br><hr color="#d3d3d3" width="100%">
-					<br><font size=5>¿Qué es BetaGaming?</font><br>
-					<p>Beta-Gaming es una red social de código abierto para gamers.</p><br>
-					<font size=5>¿Por qué usar BetaGaming?</font><br>
-					<p>Porque es una red social multiplataforma para jugadores de todo el mundo; Organiza partidas con tus amigos, participa en eventos y disfruta con jugadores de todo el mundo.</p><br>
-					<font size=5>¿Qué ventajas tiene BetaGaming?</font><br>
-					<p>BetaGaming es la única red social que te permite organizar y crear a tu gusto partidas y eventos, buscar partidas y recibir sugerencias personalizadas.</p><br><br>
+					<br><font size=5>What is BetaGaming?</font><br>
+					<p>Beta-Gaming is an open source social network for gamers.</p><br>
+					<font size=5>Why use BetaGaming?</font><br>
+					<p>Because it is a multiplatform social network for players around the world; Organize games with your friends, participate in events and enjoy with players from all over the world.</p><br>
+					<font size=5>What are the advantages of BetaGaming?</font><br>
+					<p>BetaGaming is the only social network that allows you to organize and create your own games and events, search games and receive personalized suggestions.</p><br><br>
 				</div>
 				
             <div id="formulario">
 						<br><hr color="#d3d3d3" width="100%">
 							<center>
-	<form method="post" action="SvlCrearUsuario">
-						
 				<table bgcolor="white">
 					<tr>
 							<td><h1>Create an account in Beta Gaming</h1></td>
@@ -40,25 +38,25 @@
 						<td>Password</td>
 					</tr>
 					<tr>
-						<td><input id="field_username" title="Username must not be blank and contain only letters, numbers and underscores." type="text" required pattern="\w+" name="nickname"></td>
-						<td><input type="text" name="mail"></td>
-						<td><input id="field_pwd1" title="Password must contain at least 8 characters, including UPPER/lowercase and numbers." type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="password"></td>
+						<td><input id="field_username" title="Username must not be blank and contain only letters, numbers and underscores." type="text" required pattern="\w+" name="username"></td>
+						<td><input type="text" name="email"></td>
+						<td><input id="field_pwd1" title="Password must contain at least 8 characters, including UPPER/lowercase and numbers." type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="pwd1"></td>
 					</tr>
 					<tr>
-						<td>Surname</td>
-						<td>Name</td>
+						<td>Repeat password</td>
+						<td>Languages you know</td>
 						<td>Day of birth</td>
 					</tr>
 					<tr>
-						<td><input id="field_pwd2" title="Tu apellido ." type="password" name="surname"></td>
-						<td><input type="text" size="15" maxlength="30" name="name"></td>
-						<td><input type="date" name="bornDateLong"></td>
+						<td><input id="field_pwd2" title="Please enter the same Password as above." type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="pwd2"></td>
+						<td><input type="text" size="15" maxlength="30" name="Lan"></td>
+						<td><input type="date" name="bday"></td>
 					</tr>
 						<tr>
-							<td>Skype account</td>
+							<td>Games you play</td>
 						</tr>
 						<tr></tr>  
-							<td><input type="text" name="skype" ></td> 
+							<td rowspan="2"><textarea name="games" rows="8" cols="22"></textarea></td>
 						</tr>
 						<tr>
 						<td></td>
@@ -67,8 +65,9 @@
 						<td><input type="checkbox" name="out" value="Bike" checked>Don´t sign out<br></td>
 						<td><input type="checkbox" name="out" value="Bike" required>I accept the terms and conditions<br></td>
 						<td>
+							<form action="/action_page.php">
 								<input type="file" name="pic" accept="image/*">
-							
+							</form>
 						</td>
 						</tr>
 						<tr>
@@ -77,14 +76,13 @@
 							</td>
 						</tr>
 				</table>
-				</form>
 				</center>
 						</div> 
 						
             <div id ="pie">
 						<br><hr color="#d3d3d3" width="80%">
 						<center>
-							© BetaGaming 2017 &mdash; Terms <a href="#"><img style="width:154px;height:33px;" src="images/templogoB.png" border="0"></a> Help &mdash; Contact BetaGaming
+							© BetaGaming 2017 &mdash; Terms <a href="#"><img style="width:154px;height:33px;" src="Imagenes/templogoB.png" border="0"></a> Help &mdash; Contact BetaGaming
 							</center>
 						</div> 
 						
