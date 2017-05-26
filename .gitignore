@@ -1,6 +1,7 @@
 .settings/*
 
 .tern-project
+.metadata
 .project
 .classpath
 .classpath
