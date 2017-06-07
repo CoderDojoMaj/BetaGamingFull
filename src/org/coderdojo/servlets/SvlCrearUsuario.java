@@ -9,8 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.time.Instant;
 import java.util.Calendar;
-import java.util.Date;
+import java.sql.Date;
 
 
 
@@ -64,21 +65,26 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
     	FabricaConexiones f = FabricaConexiones.getFabrica();
     	Connection conn;
     	
-    	boolean result = true;
+    	boolean result = false;
     	
 		try {
 			conn = f.dameConexion();
 			String queryCheck = "SELECT * from users WHERE nickname = ?";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
 	    	ps.setString(1, inputUser);
+	    	
+	    	System.out.println("Nickname query prepared");
+	    	
 	    	ResultSet resultSet = ps.executeQuery();
+	    	
+	    	System.out.println("Nickname query executed");
+	    	
+	    	while(resultSet.next()){
+	    		result=true;
+	    		System.out.println("Nickname exists");
+	    	}
+	    	
 	    	conn.close();
-	    	
-	    	
-	    	//El usuario no existe
-	    	if (resultSet.next() == false){result = false;}
-	    	//El usuario existe
-	    	else{result = true;}
 	    	
 	    	/*
 	    	while (true){
@@ -94,7 +100,7 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
 			e.printStackTrace();
 		}
     	
-    	return false;
+    	return result;
     }
     
 	
@@ -114,14 +120,8 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
 		String name = request.getParameter("name");
 		String surname = request.getParameter("surname");
 		String email = request.getParameter("mail");
-		Date regDate = Calendar.getInstance().getTime();
-		Date bornDate = null;
-		try {
-			bornDate = df.parse(request.getParameter("bornDateLong"));
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		Date regDate = new Date(Calendar.getInstance().getTime().getTime());
+		Date bornDate = parseIn(request.getParameter("bornDateLong"));
 		String skype = request.getParameter("skype");
     	
 		System.out.println("Datos recibidos");
@@ -132,16 +132,10 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
     	boolean validEMAIL = false;
     	
     	//Comprueba si el usuario ya est� registrado
-    	if ( (username.length() >= 4) && ( !userInDB(username) ) )
-    	{
-    		validUsername = true;
-    	};
+    	validUsername = ((username.length() >= 4) && ( !userInDB(username)));
     	
     	
-    	if (isStrongPassword(password))
-    	{
-    		validPassword = true;
-    	};
+    	validPassword = isStrongPassword(password);
     	
     	
     	//Check if the function is imported correctly
@@ -173,18 +167,22 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
 	    		preStm.setString(4, surname);
 	    		preStm.setString(5, email);
 	    		//6 is reputation
-	    		preStm.setDate(7, (java.sql.Date) regDate);
-	    		preStm.setDate(8, (java.sql.Date) bornDate);
-	    		preStm.setString(9, skype);
+	    		preStm.setDate(6, regDate);
+	    		preStm.setDate(7, bornDate);
+	    		preStm.setString(8, skype);
+	    		
+	    		System.out.println("1st QUERY PREPARED");
 	    		
 	    		preStm.execute();
+	    		preStm.close();
 	    		//get id and log the user in
-	    		myQuery = "select user_id from users where nickname = ?";
-	    		preStm = conexion.prepareStatement(myQuery);
+	    		String myOtherQuery = "select user_id from users where nickname = ?";
+	    		PreparedStatement preStm2 = conexion.prepareStatement(myOtherQuery);
 	    		
-	    		preStm.setString(0, username);
+	    		preStm2.setString(1, username);
 	    		
-	    		ResultSet rs = preStm.executeQuery();
+	    		System.out.println("2nd QUERY PREPARED");
+	    		ResultSet rs = preStm2.executeQuery();
 	    		
 	    		@SuppressWarnings("null")
 				long id = (Long) null;
@@ -192,8 +190,13 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
 	    		while(rs.next()){
 	    			id = rs.getLong("user_id");
 	    		}
+	    		preStm2.close();
+	    		
+	    		System.out.println("ID gotten " + id);
 	    		
 	    		user = new User(id, username,password,name,surname,email,regDate,bornDate,skype);
+	    		
+	    		System.out.println("User created " + user.getDisplayName());
 	    		
 	    		conexion.close();
 			} catch (SQLException e) {
@@ -215,6 +218,19 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
     	};
 		
     	
+	}
+	
+	@SuppressWarnings("deprecation")
+	private Date parseIn(String s){
+		String[] dates = s.split("-");
+		int year = Integer.valueOf(dates[0]);
+		int month = Integer.valueOf(dates[1]);
+		int day = Integer.valueOf(dates[2]);
+		Date r = new Date(0);
+		r.setYear(year);
+		r.setMonth(month);
+		r.setDate(day);
+		return r;
 	}
 
 }
