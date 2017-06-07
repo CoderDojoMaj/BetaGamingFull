@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>  
+    <head>		
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+		<link href="estilos.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png"/>
+		<title>BetaGaming-</title>
+    </head>
+    <body>  
+        <div id ="contenedor">  
+            <div id ="cabecera">
+									<img src="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png" alt="logo" class="avatar" style="width:70px;height:70px;">
+								<button align="center" id="usuario"><% out.println(session.getAttribute("usuario")); %></button>
+								<input align="right" type="image" src="Imagenes/lupa.png" width="30" height="30">
+						</div> 
+
+            <div id ="izquierda">
+							<br><br>
+									<div id="wrapper">
+								<ul class="menu">
+									<li class="item1"><a href="#">Friends <span>340</span></a>
+										<ul>
+											<li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
+											<li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+											<li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
+										</ul>
+									</li>
+									<li class="item2"><a href="#">Videos <span>147</span></a>
+										<ul>
+											<li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
+											<li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+											<li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
+										</ul>
+									</li>
+									<li class="item3"><a href="#">Galleries <span>340</span></a>
+										<ul>
+											<li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
+											<li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+											<li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
+										</ul>
+									</li>
+									<li class="item4"><a href="#">Podcasts <span>222</span></a>
+										<ul>
+											<li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
+											<li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+											<li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
+										</ul>
+									</li>
+									<li class="item5"><a href="#">Robots <span>16</span></a>
+										<ul>
+											<li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
+											<li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+											<li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+				
+            <div id ="derecha">
+							<center>
+			<table>
+				<tr>
+						<td bgcolor="#ffffff"><h1 bgcolor="#ffffff">Create a new match</h1></td>
+				</tr>
+				</table>
+			<table bgcolor="#ffffff" style="width:50%">
+				<tr>
+					<td>Max players</td>
+					<td>Name of match</td>
+					<td>Game</td>
+					<td>Class</td>
+				</tr>
+				<tr>
+					<td><select name="OS">
+							 <option value="1">2</option>
+							 <option value="2">3</option>  
+							 <option value="3">4</option> 
+							 <option value="4">5</option>
+							 <option value="5">6</option> 
+							 <option value="6">7</option>
+							 <option value="7">8</option> 
+							 <option value="8">9</option>
+								<option value="9">10</option> 							 
+						</select></td>
+					<td><input type="text"></td>
+					<td><select name="OS">
+							 <option value="1"></option> 
+							 <option value="2">GTA V</option> 
+							 <option value="3">Overwatch</option> 
+							 <option value="4">FIFA 17</option>
+							 <option value="5">Minecraft</option> 
+							 <option value="6">LOL</option> 
+							 <option value="7">Fallout 4</option> 
+						</select></td>
+						<td><select name="OS">
+							 <option value="1"></option> 
+							 <option value="2">Co-lider</option> 
+							 <option value="3">Helper</option> 
+							 <option value="4">Gamer</option>
+						</select></td>
+				</tr>
+				<tr>
+					<td><table border="1">
+						<tr><td><div style="background-color: #FF0000"><font size="5">1 </font><img src="#" alt="logo" class="avatar" style="width:20px;height:20px;"><font size="4">Name</font> &mdash; Level:XX<td></div></tr>
+						<tr><td><div style="background-color: #008FFF"><font size="5">1 </font><img src="#" alt="logo" class="avatar" style="width:20px;height:20px;"><font size="4">Name</font> &mdash; Level:XX<td></div></tr>
+						<tr><td><div style="background-color: #707070"><font size="5">1 </font><img src="#" alt="logo" class="avatar" style="width:20px;height:20px;"><font size="4">Name</font> &mdash; Level:XX<td></div></tr>
+						<tr><td><div style="background-color: #FF0000"><font size="5">1 </font><img src="#" alt="logo" class="avatar" style="width:20px;height:20px;"><font size="4">Name</font> &mdash; Level:XX<td></div></tr>
+						<tr><td><div style="background-color: #008FFF"><font size="5">1 </font><img src="#" alt="logo" class="avatar" style="width:20px;height:20px;"><font size="4">Name</font> &mdash; Level:XX<td></div></tr>
+						<tr><td><div style="background-color: #707070"><font size="5">1 </font><img src="#" alt="logo" class="avatar" style="width:20px;height:20px;"><font size="4">Name</font> &mdash; Level:XX<td></div></tr>
+					</table></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="out" value="Bike">Invite BetaGaming friends<br></td>
+				</tr>
+			</table>
+			</center>
+						</div> 
+						
+            <div id ="pie">
+						<br><hr color="#d3d3d3" width="80%">
+						<center>
+							© BetaGaming 2017 &mdash; Terms <a href="#"><img style="width:154px;height:33px;" src="Imagenes/templogoB.png" border="0"></a> Help &mdash; Contact BetaGaming
+							</center>
+						</div> 
+						
+        </div>  
+    </body>  
+</html> 
