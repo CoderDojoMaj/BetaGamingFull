@@ -123,7 +123,7 @@ public class Partida extends Buscable{
     		String myQuery = "select nickname from users where user_id = ?";
     		PreparedStatement preStm = conexion.prepareStatement(myQuery);
     		
-    		preStm.setLong(0, ownerId);
+    		preStm.setLong(1, ownerId);
     		
     		ResultSet result = preStm.executeQuery();
     		while (result.next()){
@@ -133,7 +133,7 @@ public class Partida extends Buscable{
     		myQuery = "select game_name from games where game_id = ?";
     		preStm = conexion.prepareStatement(myQuery);
     		
-    		preStm.setInt(0, gameId);
+    		preStm.setInt(1, gameId);
     		
     		result = preStm.executeQuery();
     		while (result.next()){
@@ -148,6 +148,59 @@ public class Partida extends Buscable{
 		return "Partida de " + gameName + " creada por " + ownerNickname;
 	}
 
+	public String getOwnerName(){
+		String ownerNickname = "Error (DB DID NOT RESPOND)";
+		
+		FabricaConexiones laFabria=FabricaConexiones.getFabrica();
+		//pedimios una conexi�n
+		try {
+			Connection conexion=laFabria.dameConexion();
+			//RequestStatement rs;
+    		String myQuery = "select nickname from users where user_id = ?";
+    		PreparedStatement preStm = conexion.prepareStatement(myQuery);
+    		
+    		preStm.setLong(1, ownerId);
+    		
+    		ResultSet result = preStm.executeQuery();
+    		while (result.next()){
+    			ownerNickname = result.getString("nickname");
+    		}
+    		conexion.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return ownerNickname;
+	}
+	
+	public String getGameName(){
+		String gameName = "Error (DB DID NOT RESPOND)";
+		
+		FabricaConexiones laFabria=FabricaConexiones.getFabrica();
+		//pedimios una conexi�n
+		try {
+			Connection conexion=laFabria.dameConexion();
+			//RequestStatement rs;
+    		
+    		String myQuery = "select game_name from games where game_id = ?";
+    		PreparedStatement preStm = conexion.prepareStatement(myQuery);
+    		
+    		preStm.setInt(1, gameId);
+    		
+    		ResultSet result = preStm.executeQuery();
+    		while (result.next()){
+    			gameName = result.getString("game_name");
+    		}
+    		conexion.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return gameName;
+	}
+	
 	/*
 	public boolean insertInDB() {
 		FabricaConexiones f = FabricaConexiones.getFabrica();

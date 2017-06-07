@@ -5,9 +5,9 @@
     <welcome-file>SvlMainServlet</welcome-file>
   </welcome-file-list>
   <error-page>
-        <error-code>404</error-code>
-        <location>/9000.html</location>
-</error-page>
+    <error-code>404</error-code>
+    <location>/9000.html</location>
+  </error-page>
   <servlet>
     <description></description>
     <display-name>SvlCrearUsuario</display-name>
@@ -97,5 +97,16 @@
   <servlet-mapping>
     <servlet-name>SvlAddGame</servlet-name>
     <url-pattern>/SvlAddGame</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PlayMatch</display-name>
+    <servlet-name>PlayMatch</servlet-name>
+    <servlet-class>org.coderdojo.servlets.PlayMatch</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PlayMatch</servlet-name>
+    <url-pattern>/PlayMatch</url-pattern>
+    <url-pattern>/play</url-pattern>
   </servlet-mapping>
 </web-app>

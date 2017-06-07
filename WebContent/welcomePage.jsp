@@ -319,7 +319,7 @@ span.psw {
 								<div class="dropdown-content">
 									<a href="#">Friends</a>
 									<a href="#">Partida</a>
-									<a href=""><form method="get" action="/Betagaming_Server2/AddGame1.html"><input type="submit" value="Game"></form></a>
+									<a href="/Betagaming_Server2/AddGame1.html">Game</a>
 									<a href="#">Player</a>
 								</div>
 							</div>
