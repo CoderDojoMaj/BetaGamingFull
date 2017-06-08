@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>  
-    <head>		
-			<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<html>
+    <head>
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 			<link href="css/style.css" rel="stylesheet" type="text/css">
 			<link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png"/>
 			<title>BetaGaming-Welcome to BetaGaming!!</title>
     </head>
-    <body>  
-			<div id ="contenedor">  
+    <body>
+			<div id ="contenedor">
         <div id ="cabecera">
 					<center>
 					<table bgcolor="#3f3f3f">
@@ -29,7 +29,7 @@
 					<button align="center" id="usuario"><!--<% out.println(session.getAttribute("usuario")); %>--></button>
 					<input align="right" type="image" src="images/lupa.png" width="30" height="30">
 
-				</div> 
+				</div>
 				<div id ="motivos">
 					<br><font size=5>What is BetaGaming?</font><br>
 					<p>Beta-Gaming is an open source social network for gamers.</p><br>
@@ -38,11 +38,11 @@
 					<font size=5>What are the advantages of BetaGaming?</font><br>
 					<p>BetaGaming is the only social network that allows you to organize and create your own games and events, search games and receive personalized suggestions.</p><br><br>
 				</div>
-				
+
             <div id="formulario">
 											<center>
 									<form method="post" action="SvlCrearUsuario">
-										
+
 								<table bgcolor="white">
 									<tr>
 											<td><h1>Create an account in Beta Gaming</h1></td>
@@ -56,7 +56,7 @@
 									</tr>
 									<tr>
 										<td><input id="field_username" title="Username must not be blank and contain only letters, numbers and underscores." type="text" required pattern="\w+" name="nickname"></td>
-										<td><input type="text" name="mail" required pattern="\w+"></td>
+										<td><input type="email" name="mail" required></td>
 										<td><input id="field_pwd1" title="Password must contain at least 8 characters, including UPPER/lowercase and numbers." type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="password"></td>
 									</tr>
 									<tr>
@@ -72,8 +72,8 @@
 										<tr>
 											<td>Skype account</td>
 										</tr>
-										<tr></tr>  
-											<td><input type="text" name="skype" required pattern="\w+"></td> 
+										<tr></tr>
+											<td><input type="text" name="skype" required pattern="\w+"></td>
 										</tr>
 										<tr>
 										<td></td>
@@ -83,10 +83,10 @@
 										<td><input type="checkbox" name="out" value="Bike" required>I accept the terms and conditions<br></td>
 										<td>
 												<input type="file" name="pic" accept="image/*">
-											
+
 										</td>
 										</tr>
-										
+
 										<tr>
 											<td>
 												<br><br><button id="crear">Create account in BetaGaming</button>
@@ -95,15 +95,15 @@
 								</table>
 								</form>
 								</center>
-						</div> 
-						
+						</div>
+
             <div id ="pie">
 						<br><hr color="#d3d3d3" width="80%">
 						<center>
 							© BetaGaming 2017 &mdash; Terms <a href="#"><img style="width:154px;height:33px;" src="Images/templogoB.png" border="0"></a> Help &mdash; Contact BetaGaming
 							</center>
-						</div> 
-						
-			</div>  
-    </body>  
-</html> 
+						</div>
+
+			</div>
+    </body>
+</html>

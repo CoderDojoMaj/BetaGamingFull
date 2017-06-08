@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="org.coderdojo.utils.*" import="java.util.ArrayList"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -79,13 +81,13 @@
 						</td>
 					<td><input list="games" name="game">
 					<datalist id="games">
-							 <option value="1"></option>
-							 <option value="2">GTA V</option>
-							 <option value="3">Overwatch</option>
-							 <option value="4">FIFA 17</option>
-							 <option value="5">Minecraft</option>
-							 <option value="6">LOL</option>
-							 <option value="7">Fallout 4</option>
+							 <% 
+							 HttpSession sesion = request.getSession();
+							 ArrayList<Game> games = (ArrayList<Game>)sesion.getAttribute(""); 
+							 for(Game g:games){
+								 out.println("<option>" + g.getName() + "</option>");
+							 }
+							 %>
 						</datalist></td>
 					<td><input type="datetime-local" name="startDate"></td>
           <td><input type="datetime-local" name="endDate"></td>
