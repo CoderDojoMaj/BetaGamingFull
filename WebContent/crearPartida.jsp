@@ -83,7 +83,7 @@
 					<datalist id="games">
 							 <% 
 							 HttpSession sesion = request.getSession();
-							 ArrayList<Game> games = (ArrayList<Game>)sesion.getAttribute(""); 
+							 ArrayList<Game> games = (ArrayList<Game>)sesion.getAttribute("games"); 
 							 for(Game g:games){
 								 out.println("<option>" + g.getName() + "</option>");
 							 }
