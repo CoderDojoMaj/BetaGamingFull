@@ -111,12 +111,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>SvlPrePlayGame</display-name>
-    <servlet-name>SvlPrePlayGame</servlet-name>
-    <servlet-class>org.coderdojo.servlets.SvlPrePlayGame</servlet-class>
+    <display-name>SvlPrePlayMatch</display-name>
+    <servlet-name>SvlPrePlayMatch</servlet-name>
+    <servlet-class>org.coderdojo.servlets.SvlPrePlayMatch</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>SvlPrePlayGame</servlet-name>
-    <url-pattern>/SvlPrePlayGame</url-pattern>
+    <servlet-name>SvlPrePlayMatch</servlet-name>
+    <url-pattern>/SvlPrePlayMatch</url-pattern>
   </servlet-mapping>
 </web-app>

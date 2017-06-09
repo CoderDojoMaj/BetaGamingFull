@@ -318,7 +318,7 @@ span.psw {
 								<button class="dropbtn">New...</button>
 								<div class="dropdown-content">
 									<a href="#">Friends</a>
-									<a href="#">Partida</a>
+									<a href="SvlPrePlayMatch">Partida</a>
 									<a href="AddGame1.html">Game</a>
 									<a href="#">Player</a>
 								</div>
