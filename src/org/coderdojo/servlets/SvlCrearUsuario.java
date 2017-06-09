@@ -30,8 +30,6 @@ import org.coderdojo.utils.User;
 
 public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est� cargado correctamente si da error aqu�
 	private static final long serialVersionUID = 1L;
-
-	private User user;
 	
     public SvlCrearUsuario() {
         // TODO Auto-generated constructor stub
@@ -123,6 +121,7 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
 		Date regDate = new Date(Calendar.getInstance().getTime().getTime());
 		Date bornDate = parseIn(request.getParameter("bornDateLong"));
 		String skype = request.getParameter("skype");
+		User user = null;
     	
 		System.out.println("Datos recibidos");
 		System.out.println("email: "+email+" password: "+password);
@@ -184,8 +183,7 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
 	    		System.out.println("2nd QUERY PREPARED");
 	    		ResultSet rs = preStm2.executeQuery();
 	    		
-	    		@SuppressWarnings("null")
-				long id = (Long) null;
+				long id = -1;
 	    		
 	    		while(rs.next()){
 	    			id = rs.getLong("user_id");

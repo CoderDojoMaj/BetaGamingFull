@@ -109,4 +109,14 @@
     <url-pattern>/PlayMatch</url-pattern>
     <url-pattern>/play</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SvlPrePlayGame</display-name>
+    <servlet-name>SvlPrePlayGame</servlet-name>
+    <servlet-class>org.coderdojo.servlets.SvlPrePlayGame</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SvlPrePlayGame</servlet-name>
+    <url-pattern>/SvlPrePlayGame</url-pattern>
+  </servlet-mapping>
 </web-app>
