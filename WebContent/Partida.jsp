@@ -87,7 +87,7 @@
 								<td>Juego: <% out.println(((Partida)session.getAttribute("partida")).getGameName()); %></td>
 								</tr>
 								<tr>
-								<td><div class="playbtn"><a href="/Betagaming_Server2/play">Play</a></div></td>
+								<td><div class="playbtn"><a href="play">Play</a></div></td>
 								</tr>
 							</table>
 						</div> 

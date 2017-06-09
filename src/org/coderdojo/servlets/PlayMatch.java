@@ -79,7 +79,7 @@ public class PlayMatch extends HttpServlet {
 		}
 		
 		if(r==1){
-			response.sendRedirect("/Betagaming_Server2/Partida.jsp");
+			response.sendRedirect("Partida.jsp");
 		}else{
 			response.getWriter().append("Error\nError code --> " + r);
 		}

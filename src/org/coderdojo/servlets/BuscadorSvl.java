@@ -63,7 +63,7 @@ public class BuscadorSvl extends HttpServlet {
 				break;
 			case 3:
 				//May not work
-				//result.addAll(buscarPartidas(term));
+				result.addAll(buscarPartidas(term));
 				result.addAll(buscarUsuarios(term));
 				result.addAll(buscarJuegos(term));
 				break;
@@ -82,13 +82,40 @@ public class BuscadorSvl extends HttpServlet {
 		
 		FabricaConexiones f = FabricaConexiones.getFabrica();
     	Connection conn=null;
+    	int gameId = -1;
+    	try
+		{
+			conn = f.dameConexion();
+			//TODO change the query to select the correct matches
+			String queryCheck = "SELECT game_id from games WHERE game_name LIKE %?%";
+	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
+	    	ps.setString(1, term);
+	    	ResultSet resultSet = ps.executeQuery();
+	    	while (resultSet.next()){
+	    		
+	    		gameId = resultSet.getInt(1);
+	    	}
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{
+			if (conn!=null){try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}}
+		}
+    	
 		try
 		{
 			conn = f.dameConexion();
 			//TODO change the query to select the correct matches
-			String queryCheck = "SELECT * from matches WHERE name = ?";
+			String queryCheck = "SELECT * from matches WHERE game_id = ?";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
-	    	ps.setString(1, term);
+	    	ps.setInt(1, gameId);
 	    	ResultSet resultSet = ps.executeQuery();
 	    	while (resultSet.next()){
 	    		
@@ -98,7 +125,6 @@ public class BuscadorSvl extends HttpServlet {
 	    		Date startDate = resultSet.getDate(4);
 	    		Date endDate = resultSet.getDate(5);
 	    		long ownerId = resultSet.getLong(6);
-	    		int gameId = resultSet.getInt(7);
 	    		
 	    		Partida p = new Partida(id, maxPlayers, gameId, ownerId, minPlayers, startDate, endDate);
 	    		result.add(p);
@@ -129,7 +155,7 @@ public class BuscadorSvl extends HttpServlet {
 		try
 		{
 			conn = f.dameConexion();
-			String queryCheck = "SELECT * from users WHERE nickname = ?";
+			String queryCheck = "SELECT * from users WHERE nickname = %?%";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
 	    	ps.setString(1, term);
 	    	ResultSet resultSet = ps.executeQuery();
@@ -176,7 +202,7 @@ public class BuscadorSvl extends HttpServlet {
 		try
 		{
 			conn = f.dameConexion();
-			String queryCheck = "SELECT * from games WHERE game_name = ?";
+			String queryCheck = "SELECT * from games WHERE game_name = %?%";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
 	    	ps.setString(1, term);
 	    	ResultSet resultSet = ps.executeQuery();

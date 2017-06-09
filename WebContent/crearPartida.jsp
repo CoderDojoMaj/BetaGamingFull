@@ -75,6 +75,7 @@
 					<td>End date</td>
 				</tr>
 				<tr>
+				<form action="SvlCrearPartida" method="POST">
 					<td><input type="number" name="maxPlayers" min="2">
 						</td>
 						<td><input type="number" name="minPlayers" min="2">
@@ -90,7 +91,8 @@
 							 %>
 						</datalist></td>
 					<td><input type="datetime-local" name="startDate"></td>
-          <td><input type="datetime-local" name="endDate"></td>
+          			<td><input type="datetime-local" name="endDate"></td>ç
+          		</form>
 				</tr>
 				<tr>
 					<td><table border="1">
