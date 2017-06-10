@@ -151,7 +151,7 @@ public class SvlCrearPartida extends HttpServlet {
 	    	ps.setDate(3, p.getStartDate());
 	    	ps.setDate(4, p.getEndDate());
 	    	ps.setLong(5, p.getOwnerId());
-	    	ps.setLong(5, p.getGameId());
+	    	ps.setLong(6, p.getGameId());
 	    	ps.execute();
 	    	
 	    	result = true;
