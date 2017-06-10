@@ -77,6 +77,8 @@ public class SvlPrePlayMatch extends HttpServlet {
 		
 		sesion.setAttribute("games", games);
 		
+		response.sendRedirect("crearPartida.jsp");
+		
 	}
 
 }

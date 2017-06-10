@@ -92,7 +92,8 @@
 							 %>
 						</datalist></td>
 					<td><input type="datetime-local" name="startDate"></td>
-          			<td><input type="datetime-local" name="endDate"></td>ç
+          			<td><input type="datetime-local" name="endDate"></td>
+          			<td><input type="submit" value="Create"></td>
           		</form>
 				</tr>
 				<tr>

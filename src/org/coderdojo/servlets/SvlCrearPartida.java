@@ -56,16 +56,20 @@ public class SvlCrearPartida extends HttpServlet {
 		//HttpSession sesion=(HttpSession) request.getSession();
 		// Get a numeric uuid instead of a random long
 		//id=new BigInteger(130, random).longValueExact();
-		maxPlayers=(Integer) request.getAttribute("maxPlayers");
-		gameId=(Integer) request.getAttribute("gameId");
-		ownerId=(Integer) request.getAttribute("ownerId");
-		minPlayers=(Integer) request.getAttribute("minPlayers");
-		// TODO get the correct type for input in dates
-		startDate=(Date) request.getAttribute("startDate");
-		endDate=(Date) request.getAttribute("endDate");
+		System.out.println("CREATING A MATCH");
 		
-		Partida partida = new Partida(0,maxPlayers,gameId,ownerId,minPlayers,startDate,endDate);
-		addPartida(partida);
+		maxPlayers=Integer.valueOf(request.getParameter("maxPlayers"));
+		gameId=Integer.valueOf(request.getParameter("gameId"));
+		ownerId=Integer.valueOf(request.getParameter("ownerId"));
+		minPlayers=Integer.valueOf(request.getParameter("minPlayers"));
+		// TODO get the correct type for input in dates
+		//startDate=(Date) request.getAttribute("startDate");
+		//endDate=(Date) request.getAttribute("endDate");
+		
+		System.out.println("SD --> " + request.getParameter("startDate") + "\nED --> " + request.getParameter("endDate"));
+		
+		//Partida partida = new Partida(0,maxPlayers,gameId,ownerId,minPlayers,startDate,endDate);
+		//addPartida(partida);
 		
 	}
 	
