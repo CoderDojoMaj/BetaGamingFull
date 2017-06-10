@@ -80,7 +80,7 @@
 						</td>
 						<td><input type="number" name="minPlayers" min="2">
 						</td>
-					<td><input list="games" name="game">
+					<td><input list="games" name="gameName">
 					<datalist id="games">
 							 <% 
 							 HttpSession sesion = request.getSession();
