@@ -87,7 +87,7 @@ public class BuscadorSvl extends HttpServlet {
 		{
 			conn = f.dameConexion();
 			//TODO change the query to select the correct matches
-			String queryCheck = "SELECT game_id from games WHERE game_name LIKE %?%";
+			String queryCheck = "SELECT game_id from games WHERE game_name LIKE ?";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
 	    	ps.setString(1, term);
 	    	ResultSet resultSet = ps.executeQuery();
@@ -113,7 +113,7 @@ public class BuscadorSvl extends HttpServlet {
 		{
 			conn = f.dameConexion();
 			//TODO change the query to select the correct matches
-			String queryCheck = "SELECT * from matches WHERE game_id = ?";
+			String queryCheck = "SELECT * from matches WHERE selected_game_id = ?";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
 	    	ps.setInt(1, gameId);
 	    	ResultSet resultSet = ps.executeQuery();
@@ -155,9 +155,9 @@ public class BuscadorSvl extends HttpServlet {
 		try
 		{
 			conn = f.dameConexion();
-			String queryCheck = "SELECT * from users WHERE nickname = %?%";
+			String queryCheck = "SELECT * from users";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
-	    	ps.setString(1, term);
+	    	
 	    	ResultSet resultSet = ps.executeQuery();
 	    	while (resultSet.next()){
 	    		//TODO Add a tester
@@ -174,7 +174,9 @@ public class BuscadorSvl extends HttpServlet {
 	    		
 	    		User p = new User(id, nickname, passwordHash, name, surname, email, regDate, bornDate, skypeUser);
 	    		p.setReputation(rep);
-	    		result.add(p);
+	    		if(p.getNickname().contains(term)){
+	    			result.add(p);
+	    		}
 	    	}
 		}
 		catch (SQLException e) {
@@ -202,9 +204,9 @@ public class BuscadorSvl extends HttpServlet {
 		try
 		{
 			conn = f.dameConexion();
-			String queryCheck = "SELECT * from games WHERE game_name = %?%";
+			String queryCheck = "SELECT * from games";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
-	    	ps.setString(1, term);
+	    	
 	    	ResultSet resultSet = ps.executeQuery();
 	    	while (resultSet.next()){
 	    		//TODO Add a tester
@@ -217,7 +219,9 @@ public class BuscadorSvl extends HttpServlet {
 	    		
 	    		
 	    		Game g = new Game(id,name,minAge,imgLink,desc,genreId);
-	    		result.add(g);
+	    		if(g.getName().contains(term)){
+	    			result.add(g);
+	    		}
 	    		
 	    	}
 		}
