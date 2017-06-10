@@ -349,7 +349,12 @@ span.psw {
 						System.out.println("Got the search result -> " + r.toArray());
 						sesion.removeAttribute("searchResult");
 						for(Buscable b:r){
-						out.println("<button class=\"tablinks\" id=\"defaultOpen\">" + b.getDisplayName() + "</button>");
+							if(b.getType() == 1){
+								out.println("<form method=\"post\" action=\"Partida.jsp\"><input class=\"tablinks\" id=\"defaultOpen\" type=\"submit\" value=\"" + b.getDisplayName() + "\"></form>");
+								sesion.setAttribute("partida", b);
+							}else{
+								out.println("<button class=\"tablinks\" id=\"defaultOpen\">" + b.getDisplayName() + "</button>");
+							}
 						}
 						%>
 						<!--  <button class="tablinks" onclick="openCity(event, 'Best matches')">Best matches</button>
