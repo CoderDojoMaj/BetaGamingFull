@@ -131,8 +131,8 @@ public class SvlCrearPartida extends HttpServlet {
 		d.setYear(Integer.valueOf(calD.split("-")[0]));
 		d.setMonth(Integer.valueOf(calD.split("-")[1]));
 		d.setDate(Integer.valueOf(calD.split("-")[2]));
-		d.setHours(Integer.valueOf(time.split(":")[0]));
-		d.setMinutes(Integer.valueOf(time.split(":")[1]));
+		//d.setHours(Integer.valueOf(time.split(":")[0]));
+		//d.setMinutes(Integer.valueOf(time.split(":")[1]));
 		return d;
 		
 	}
