@@ -75,16 +75,53 @@ public class SvlCrearPartida extends HttpServlet {
 		
 		Partida partida;
 		try {
-			partida = new Partida(0,maxPlayers,getGameId(gameName),ownerId,minPlayers,startDate,endDate);
-			addPartida(partida);
+			addPartida(new Partida(0,maxPlayers,getGameId(gameName),ownerId,minPlayers,startDate,endDate));
+			partida = new Partida(getMatchId(getGameId(gameName), ownerId),maxPlayers,getGameId(gameName),ownerId,minPlayers,startDate,endDate);
 			sesion.setAttribute("partida", partida);
 			response.sendRedirect("Partida.jsp");
 		} catch (DBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			response.sendError(512, "Database did not respond");
+			response.getWriter().append("The database didn't respond");
 		}
 		
+	}
+	
+	private int getMatchId(int gId, long oId) throws DBException{
+		FabricaConexiones f = FabricaConexiones.getFabrica();
+    	Connection conn=null;
+    	int result = -1;
+		try
+		{
+			conn = f.dameConexion();
+			String queryCheck = "SELECT match_id FROM matches WHERE selected_game_id=? AND owner_id=?";
+	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
+	    	ps.setInt(1, gId);
+	    	ps.setLong(1, oId);
+	    	ResultSet rs = ps.executeQuery();
+	    	
+	    	while(rs.next()){
+	    		result = rs.getInt(1);
+	    	}
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{
+			if (conn!=null){try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}}
+		}
+		
+		if(result != -1){
+			return result;
+		}else{
+			throw new DBException("The database did not respond");
+		}
 	}
 	
 	private int getGameId(String name) throws DBException{
