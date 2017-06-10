@@ -97,7 +97,7 @@ public class SvlCrearPartida extends HttpServlet {
 			String queryCheck = "SELECT match_id FROM matches WHERE selected_game_id=? AND owner_id=?";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
 	    	ps.setInt(1, gId);
-	    	ps.setLong(1, oId);
+	    	ps.setLong(2, oId);
 	    	ResultSet rs = ps.executeQuery();
 	    	
 	    	while(rs.next()){
