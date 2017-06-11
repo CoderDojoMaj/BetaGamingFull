@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.sql.Date;
 import java.util.UUID;
 
@@ -71,12 +73,13 @@ public class SvlCrearPartida extends HttpServlet {
 		startDate=fromString( request.getParameter("startDate"));
 		endDate=fromString( request.getParameter("endDate"));
 		
-		//System.out.println("SD --> " + request.getParameter("startDate") + "\nED --> " + request.getParameter("endDate"));
+		System.out.println("SD --> " + request.getParameter("startDate") + "\nED --> " + request.getParameter("endDate"));
 		
 		Partida partida;
 		try {
 			addPartida(new Partida(0,maxPlayers,getGameId(gameName),ownerId,minPlayers,startDate,endDate));
 			partida = new Partida(getMatchId(getGameId(gameName), ownerId),maxPlayers,getGameId(gameName),ownerId,minPlayers,startDate,endDate);
+			System.out.println("ADDING USER TO THE MATCH");
 			addToUsrMatList(partida, user);
 			sesion.setAttribute("partida", partida);
 			response.sendRedirect("Partida.jsp");
@@ -88,24 +91,19 @@ public class SvlCrearPartida extends HttpServlet {
 		
 	}
 	
-	private boolean addToUsrMatList(Partida p, User u){
+	private void addToUsrMatList(Partida p, User u){
 		FabricaConexiones f = FabricaConexiones.getFabrica();
     	Connection conn=null;
-    	boolean result = false;
 		try
 		{
 			conn = f.dameConexion();
-			String queryCheck = "INSERT INTO user_match_list(match_id, user_id) VALUES (?,?)";
+			String queryCheck = "INSERT INTO user_match_list(user_id,match_id) values(?,?)";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
-	    	ps.setLong(1, p.getId());
-	    	ps.setLong(2, u.getId());
-	    	ResultSet rs = ps.executeQuery();
+	    	ps.setLong(1, u.getId());
+	    	ps.setLong(2, p.getId());
 	    	
-	    	while(rs.next()){
-	    		result = true;
-	    	}
-		}
-		catch (SQLException e) {
+	    	ps.execute();
+		}catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -118,7 +116,6 @@ public class SvlCrearPartida extends HttpServlet {
 			}}
 		}
 		
-		return result;
 	}
 	
 	private int getMatchId(int gId, long oId) throws DBException{
@@ -194,17 +191,17 @@ public class SvlCrearPartida extends HttpServlet {
 		}
 	}
 	
-	@Deprecated
 	private Date fromString(String s){
-		Date d = new Date(0);
-		String calD = s.split("T")[0];
-		String time = s.split("T")[1];
-		d.setYear(Integer.valueOf(calD.split("-")[0]));
-		d.setMonth(Integer.valueOf(calD.split("-")[1]));
-		d.setDate(Integer.valueOf(calD.split("-")[2]));
-		//d.setHours(Integer.valueOf(time.split(":")[0]));
-		//d.setMinutes(Integer.valueOf(time.split(":")[1]));
-		return d;
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); // your template here
+		java.util.Date dateStr = null;
+		try {
+			dateStr = formatter.parse(s);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		java.sql.Date dateDB = new java.sql.Date(dateStr.getTime());
+		return dateDB;
 		
 	}
 	
