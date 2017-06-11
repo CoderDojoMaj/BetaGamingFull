@@ -11,16 +11,16 @@ import org.coderdojo.bd.FabricaConexiones;
 public class Partida extends Buscable{
 	
 	private int maxPlayers;
-	private int gameId;
+	private long gameId;
 	private long ownerId;
 	private int minPlayers;
 	private Date startDate;
 	private Date endDate;
 	
-	public Partida(long id, int maxPlayers, int gameId, long ownerId, int minPlayers, Date startDate, Date endDate) {
+	public Partida(long id, int maxPlayers, long l, long ownerId, int minPlayers, Date startDate, Date endDate) {
 		super(id);
 		this.maxPlayers = maxPlayers;
-		this.gameId = gameId;
+		this.gameId = l;
 		this.getOwnerId(ownerId);
 		this.minPlayers = minPlayers;
 		this.startDate = startDate;
@@ -45,7 +45,7 @@ public class Partida extends Buscable{
 		this.maxPlayers = maxPlayers;
 	}
 
-	public int getGameId() {
+	public long getGameId() {
 		return gameId;
 	}
 
@@ -133,7 +133,7 @@ public class Partida extends Buscable{
     		myQuery = "select game_name from games where game_id = ?";
     		preStm = conexion.prepareStatement(myQuery);
     		
-    		preStm.setInt(1, gameId);
+    		preStm.setLong(1, gameId);
     		
     		result = preStm.executeQuery();
     		while (result.next()){
@@ -186,7 +186,7 @@ public class Partida extends Buscable{
     		String myQuery = "select game_name from games where game_id = ?";
     		PreparedStatement preStm = conexion.prepareStatement(myQuery);
     		
-    		preStm.setInt(1, gameId);
+    		preStm.setLong(1, gameId);
     		
     		ResultSet result = preStm.executeQuery();
     		while (result.next()){

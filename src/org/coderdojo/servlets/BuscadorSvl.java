@@ -82,40 +82,18 @@ public class BuscadorSvl extends HttpServlet {
 		
 		FabricaConexiones f = FabricaConexiones.getFabrica();
     	Connection conn=null;
-    	int gameId = -1;
-    	try
-		{
-			conn = f.dameConexion();
-			//TODO change the query to select the correct matches
-			String queryCheck = "SELECT game_id from games WHERE game_name LIKE ?";
-	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
-	    	ps.setString(1, term);
-	    	ResultSet resultSet = ps.executeQuery();
-	    	while (resultSet.next()){
-	    		
-	    		gameId = resultSet.getInt(1);
-	    	}
-		}
-		catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		finally{
-			if (conn!=null){try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}}
-		}
+    	ArrayList<Game> games = buscarJuegos(term);
     	
+    	System.out.println("Search Matches - GOT THE GAMES");
+    	
+    	for(Game g:games){
 		try
 		{
 			conn = f.dameConexion();
 			//TODO change the query to select the correct matches
 			String queryCheck = "SELECT * from matches WHERE selected_game_id = ?";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
-	    	ps.setInt(1, gameId);
+	    	ps.setLong(1, g.getId());
 	    	ResultSet resultSet = ps.executeQuery();
 	    	while (resultSet.next()){
 	    		
@@ -126,8 +104,9 @@ public class BuscadorSvl extends HttpServlet {
 	    		Date endDate = resultSet.getDate(5);
 	    		long ownerId = resultSet.getLong(6);
 	    		
-	    		Partida p = new Partida(id, maxPlayers, gameId, ownerId, minPlayers, startDate, endDate);
+	    		Partida p = new Partida(id, maxPlayers, g.getId(), ownerId, minPlayers, startDate, endDate);
 	    		result.add(p);
+	    		System.out.println("Search Matches - GOT A MATCH");
 	    	}
 		}
 		catch (SQLException e) {
@@ -142,7 +121,7 @@ public class BuscadorSvl extends HttpServlet {
 				e.printStackTrace();
 			}}
 		}
-		
+    	}
 		return result;
 		
 	}
@@ -176,6 +155,7 @@ public class BuscadorSvl extends HttpServlet {
 	    		p.setReputation(rep);
 	    		if(p.getNickname().contains(term)){
 	    			result.add(p);
+	    			System.out.println("Search Users - GOT A USER");
 	    		}
 	    	}
 		}
@@ -221,6 +201,7 @@ public class BuscadorSvl extends HttpServlet {
 	    		Game g = new Game(id,name,minAge,imgLink,desc,genreId);
 	    		if(g.getName().contains(term)){
 	    			result.add(g);
+	    			System.out.println("Search Games - GOT A GAME");
 	    		}
 	    		
 	    	}
