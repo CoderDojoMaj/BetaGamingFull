@@ -153,7 +153,7 @@ public class BuscadorSvl extends HttpServlet {
 	    		
 	    		User p = new User(id, nickname, passwordHash, name, surname, email, regDate, bornDate, skypeUser);
 	    		p.setReputation(rep);
-	    		if(p.getNickname().contains(term)){
+	    		if(p.getNickname().toLowerCase().contains(term.toLowerCase())){
 	    			result.add(p);
 	    			System.out.println("Search Users - GOT A USER");
 	    		}
@@ -199,7 +199,7 @@ public class BuscadorSvl extends HttpServlet {
 	    		
 	    		
 	    		Game g = new Game(id,name,minAge,imgLink,desc,genreId);
-	    		if(g.getName().contains(term)){
+	    		if(g.getName().toLowerCase().contains(term.toLowerCase())){
 	    			result.add(g);
 	    			System.out.println("Search Games - GOT A GAME");
 	    		}
