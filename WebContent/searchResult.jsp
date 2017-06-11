@@ -17,14 +17,47 @@
 }
 
 .topright:hover {color: red;}
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
+input[type=text],
+      input[type=password] {
+        font-size: 13px;
+        min-height: 32px;
+        margin: 0;
+        padding: 7px 8px;
+        outline: none;
+        color: #333;
+        background-color: #fff;
+        background-repeat: no-repeat;
+        background-position: right center;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition: all 0.15s ease-in;
+        transition: all 0.15s ease-in;
+        vertical-align: middle;
+      }
+      .btn {
+      	width: auto;
+        position: relative;
+        display: inline-block;
+        padding: 6px 12px;
+        font-size: 13px;
+        font-weight: bold;
+        line-height: 20px;
+        color: #333;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: #EEE;
+        background-image: -webkit-linear-gradient(#FCFCFC, #EEE);
+        background-image: linear-gradient(#FCFCFC, #EEE);
+        background-repeat: repeat-x;
+        border: 1px solid #d5d5d5;
+        border-radius: 3px;
+        user-select: none;
+        -webkit-appearance: none;
+      }
 button {
     background-color: #4CAF50;
     color: black;
@@ -36,7 +69,7 @@ button {
 }
 
 input {
-    background-color: #4CAF50;
+    background-color: #fffff;
     color: black;
     padding: 14px 20px;
     margin: 8px 0;
@@ -45,7 +78,9 @@ input {
     width: 100%;
 }
 
-
+#search {
+	width: 75%;
+}
 
 .imgcontainer {
     text-align: center;
@@ -342,8 +377,7 @@ span.psw {
 					<td><div class="imgcontainer">
 							<img src="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png" alt="logo" class="avatar" style="width:70px;height:70px;">
 						</div></td>
-												<td>
-						<td><form method="get" action="search"></form><input class="tablinks" type="text" name="term"></form></td>
+						<td><form method="get" action="search"><input class="tablinks" id="search" type="text" name="q"><input class="btn" type="submit" value="Search"></form></td>
 					</center>
 				</tr>
 			</table>
