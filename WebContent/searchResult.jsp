@@ -27,7 +27,17 @@ input[type=text], input[type=password] {
 }
 button {
     background-color: #4CAF50;
-    color: white;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+input {
+    background-color: #4CAF50;
+    color: black;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -166,6 +176,25 @@ span.psw {
 		}
 
 		div.tab button.active {
+			background-color: #ccc;
+		}
+		
+		div.tab input {
+			background-color: inherit;
+			float: left;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 14px 16px;
+			transition: 0.3s;
+			font-size: 17px;
+		}
+
+		div.tab input:hover {
+			background-color: #ddd;
+		}
+
+		div.tab input.active {
 			background-color: #ccc;
 		}
 
@@ -314,18 +343,7 @@ span.psw {
 							<img src="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png" alt="logo" class="avatar" style="width:70px;height:70px;">
 						</div></td>
 												<td>
-							<div class="dropdown">
-								<button class="dropbtn">New...</button>
-								<div class="dropdown-content">
-									<a href="#">Friends</a>
-									<a href="#">Partida</a>
-									<a href="#">Game</a>
-									<a href="#">Player</a>
-								</div>
-							</div>
-						</td>
-						<td><button class="button button2"></button></td>
-						<td><input class="button button1" type="image" src="images/lupa.png" width="24" height="24"></td>
+						<td><form method="get" action="search"></form><input class="tablinks" type="text" name="term"></form></td>
 					</center>
 				</tr>
 			</table>
@@ -350,10 +368,10 @@ span.psw {
 						sesion.removeAttribute("searchResult");
 						for(Buscable b:r){
 							if(b.getType() == 1){
-								out.println("<form method=\"post\" action=\"Partida.jsp\"><input class=\"tablinks\" id=\"defaultOpen\" type=\"submit\" value=\"" + b.getDisplayName() + "\"></form>");
+								out.println("<form method=\"post\" action=\"Partida.jsp\"><input class=\"tablinks\" type=\"submit\" value=\"" + b.getDisplayName() + "\"></form>");
 								sesion.setAttribute("partida", b);
 							}else{
-								out.println("<button class=\"tablinks\" id=\"defaultOpen\">" + b.getDisplayName() + "</button>");
+								out.println("<button class=\"tablinks\">" + b.getDisplayName() + "</button>");
 							}
 						}
 						%>
