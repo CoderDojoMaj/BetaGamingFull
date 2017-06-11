@@ -134,9 +134,10 @@ public class BuscadorSvl extends HttpServlet {
 		try
 		{
 			conn = f.dameConexion();
-			String queryCheck = "SELECT * from users";
+			String queryCheck = "SELECT * from users where nickname like ? or name like ?";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
-	    	
+	    	ps.setString(1, "%" + term + "%");
+	    	ps.setString(2, "%" + term + "%");
 	    	ResultSet resultSet = ps.executeQuery();
 	    	while (resultSet.next()){
 	    		//TODO Add a tester
@@ -153,10 +154,10 @@ public class BuscadorSvl extends HttpServlet {
 	    		
 	    		User p = new User(id, nickname, passwordHash, name, surname, email, regDate, bornDate, skypeUser);
 	    		p.setReputation(rep);
-	    		if(p.getNickname().toLowerCase().contains(term.toLowerCase())){
+	    		//if(p.getNickname().toLowerCase().contains(term.toLowerCase())){
 	    			result.add(p);
 	    			System.out.println("Search Users - GOT A USER");
-	    		}
+	    		//}
 	    	}
 		}
 		catch (SQLException e) {
@@ -184,9 +185,9 @@ public class BuscadorSvl extends HttpServlet {
 		try
 		{
 			conn = f.dameConexion();
-			String queryCheck = "SELECT * from games";
+			String queryCheck = "SELECT * from games where game_name like ?";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
-	    	
+	    	ps.setString(1, "%" + term + "%");
 	    	ResultSet resultSet = ps.executeQuery();
 	    	while (resultSet.next()){
 	    		//TODO Add a tester
@@ -199,10 +200,10 @@ public class BuscadorSvl extends HttpServlet {
 	    		
 	    		
 	    		Game g = new Game(id,name,minAge,imgLink,desc,genreId);
-	    		if(g.getName().toLowerCase().contains(term.toLowerCase())){
+	    		//if(g.getName().toLowerCase().contains(term.toLowerCase())){
 	    			result.add(g);
 	    			System.out.println("Search Games - GOT A GAME");
-	    		}
+	    		//}
 	    		
 	    	}
 		}
