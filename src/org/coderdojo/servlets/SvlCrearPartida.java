@@ -77,6 +77,7 @@ public class SvlCrearPartida extends HttpServlet {
 		try {
 			addPartida(new Partida(0,maxPlayers,getGameId(gameName),ownerId,minPlayers,startDate,endDate));
 			partida = new Partida(getMatchId(getGameId(gameName), ownerId),maxPlayers,getGameId(gameName),ownerId,minPlayers,startDate,endDate);
+			addToUsrMatList(partida, user);
 			sesion.setAttribute("partida", partida);
 			response.sendRedirect("Partida.jsp");
 		} catch (DBException e) {
@@ -85,6 +86,39 @@ public class SvlCrearPartida extends HttpServlet {
 			response.getWriter().append("The database didn't respond");
 		}
 		
+	}
+	
+	private boolean addToUsrMatList(Partida p, User u){
+		FabricaConexiones f = FabricaConexiones.getFabrica();
+    	Connection conn=null;
+    	boolean result = false;
+		try
+		{
+			conn = f.dameConexion();
+			String queryCheck = "INSERT INTO user_match_list(match_id, user_id) VALUES (?,?)";
+	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
+	    	ps.setLong(1, p.getId());
+	    	ps.setLong(2, u.getId());
+	    	ResultSet rs = ps.executeQuery();
+	    	
+	    	while(rs.next()){
+	    		result = true;
+	    	}
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{
+			if (conn!=null){try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}}
+		}
+		
+		return result;
 	}
 	
 	private int getMatchId(int gId, long oId) throws DBException{

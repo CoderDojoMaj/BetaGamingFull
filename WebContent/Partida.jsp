@@ -78,13 +78,16 @@
             <div id ="derecha">
 							<table align="center">
 								<tr>
-								<td>Partida</td>
+								<td>Match</td>
 								</tr>
 								<tr>
-								<td>Propietario: <% out.println(((Partida)session.getAttribute("partida")).getOwnerName()); %></td>
+								<td>Owner: <% out.println(((Partida)session.getAttribute("partida")).getOwnerName()); %></td>
 								</tr>
 								<tr>
-								<td>Juego: <% out.println(((Partida)session.getAttribute("partida")).getGameName()); %></td>
+								<td>Game: <% out.println(((Partida)session.getAttribute("partida")).getGameName()); %></td>
+								</tr>
+								<tr>
+								<td>Number of players: <% out.println(((Partida)session.getAttribute("partida")).getNPlayers()); %></td>
 								</tr>
 								<tr>
 								<td><div class="playbtn"><a href="play">Play</a></div></td>

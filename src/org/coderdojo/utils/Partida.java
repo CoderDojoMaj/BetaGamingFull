@@ -201,6 +201,33 @@ public class Partida extends Buscable{
 		return gameName;
 	}
 	
+	public int getNPlayers(){
+		int result=0;
+		
+		FabricaConexiones laFabria=FabricaConexiones.getFabrica();
+		//pedimios una conexi�n
+		try {
+			Connection conexion=laFabria.dameConexion();
+			//RequestStatement rs;
+    		
+    		String myQuery = "SELECT user_id from user_match_list where match_id = ?";
+    		PreparedStatement preStm = conexion.prepareStatement(myQuery);
+    		
+    		preStm.setLong(1, id);
+    		
+    		ResultSet rs = preStm.executeQuery();
+    		while (rs.next()){
+    			result++;
+    		}
+    		conexion.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
 	/*
 	public boolean insertInDB() {
 		FabricaConexiones f = FabricaConexiones.getFabrica();
