@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="org.coderdojo.utils.*"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>  
     <head>		
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
@@ -129,35 +131,35 @@
 									<li class="item1"><a href="#">Friends <span>340</span></a>
 										<ul>
 											<li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
-											<li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+											<li class="subitem2"><a href="#">Strange âStuffâ <span>6</span></a></li>
 											<li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
 										</ul>
 									</li>
 									<li class="item2"><a href="#">Videos <span>147</span></a>
 										<ul>
 											<li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
-											<li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+											<li class="subitem2"><a href="#">Strange âStuffâ <span>6</span></a></li>
 											<li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
 										</ul>
 									</li>
 									<li class="item3"><a href="#">Galleries <span>340</span></a>
 										<ul>
 											<li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
-											<li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+											<li class="subitem2"><a href="#">Strange âStuffâ <span>6</span></a></li>
 											<li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
 										</ul>
 									</li>
 									<li class="item4"><a href="#">Podcasts <span>222</span></a>
 										<ul>
 											<li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
-											<li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+											<li class="subitem2"><a href="#">Strange âStuffâ <span>6</span></a></li>
 											<li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
 										</ul>
 									</li>
 									<li class="item5"><a href="#">Robots <span>16</span></a>
 										<ul>
 											<li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
-											<li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+											<li class="subitem2"><a href="#">Strange âStuffâ <span>6</span></a></li>
 											<li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
 										</ul>
 									</li>
@@ -191,7 +193,7 @@
             <div id ="pie">
 						<br><hr color="#d3d3d3" width="80%">
 						<center>
-							© BetaGaming 2017 &mdash; Terms <a href="#"><img style="width:154px;height:33px;" src="Imagenes/templogoB.png" border="0"></a> Help &mdash; Contact BetaGaming
+							Â© BetaGaming 2017 &mdash; Terms <a href="#"><img style="width:154px;height:33px;" src="Imagenes/templogoB.png" border="0"></a> Help &mdash; Contact BetaGaming
 							</center>
 						</div> 
 						

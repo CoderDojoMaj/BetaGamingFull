@@ -48,8 +48,8 @@ public class BuscadorSvl extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int type = 3;//= (Integer) request.getAttribute("type");
-		String term = (String) request.getParameter("q");
+		int type = Integer.valueOf(request.getParameter("t"));//= (Integer) request.getAttribute("type");
+		String term = request.getParameter("q");
 		ArrayList<Buscable> result = new ArrayList<Buscable>();
 		switch (type){
 			case 0:

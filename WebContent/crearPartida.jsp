@@ -80,17 +80,16 @@
 						</td>
 						<td><input type="number" name="minPlayers" min="2">
 						</td>
-					<td><input list="games" name="gameName">
-					<datalist id="games">
+					<td><select name="gameName">
 							 <% 
 							 HttpSession sesion = request.getSession();
 							 ArrayList<Game> games = (ArrayList<Game>)sesion.getAttribute("games"); 
 							 sesion.removeAttribute("games");
 							 for(Game g:games){
-								 out.println("<option>" + g.getName() + "</option>");
+								 out.println("<option value=\"" + g.getName() + "\">" + g.getName() + "</option>");
 							 }
 							 %>
-						</datalist></td>
+						</select></td>
 					<td><input type="datetime-local" name="startDate"></td>
           			<td><input type="datetime-local" name="endDate"></td>
           			<td><input type="submit" value="Create"></td>

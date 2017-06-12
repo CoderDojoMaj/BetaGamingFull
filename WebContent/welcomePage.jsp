@@ -325,7 +325,7 @@ span.psw {
 							</div>
 						</td>
 						<td><button class="button button2"><% out.println(((User)session.getAttribute("user")).getNickname()); %></button></td>
-						<td><form action="search.html"><input class="button button1" type="image" src="images/lupa.png" width="24" height="24"></form></td>
+						<td><form action="search.jsp"><input class="button button1" type="image" src="images/lupa.png" width="24" height="24"></form></td>
 					</center>
 				</tr>
 			</table>

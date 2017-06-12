@@ -377,7 +377,9 @@ span.psw {
 					<td><div class="imgcontainer">
 							<img src="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png" alt="logo" class="avatar" style="width:70px;height:70px;">
 						</div></td>
-						<td><form method="get" action="search"><input class="tablinks" id="search" type="text" name="q"><input class="btn" type="submit" value="Search"></form></td>
+						<td><form method="get" action="search"><input class="tablinks" id="search" type="text" name="q"><input class="btn" type="submit" value="Search">
+						<input name="t" type="hidden" value="3">
+						</form></td>
 					</center>
 				</tr>
 			</table>
