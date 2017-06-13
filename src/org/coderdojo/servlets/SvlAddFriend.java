@@ -78,7 +78,11 @@ public class SvlAddFriend extends HttpServlet {
 				e.printStackTrace();
 			}}
 		}
+		
 		if(!isAlreadyFollowing){
+			if(ferUser.getId() == fedUser.getId()){
+				response.getWriter().append("You can't follow yourself");
+			}else{
 			try
 			{
 				conn = f.dameConexion();
@@ -101,6 +105,7 @@ public class SvlAddFriend extends HttpServlet {
 				}}
 			}
 			response.sendRedirect("SvlGetFriendList");
+			}
 		}else{
 			response.getWriter().append("This user is already your friend");
 		}
