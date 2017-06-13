@@ -100,11 +100,10 @@ public class SvlAddFriend extends HttpServlet {
 					e.printStackTrace();
 				}}
 			}
+			response.sendRedirect("SvlGetFriendList");
 		}else{
 			response.getWriter().append("This user is already your friend");
 		}
-		
-		response.sendRedirect("SvlGetFriendList");
 	}
 
 }

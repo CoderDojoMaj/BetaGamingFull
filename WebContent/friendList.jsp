@@ -402,9 +402,12 @@ span.psw {
 						ArrayList<User> r = (ArrayList<User>) sesion.getAttribute("friends");
 						System.out.println("Got the friend list -> " + r.toArray());
 						sesion.removeAttribute("friends");
+						session.setAttribute("searchResult", r);
+						int i=0;
 						for(User b:r){
-							out.println("<form method=\"post\" action=\"User.jsp\"><input class=\"tablinks\" type=\"submit\" value=\"" + b.getDisplayName() + "\"></form>");
-							sesion.setAttribute("uToSee", b);
+							
+							out.println("<form method=\"post\" action=\"User.jsp\"><input type=\"hidden\" value=\"" + i + "\" name=\"pos\"><input class=\"tablinks\" type=\"submit\" value=\"" + b.getDisplayName() + "\"></form>");
+							i++;
 						}
 						%>
 						<!--  <button class="tablinks" onclick="openCity(event, 'Best matches')">Best matches</button>

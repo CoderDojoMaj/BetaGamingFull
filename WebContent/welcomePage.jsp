@@ -317,14 +317,19 @@ span.psw {
 							<div class="dropdown">
 								<button class="dropbtn">New...</button>
 								<div class="dropdown-content">
-									<a href="#">Friends</a>
+									<a href="search?q=&t=1">Friends</a>
 									<a href="SvlPrePlayMatch">Partida</a>
 									<a href="AddGame1.html">Game</a>
-									<a href="#">Player</a>
+									<a href="search?q=&t=0">Player</a>
 								</div>
 							</div>
 						</td>
-						<td><button class="button button2"><% out.println(((User)session.getAttribute("user")).getNickname()); %></button></td>
+						<td><div class="dropdown">
+								<button class="dropbtn"><% out.println(((User)session.getAttribute("user")).getNickname()); %></button>
+								<div class="dropdown-content">
+									<a href="SvlGetFriendList">My friends</a>
+								</div>
+							</div></td>
 						<td><form action="search.jsp"><input class="button button1" type="image" src="images/lupa.png" width="24" height="24"></form></td>
 					</center>
 				</tr>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="org.coderdojo.utils.*"%>
+    pageEncoding="UTF-8" import="org.coderdojo.utils.*" import="java.util.ArrayList"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>  
     <head>		
@@ -25,6 +25,19 @@
 		</style>
     </head>
     <body>  
+    <% String r = request.getParameter("pos"); 
+    if(r==null){
+    	System.out.println("Hubo un problema al recoger pos");
+    	return;
+    }
+    int posicion = Integer.valueOf(r);
+    ArrayList<Buscable> lista = (ArrayList<Buscable>) session.getAttribute("searchResult");
+    session.removeAttribute("searchResult");
+    if(lista==null){
+    	System.out.println("Hubo un problema al recoger lista");
+    	return;
+    }
+    %>
         <div id ="contenedor">  
             <div id ="cabecera">
 									<img src="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png" alt="logo" class="avatar" style="width:70px;height:70px;">
@@ -81,13 +94,13 @@
 								<td>Match</td>
 								</tr>
 								<tr>
-								<td>Owner: <% out.println(((Partida)session.getAttribute("partida")).getOwnerName()); %></td>
+								<td>Owner: <% out.println(((Partida)lista.get(posicion)).getOwnerName()); %></td>
 								</tr>
 								<tr>
-								<td>Game: <% out.println(((Partida)session.getAttribute("partida")).getGameName()); %></td>
+								<td>Game: <% out.println(((Partida)lista.get(posicion)).getGameName()); %></td>
 								</tr>
 								<tr>
-								<td>Number of players: <% out.println(((Partida)session.getAttribute("partida")).getNPlayers()); %></td>
+								<td>Number of players: <% out.println(((Partida)lista.get(posicion)).getNPlayers()); %></td>
 								</tr>
 								<tr>
 								<td><div class="playbtn"><a href="play">Play</a></div></td>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="org.coderdojo.utils.*"%>
+	pageEncoding="UTF-8" import="org.coderdojo.utils.*" import="java.util.ArrayList"%>
 <!-- THIS IS A TEMPORAL FILE ONLY MADE FOR TESTING -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -27,6 +27,19 @@
 <title>Temporal User Page</title>
 </head>
 <body>
+<% String r = request.getParameter("pos"); 
+    if(r==null){
+    	System.out.println("Hubo un problema al recoger pos");
+    	return;
+    }
+    int posicion = Integer.valueOf(r);
+    ArrayList<Buscable> lista = (ArrayList<Buscable>) session.getAttribute("searchResult");
+    session.removeAttribute("searchResult");
+    if(lista==null){
+    	System.out.println("Hubo un problema al recoger lista");
+    	return;
+    }
+    %>
 <div id ="contenedor">  
             <div id ="cabecera">
 									<img src="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png" alt="logo" class="avatar" style="width:70px;height:70px;">
@@ -79,10 +92,11 @@
 				
             <div id ="derecha">
 							<% 
-							User toSee = (User) session.getAttribute("uToSee");
+							User toSee = (User) lista.get(posicion);
 							out.println(toSee.getNickname());
+							session.setAttribute("uToSee", toSee);
 							%>
-							<div class="playbtn"><a href="play">Play</a></div>
+							<div class="playbtn"><a href="SvlAddFriend">Add as a friend</a></div>
 						</div> 
 						
             <div id ="pie">

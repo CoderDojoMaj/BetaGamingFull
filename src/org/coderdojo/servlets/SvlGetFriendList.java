@@ -38,6 +38,7 @@ public class SvlGetFriendList extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession sesion = request.getSession(false);
+		System.out.println("getting the friends");
 		sesion.setAttribute("friends", getFriends(((User) sesion.getAttribute("user")).getId()));
 		response.sendRedirect("friendList.jsp");
 	}
@@ -59,12 +60,13 @@ public class SvlGetFriendList extends HttpServlet {
 		try
 		{
 			conn = f.dameConexion();
-			String queryCheck = "SELECT follower_user_id FROM friend_list WHERE followed_user_id=?";
+			String queryCheck = "SELECT followed_user_id FROM friend_list WHERE follower_user_id=?";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
 	    	ps.setLong(1, id);
 	    	ResultSet resultSet = ps.executeQuery();
 	    	while (resultSet.next()){
 	    		ids.add(resultSet.getLong(1));
+	    		System.out.println("Got an ID");
 	    	}
 		}
 		catch (SQLException e) {
@@ -103,6 +105,7 @@ public class SvlGetFriendList extends HttpServlet {
 		    		User u = new User(uid, nickname, passwordHash, name, surname, email, regDate, bornDate, skypeUser);
 		    		u.setReputation(rep);
 		    		r.add(u);
+		    		System.out.println("Added a user");
 				}
 			}
 			catch (SQLException e) {

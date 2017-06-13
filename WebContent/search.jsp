@@ -173,10 +173,10 @@
         <font color="white">Find games, people and matches:</font>
         <input type="text" name="q">
         <span> Find </span><select name="t" id="tS">
+        	<option value="3">Everything</option>
         	<option value="0">Matches</option>
         	<option value="1">Users</option>
         	<option value="2">Games</option>
-        	<option value="3">Everything</option>
         </select>
         <input class="btn" type="submit" value="Search">
       </form>
