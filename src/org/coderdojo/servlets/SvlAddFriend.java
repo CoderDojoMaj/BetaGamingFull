@@ -46,8 +46,8 @@ public class SvlAddFriend extends HttpServlet {
 		HttpSession sesion=request.getSession();
 		
 		User ferUser = (User) sesion.getAttribute("user");
-		User fedUser = (User) sesion.getAttribute("fedUser");
-		sesion.removeAttribute("fedUser");
+		User fedUser = (User) sesion.getAttribute("uToSee");
+		sesion.removeAttribute("uToSee");
 		
 		FabricaConexiones f = FabricaConexiones.getFabrica();
     	Connection conn=null;
@@ -100,6 +100,8 @@ public class SvlAddFriend extends HttpServlet {
 					e.printStackTrace();
 				}}
 			}
+		}else{
+			response.getWriter().append("This user is already your friend");
 		}
 		
 		response.sendRedirect("SvlGetFriendList");
