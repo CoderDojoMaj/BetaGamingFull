@@ -19,6 +19,7 @@ public class User  extends Buscable implements Comparable<User>{
 	private Date registerDate;
 	private Date bornDate;
 	private String skypeUser;
+	private String description;
 	
 	public User(long id, String nickname, String passwordHash, String name, String surnames, String email,
 			Date registerDate, Date bornDate, String skypeUser) {
@@ -32,6 +33,7 @@ public class User  extends Buscable implements Comparable<User>{
 		this.registerDate = registerDate;
 		this.bornDate = bornDate;
 		this.skypeUser = skypeUser;
+		this.description=null;
 	}
 	
 	public User(long id, String nickname, String passwordHash, String name, String surnames, String email,
@@ -46,6 +48,37 @@ public class User  extends Buscable implements Comparable<User>{
 		this.registerDate = new Date(registerLong);
 		this.bornDate = new Date(bornLong);
 		this.skypeUser = skypeUser;
+		this.description=null;
+	}
+	
+	public User(long id, String nickname, String passwordHash, String name, String surnames, String email,
+			Date registerDate, Date bornDate, String skypeUser, String description) {
+		super(id);
+		this.reputation = 0;
+		this.nickname = nickname;
+		this.passwordHash = passwordHash;
+		this.name = name;
+		this.surname = surnames;
+		this.email = email;
+		this.registerDate = registerDate;
+		this.bornDate = bornDate;
+		this.skypeUser = skypeUser;
+		this.description=description;
+	}
+	
+	public User(long id, String nickname, String passwordHash, String name, String surnames, String email,
+			long registerLong, long bornLong, String skypeUser, String description) {
+		super(id);
+		this.reputation = 0;
+		this.nickname = nickname;
+		this.passwordHash = passwordHash;
+		this.name = name;
+		this.surname = surnames;
+		this.email = email;
+		this.registerDate = new Date(registerLong);
+		this.bornDate = new Date(bornLong);
+		this.skypeUser = skypeUser;
+		this.description=description;
 	}
 
 	public String getNickname() {
@@ -132,6 +165,18 @@ public class User  extends Buscable implements Comparable<User>{
 		return registerDate.getTime();
 	}
 	
+	public String getDescription() {
+		if(description == null){
+			return "This user hasn't got a description";
+		}else{
+			return description;
+		}
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	@Override
 	public int getType() {
 		return 3;

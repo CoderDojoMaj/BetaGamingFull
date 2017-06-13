@@ -110,9 +110,13 @@ public class SvlMainServlet extends HttpServlet {
 	    		Date regDate = resultSet.getDate(8);
 	    		Date bornDate = resultSet.getDate(9);
 	    		String skypeUser = resultSet.getString(10);
+	    		String desc = resultSet.getString(11);
 	    		
 	    		User u = new User(uid, nickname, passwordHash, name, surname, email, regDate, bornDate, skypeUser);
 	    		u.setReputation(rep);
+	    		if(desc != null){
+	    			u.setDescription(desc);
+	    		}
 	    		people.add(u);
 	    		System.out.println("Added a user");
 			}

@@ -14,7 +14,7 @@
 					<tr>
 						<td rowspan="3"><img src="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png" alt="logo" class="avatar" style="width:70px;height:70px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 						<td>E-mail</td>
-						<td>Passwors</td>
+						<td>Password</td>
 					</tr>
 						<tr>
 							<td><input type="text" size="15" maxlength="30" name="name"></td>
@@ -41,7 +41,7 @@
 
             <div id="formulario">
 											<center>
-									<form method="post" action="SvlCrearUsuario">
+									<form method="post" action="SvlCrearUsuario" id="signup">
 
 								<table bgcolor="white">
 									<tr>
@@ -65,15 +65,17 @@
 										<td>Day of birth</td>
 									</tr>
 									<tr>
-										<td><input id="field_pwd2" title="Tu apellido ." type="password" name="surname" required pattern="\w+"></td>
+										<td><input id="field_pwd2" title="Tu apellido ." type="text" name="surname" required pattern="\w+"></td>
 										<td><input type="text" size="15" maxlength="30" name="name" required pattern="\w+"></td>
 										<td><input type="date" name="bornDateLong" required pattern="\w+"></td>
 									</tr>
 										<tr>
 											<td>Skype account</td>
+											<td>A little description about yourself</td>
 										</tr>
-										<tr></tr>
+										<tr>
 											<td><input type="text" name="skype" required pattern="\w+"></td>
+											<td><textarea rows="4" cols="50" form="signup" name="desc"></textarea></td>
 										</tr>
 										<tr>
 										<td></td>

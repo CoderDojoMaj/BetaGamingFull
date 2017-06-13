@@ -151,9 +151,13 @@ public class BuscadorSvl extends HttpServlet {
 	    		Date regDate = resultSet.getDate(8);
 	    		Date bornDate = resultSet.getDate(9);
 	    		String skypeUser = resultSet.getString(10);
+	    		String desc = resultSet.getString(11);
 	    		
 	    		User p = new User(id, nickname, passwordHash, name, surname, email, regDate, bornDate, skypeUser);
 	    		p.setReputation(rep);
+	    		if(desc!= null){
+	    			p.setDescription(desc);
+	    		}
 	    		//if(p.getNickname().toLowerCase().contains(term.toLowerCase())){
 	    			result.add(p);
 	    			System.out.println("Search Users - GOT A USER");

@@ -121,6 +121,8 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
 		Date regDate = new Date(Calendar.getInstance().getTime().getTime());
 		Date bornDate = parseIn(request.getParameter("bornDateLong"));
 		String skype = request.getParameter("skype");
+		String desc = request.getParameter("desc");
+		boolean hasDesc = (desc != null);
 		User user = null;
     	
 		System.out.println("Datos recibidos");
@@ -157,7 +159,10 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
     			/**/
 				Connection conexion=laFabria.dameConexion();
 				//RequestStatement rs;
-	    		String myQuery = "insert into users(nickname, password, name, surname, email, rep, registry_date, born_date, skype_user) values (?,?,?,?,?,0,?,?,?)";
+				String myQuery = "insert into users(nickname, password, name, surname, email, rep, registry_date, born_date, skype_user) values (?,?,?,?,?,0,?,?,?)";
+				if(hasDesc){
+					myQuery = "insert into users(nickname, password, name, surname, email, rep, registry_date, born_date, skype_user, description) values (?,?,?,?,?,0,?,?,?,?)";
+				}
 	    		PreparedStatement preStm = conexion.prepareStatement(myQuery);
 	    		
 	    		preStm.setString(1, username);
@@ -165,10 +170,13 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
 	    		preStm.setString(3, name);
 	    		preStm.setString(4, surname);
 	    		preStm.setString(5, email);
-	    		//6 is reputation
+	    		
 	    		preStm.setDate(6, regDate);
 	    		preStm.setDate(7, bornDate);
 	    		preStm.setString(8, skype);
+	    		if(hasDesc){
+	    			preStm.setString(9, desc);
+	    		}
 	    		
 	    		System.out.println("1st QUERY PREPARED");
 	    		
@@ -193,6 +201,9 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
 	    		System.out.println("ID gotten " + id);
 	    		
 	    		user = new User(id, username,password,name,surname,email,regDate,bornDate,skype);
+	    		if(hasDesc){
+	    			user.setDescription(desc);
+	    		}
 	    		
 	    		System.out.println("User created " + user.getDisplayName());
 	    		
