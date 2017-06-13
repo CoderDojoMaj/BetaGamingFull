@@ -129,4 +129,15 @@
     <servlet-name>SvlGetFriendList</servlet-name>
     <url-pattern>/SvlGetFriendList</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SvlLogout</display-name>
+    <servlet-name>SvlLogout</servlet-name>
+    <servlet-class>org.coderdojo.servlets.SvlLogout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SvlLogout</servlet-name>
+    <url-pattern>/SvlLogout</url-pattern>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
 </web-app>

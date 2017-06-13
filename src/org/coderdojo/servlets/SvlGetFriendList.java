@@ -39,7 +39,9 @@ public class SvlGetFriendList extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession sesion = request.getSession(false);
 		System.out.println("getting the friends");
-		sesion.setAttribute("friends", getFriends(((User) sesion.getAttribute("user")).getId()));
+		User user = (User) sesion.getAttribute("user");
+		sesion.setAttribute("followed", getFollowed(user.getId()));
+		sesion.setAttribute("followers", getFollowers(user.getId()));
 		response.sendRedirect("friendList.jsp");
 	}
 
@@ -51,7 +53,7 @@ public class SvlGetFriendList extends HttpServlet {
 		doGet(request, response);
 	}
 	
-	private ArrayList<User> getFriends(long id){
+	private ArrayList<User> getFollowed(long id){
 		ArrayList<User> r = new ArrayList<User>();
 		ArrayList<Long> ids = new ArrayList<Long>();
 		
@@ -61,6 +63,80 @@ public class SvlGetFriendList extends HttpServlet {
 		{
 			conn = f.dameConexion();
 			String queryCheck = "SELECT followed_user_id FROM friend_list WHERE follower_user_id=?";
+	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
+	    	ps.setLong(1, id);
+	    	ResultSet resultSet = ps.executeQuery();
+	    	while (resultSet.next()){
+	    		ids.add(resultSet.getLong(1));
+	    		System.out.println("Got an ID");
+	    	}
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{
+			if (conn!=null){try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}}
+		}
+
+		for(long uid:ids){
+			try
+			{
+				conn = f.dameConexion();
+				String queryCheck = "SELECT * FROM users WHERE user_id=?";
+				PreparedStatement ps = conn.prepareStatement(queryCheck);
+				ps.setLong(1, uid);
+				ResultSet resultSet = ps.executeQuery();
+				while (resultSet.next()){
+					
+		    		String nickname = resultSet.getString(2);
+		    		String passwordHash = resultSet.getString(3);
+		    		String name = resultSet.getString(4);
+		    		String surname = resultSet.getString(5);
+		    		String email = resultSet.getString(6);
+		    		int rep = resultSet.getInt(7);
+		    		Date regDate = resultSet.getDate(8);
+		    		Date bornDate = resultSet.getDate(9);
+		    		String skypeUser = resultSet.getString(10);
+		    		
+		    		User u = new User(uid, nickname, passwordHash, name, surname, email, regDate, bornDate, skypeUser);
+		    		u.setReputation(rep);
+		    		r.add(u);
+		    		System.out.println("Added a user");
+				}
+			}
+			catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			finally{
+				if (conn!=null){try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}}
+			}
+		}
+		
+		return r;
+	}
+	
+	private ArrayList<User> getFollowers(long id){
+		ArrayList<User> r = new ArrayList<User>();
+		ArrayList<Long> ids = new ArrayList<Long>();
+		
+		FabricaConexiones f = FabricaConexiones.getFabrica();
+    	Connection conn=null;
+		try
+		{
+			conn = f.dameConexion();
+			String queryCheck = "SELECT follower_user_id FROM friend_list WHERE followed_user_id=?";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
 	    	ps.setLong(1, id);
 	    	ResultSet resultSet = ps.executeQuery();

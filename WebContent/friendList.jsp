@@ -196,7 +196,7 @@ span.psw {
 		}
 
 		div.tab button {
-			background-color: inherit;
+			background-color: #1c84e3;
 			float: left;
 			border: none;
 			outline: none;
@@ -204,14 +204,6 @@ span.psw {
 			padding: 14px 16px;
 			transition: 0.3s;
 			font-size: 17px;
-		}
-
-		div.tab button:hover {
-			background-color: #ddd;
-		}
-
-		div.tab button.active {
-			background-color: #ccc;
 		}
 		
 		div.tab input {
@@ -399,12 +391,24 @@ span.psw {
 						System.out.println("Getting the search result");
 						//@SuppressWarnings("unchecked")
 						HttpSession sesion = request.getSession();
-						ArrayList<User> r = (ArrayList<User>) sesion.getAttribute("friends");
-						System.out.println("Got the friend list -> " + r.toArray());
+						ArrayList<User> fer = (ArrayList<User>) sesion.getAttribute("followers");
+						System.out.println("Got the follower list -> " + fer.toArray());
+						ArrayList<User> fed = (ArrayList<User>) sesion.getAttribute("followed");
+						System.out.println("Got the followed list -> " + fed.toArray());
 						sesion.removeAttribute("friends");
+						ArrayList<User> r = new ArrayList<User>();
+						r.addAll(fer);
+						r.addAll(fed);
 						session.setAttribute("searchResult", r);
 						int i=0;
-						for(User b:r){
+						out.println("<button class=\"tablinks\"><h3>Followers</h3></button>");
+						for(User b:fer){
+							
+							out.println("<form method=\"post\" action=\"User.jsp\"><input type=\"hidden\" value=\"" + i + "\" name=\"pos\"><input class=\"tablinks\" type=\"submit\" value=\"" + b.getDisplayName() + "\"></form>");
+							i++;
+						}
+						out.println("<button class=\"tablinks\"><h3>Followed people</h3></button>");
+						for(User b:fed){
 							
 							out.println("<form method=\"post\" action=\"User.jsp\"><input type=\"hidden\" value=\"" + i + "\" name=\"pos\"><input class=\"tablinks\" type=\"submit\" value=\"" + b.getDisplayName() + "\"></form>");
 							i++;

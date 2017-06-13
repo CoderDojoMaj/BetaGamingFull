@@ -26,7 +26,7 @@ input[type=text], input[type=password] {
 }
 button {
     background-color: #4CAF50;
-    color: white;
+    color: black;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -328,6 +328,7 @@ span.psw {
 								<button class="dropbtn"><% out.println(((User)session.getAttribute("user")).getNickname()); %></button>
 								<div class="dropdown-content">
 									<a href="SvlGetFriendList">My friends</a>
+									<a href="logout">Logout</a>
 								</div>
 							</div></td>
 						<td><form action="search.jsp"><input class="button button1" type="image" src="images/lupa.png" width="24" height="24"></form></td>
