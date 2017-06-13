@@ -3,11 +3,12 @@ package org.coderdojo.utils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 import org.coderdojo.bd.FabricaConexiones;
 
-public class User extends Buscable{
+public class User  extends Buscable implements Comparable<User>{
 	
 	private String nickname;
 	private String passwordHash;
@@ -139,6 +140,51 @@ public class User extends Buscable{
 	@Override
 	public String getDisplayName() {
 		return nickname;
+	}
+	
+	public int getFollowers() {
+		FabricaConexiones f = FabricaConexiones.getFabrica();
+		Connection conn = null;
+		int followerCount = 0;
+		try
+		{
+			conn = f.dameConexion();
+			String queryCheck = "SELECT follower_user_id FROM friend_list WHERE followed_user_id=?";
+			PreparedStatement ps = conn.prepareStatement(queryCheck);
+			ps.setLong(1, id);
+			ResultSet resultSet = ps.executeQuery();
+			while (resultSet.next()){
+				
+	    		followerCount++;
+				
+	    		System.out.println("Added a follower");
+			}
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{
+			if (conn!=null){try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}}
+		}
+		return followerCount;
+	}
+	
+	public int compareTo(User compareUser) {
+
+		int compareQuantity = ((User) compareUser).getFollowers();
+
+		//ascending order
+		//return this.quantity - compareQuantity;
+
+		//descending order
+		return compareQuantity - this.getFollowers();
+
 	}
 	
 }

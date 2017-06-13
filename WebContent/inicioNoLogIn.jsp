@@ -1,13 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="org.coderdojo.utils.User" import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="org.coderdojo.utils.*" import="java.util.List"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
     <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png"/>
-		<title>BetaGaming-Welcome Mag</title>
+		<title>BetaGaming-Welcome!!</title>
 <style>
-
 /* Style the close button */
 .topright {
     float: right;
@@ -309,31 +308,17 @@ span.psw {
 <center>
 			<table  bgcolor="#000000" style="width:100%" >
 				<tr>
-					<center>
-					<td><div class="imgcontainer">
+						<td><div class="imgcontainer">
 							<img src="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png" alt="logo" class="avatar" style="width:70px;height:70px;">
 						</div></td>
-												<td>
-							<div class="dropdown">
-								<button class="dropbtn">New...</button>
-								<div class="dropdown-content">
-									<a href="search?q=&t=1">Friends</a>
-									<a href="SvlPrePlayMatch">Partida</a>
-									<a href="AddGame1.html">Game</a>
-									<a href="search?q=&t=0">Player</a>
-								</div>
-							</div>
-						</td>
-						<td><div class="dropdown">
-								<button class="dropbtn"><% out.println(((User)session.getAttribute("user")).getNickname()); %></button>
-								<div class="dropdown-content">
-									<a href="SvlGetFriendList">My friends</a>
-								</div>
-							</div></td>
-						<td><form action="search.jsp"><input class="button button1" type="image" src="images/lupa.png" width="24" height="24"></form></td>
-					</center>
+						<div style="text-align:right;">
+						<td><button class="button button1" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Log In</button></td>
+						<td><p>or</p></td>
+						<td><button class="button button2" onclick="window.location.href='crearCuenta3.html'">Sing Up</button></td>
+						</div>
+						<td><input class="button button1" type="image" src="images/lupa.png" width="24" height="24"></td>
 				</tr>
-			</table>
+			</table>								
 			<table style="width:95%">
 				<tr>
 					<td bgcolor="#ffffff"><h1>Welcome to</h1></td>
@@ -367,7 +352,7 @@ span.psw {
 						<p>Mag-Call Of Duty IW;3:23</p> 
 						</div>
 
-						<div id="Most followed people" class="tabcontent">
+						<div id="Most followed people" class="tabcontent">		
 						<span onclick="this.parentElement.style.display='none'" class="topright">x</span>
 						<h3>Most followed people</h3>
 						<%
@@ -380,7 +365,7 @@ span.psw {
 							out.println("<p>" + u.getNickname() + " - " + u.getFollowers() + " follower(s)</p>");
 						}
 						%>
-					</div>
+						</div>
 					</td>
 				</tr>
 			</table>
@@ -411,7 +396,7 @@ window.onclick = function(event) {
 </script>
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="action_page.php">
+  <form class="modal-content animate" action="LoginSvl" method="POST">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
       <img src="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png" alt="logo" class="avatar" style="width:250px;height:250px;">
@@ -419,10 +404,11 @@ window.onclick = function(event) {
 
     <div class="container">
       <label><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+      <input type="text" placeholder="Enter Username" name="usuario" required>
 
       <label><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input type="password" placeholder="Enter Password" name="clave" required>
+			
         
       <button style='width:70px; height:41px' type="submit" >Login</button>  
     </div>
