@@ -78,18 +78,6 @@
     <servlet-name>BuscadorSvl</servlet-name>
     <url-pattern>/search</url-pattern>
   </servlet-mapping>
-  <!--
-  <servlet>
-    <description></description>
-    <display-name>SvlViewGames</display-name>
-    <servlet-name>SvlViewGames</servlet-name>
-    <servlet-class>org.coderdojo.servlets.SvlViewGames</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>SvlViewGames</servlet-name>
-    <url-pattern>/SvlViewGames</url-pattern>
-  </servlet-mapping>
-  -->
   <servlet>
     <description></description>
     <display-name>SvlAddGame</display-name>
@@ -120,5 +108,25 @@
   <servlet-mapping>
     <servlet-name>SvlPrePlayMatch</servlet-name>
     <url-pattern>/SvlPrePlayMatch</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SvlAddFriend</display-name>
+    <servlet-name>SvlAddFriend</servlet-name>
+    <servlet-class>org.coderdojo.servlets.SvlAddFriend</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SvlAddFriend</servlet-name>
+    <url-pattern>/SvlAddFriend</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SvlGetFriendList</display-name>
+    <servlet-name>SvlGetFriendList</servlet-name>
+    <servlet-class>org.coderdojo.servlets.SvlGetFriendList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SvlGetFriendList</servlet-name>
+    <url-pattern>/SvlGetFriendList</url-pattern>
   </servlet-mapping>
 </web-app>

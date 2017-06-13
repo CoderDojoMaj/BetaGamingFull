@@ -385,7 +385,7 @@ span.psw {
 			</table>
 			<table style="width:95%">
 				<tr>
-					<td bgcolor="#ffffff"><h1><% out.println(request.getParameter("term"));%></h1></td>
+					<td bgcolor="#ffffff"><h1>My friend list</h1></td>
 				</tr>
 				<tr>
 				<td><div class="imgcontainer">
@@ -399,22 +399,12 @@ span.psw {
 						System.out.println("Getting the search result");
 						//@SuppressWarnings("unchecked")
 						HttpSession sesion = request.getSession();
-						ArrayList<Buscable> r = (ArrayList<Buscable>) sesion.getAttribute("searchResult");
-						System.out.println("Got the search result -> " + r.toArray());
-						sesion.removeAttribute("searchResult");
-						for(Buscable b:r){
-							if(b.getType() == 1){
-								out.println("<form method=\"post\" action=\"Partida.jsp\"><input class=\"tablinks\" type=\"submit\" value=\"" + b.getDisplayName() + "\"></form>");
-								sesion.setAttribute("partida", b);
-							}else if(b.getType() == 2){
-								out.println("<form method=\"post\" action=\"Game.jsp\"><input class=\"tablinks\" type=\"submit\" value=\"" + b.getDisplayName() + "\"></form>");
-								sesion.setAttribute("game", b);
-							}else if(b.getType() == 3){
-								out.println("<form method=\"post\" action=\"User.jsp\"><input class=\"tablinks\" type=\"submit\" value=\"" + b.getDisplayName() + "\"></form>");
-								sesion.setAttribute("uToSee", b);
-							}else{
-								out.println("<button class=\"tablinks\">" + b.getDisplayName() + "</button>");
-							}
+						ArrayList<User> r = (ArrayList<User>) sesion.getAttribute("friends");
+						System.out.println("Got the friend list -> " + r.toArray());
+						sesion.removeAttribute("friends");
+						for(User b:r){
+							out.println("<form method=\"post\" action=\"User.jsp\"><input class=\"tablinks\" type=\"submit\" value=\"" + b.getDisplayName() + "\"></form>");
+							sesion.setAttribute("uToSee", b);
 						}
 						%>
 						<!--  <button class="tablinks" onclick="openCity(event, 'Best matches')">Best matches</button>
