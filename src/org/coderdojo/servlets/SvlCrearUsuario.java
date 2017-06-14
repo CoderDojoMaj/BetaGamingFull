@@ -113,7 +113,6 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
 		// TODO Auto-generated method stub
 		
 		//Recibe los datos enviados por el usuario
-		DateFormat df = DateFormat.getDateInstance();
 		String username = request.getParameter("nickname");
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");

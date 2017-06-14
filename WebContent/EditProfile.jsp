@@ -21,7 +21,7 @@
 
             <div id="formulario">
 											<center>
-									<form method="post" action="SvlEditUser" id="signup">
+									<form method="post" action="SvlEditProfile" id="signup">
 
 								<table bgcolor="white">
 									<tr>

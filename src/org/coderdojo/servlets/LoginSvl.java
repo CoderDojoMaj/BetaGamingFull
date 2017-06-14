@@ -19,8 +19,6 @@ import org.coderdojo.utils.User;
  */
 public class LoginSvl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	private User user;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -44,11 +42,12 @@ public class LoginSvl extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String user = request.getParameter("usuario");
+		String nick = request.getParameter("usuario");
 		String pass = request.getParameter("clave");
-		if(checkUser(user, pass)){
+		User user = null;
+		if(checkUser(nick, pass, user)){
 			HttpSession sesion=(HttpSession) request.getSession();
-			sesion.setAttribute("user", this.user);
+			sesion.setAttribute("user", user);
 			response.sendRedirect("welcomePage.jsp");
 			System.out.println("LOGGING IN"); //Baia Baia 
 			//response.sendRedirect("/BetaGamingServlet/HTMLFiles/LoggedIn.html?sesion=" + sesion.getId());
@@ -58,8 +57,8 @@ public class LoginSvl extends HttpServlet {
 		//response.getWriter().append("Usuario: " + user + "\nClave: " + pass);
 	}
 	
-	private boolean checkUser(String user, String pass){
-		Boolean resultado=false;
+	private boolean checkUser(String nick, String pass, User user){
+		boolean resultado=false;
     	FabricaConexiones f = FabricaConexiones.getFabrica();
     	Connection conn=null;
 		try
@@ -67,7 +66,7 @@ public class LoginSvl extends HttpServlet {
 			conn = f.dameConexion();
 			String queryCheck = "SELECT password from users WHERE nickname = ?";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
-	    	ps.setString(1, user);
+	    	ps.setString(1, nick);
 	    	ResultSet resultSet = ps.executeQuery();
 	    	while (resultSet.next()){
 	    		//TODO Add a tester
@@ -78,15 +77,15 @@ public class LoginSvl extends HttpServlet {
 	    			resultado = true;
 	    			queryCheck = "SELECT * from users WHERE nickname = ?";
 	    			ps = conn.prepareStatement(queryCheck);
-	    			ps.setString(1, user);
+	    			ps.setString(1, nick);
 	    			ResultSet resultSetUser = ps.executeQuery();
 	    			while (resultSetUser.next()){
 	    				//Load the user
 	    				
-	    				this.user = new User(resultSetUser.getInt("user_id"), user, pass, resultSetUser.getString("name"), 
+	    				user = new User(resultSetUser.getInt("user_id"), nick, pass, resultSetUser.getString("name"), 
 	    						resultSetUser.getString("surname"), resultSetUser.getString("email"), resultSetUser.getDate("registry_date"),
-	    						resultSetUser.getDate("born_date"), resultSetUser.getString("skype_user"));
-	    				this.user.setReputation(resultSetUser.getInt("rep"));
+	    						resultSetUser.getDate("born_date"), resultSetUser.getString("skype_user"), resultSetUser.getString("description"));
+	    				user.setReputation(resultSetUser.getInt("rep"));
 
 	    			}
 

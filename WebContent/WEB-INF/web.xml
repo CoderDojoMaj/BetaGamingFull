@@ -140,4 +140,14 @@
     <url-pattern>/SvlLogout</url-pattern>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SvlEditProfile</display-name>
+    <servlet-name>SvlEditProfile</servlet-name>
+    <servlet-class>org.coderdojo.servlets.SvlEditProfile</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SvlEditProfile</servlet-name>
+    <url-pattern>/SvlEditProfile</url-pattern>
+  </servlet-mapping>
 </web-app>
