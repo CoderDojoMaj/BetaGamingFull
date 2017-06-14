@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.coderdojo.bd.FabricaConexiones;
+import org.coderdojo.utils.DateUtils;
 import org.coderdojo.utils.User;
 
 
@@ -119,7 +120,7 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
 		String surname = request.getParameter("surname");
 		String email = request.getParameter("mail");
 		Date regDate = new Date(Calendar.getInstance().getTime().getTime());
-		Date bornDate = parseIn(request.getParameter("bornDateLong"));
+		Date bornDate = DateUtils.fromString(request.getParameter("bornDateLong"));
 		String skype = request.getParameter("skype");
 		String desc = request.getParameter("desc");
 		boolean hasDesc = (desc != null);
@@ -227,19 +228,6 @@ public class SvlCrearUsuario extends HttpServlet { //Creo que el jboss no est�
     	};
 		
     	
-	}
-	
-	@SuppressWarnings("deprecation")
-	private Date parseIn(String s){
-		String[] dates = s.split("-");
-		int year = Integer.valueOf(dates[0]);
-		int month = Integer.valueOf(dates[1]);
-		int day = Integer.valueOf(dates[2]);
-		Date r = new Date(0);
-		r.setYear(year);
-		r.setMonth(month);
-		r.setDate(day);
-		return r;
 	}
 
 }

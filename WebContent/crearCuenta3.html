@@ -13,17 +13,20 @@
 					<table bgcolor="#3f3f3f">
 					<tr>
 						<td rowspan="3"><img src="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png" alt="logo" class="avatar" style="width:70px;height:70px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-						<td>E-mail</td>
+						<td>Nickname</td>
 						<td>Password</td>
 					</tr>
+						<form action="LoginSvl" method="post" id="login">
 						<tr>
-							<td><input type="text" size="15" maxlength="30" name="name"></td>
-							<td><input type="text" size="15" maxlength="30" name="name"></td>
+							
+							<td><input type="text" size="15" maxlength="30" name="usuario"></td>
+							<td><input type="text" size="15" maxlength="30" name="clave"></td>
 						</tr>
 						<tr>
 						<td><a href="url">Have you forgotten your account?</a></td>
-							<td><button id="crear">Iniciar sesion</button></td>
+							<td><button id="crear" form="login" type="submit">Iniciar sesion</button></td>
 						</tr>
+						</form>
 					</table>
 					</center>
 					<button align="center" id="usuario"><!--<% out.println(session.getAttribute("usuario")); %>--></button>

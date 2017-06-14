@@ -172,6 +172,14 @@ public class User  extends Buscable implements Comparable<User>{
 			return description;
 		}
 	}
+	
+	public String getRawDescription() {
+		if(description == null){
+			return "";
+		}else{
+			return description;
+		}
+	}
 
 	public void setDescription(String description) {
 		this.description = description;

@@ -20,6 +20,7 @@ import javax.servlet.http.HttpSession;
 
 import org.coderdojo.bd.FabricaConexiones;
 import org.coderdojo.exceptions.DBException;
+import org.coderdojo.utils.DateUtils;
 import org.coderdojo.utils.Partida;
 import org.coderdojo.utils.User;
 
@@ -70,8 +71,8 @@ public class SvlCrearPartida extends HttpServlet {
 		ownerId=user.getId();
 		minPlayers=Integer.valueOf(request.getParameter("minPlayers"));
 		// TODO get the correct type for input in dates
-		startDate=fromString( request.getParameter("startDate"));
-		endDate=fromString( request.getParameter("endDate"));
+		startDate=DateUtils.fromString( request.getParameter("startDate"));
+		endDate=DateUtils.fromString( request.getParameter("endDate"));
 		
 		System.out.println("SD --> " + request.getParameter("startDate") + "\nED --> " + request.getParameter("endDate"));
 		
@@ -189,20 +190,6 @@ public class SvlCrearPartida extends HttpServlet {
 		}else{
 			throw new DBException("The database did not respond");
 		}
-	}
-	
-	private Date fromString(String s){
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); // your template here
-		java.util.Date dateStr = null;
-		try {
-			dateStr = formatter.parse(s);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		java.sql.Date dateDB = new java.sql.Date(dateStr.getTime());
-		return dateDB;
-		
 	}
 	
 	public boolean addPartida(Partida p) {

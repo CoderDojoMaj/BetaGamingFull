@@ -327,6 +327,7 @@ span.psw {
 						<td><div class="dropdown">
 								<button class="dropbtn"><% out.println(((User)session.getAttribute("user")).getNickname()); %></button>
 								<div class="dropdown-content">
+									<a href="MyProfile.jsp">My Profile</a>
 									<a href="SvlGetFriendList">My friends</a>
 									<a href="logout">Logout</a>
 								</div>
