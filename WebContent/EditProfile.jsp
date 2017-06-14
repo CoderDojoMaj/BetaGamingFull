@@ -13,7 +13,7 @@
     %>
 			<div id ="contenedor">
         <div id ="cabecera">
-					<button align="center" id="usuario"><!--<% out.println(session.getAttribute("usuario")); %>--></button>
+					<button align="center" id="usuario"><!--<% out.print(session.getAttribute("usuario")); %>--></button>
 					<input align="right" type="image" src="images/lupa.png" width="30" height="30">
 
 				</div>
@@ -36,8 +36,8 @@
 										<td>New password</td>
 									</tr>
 									<tr>
-										<td><input value="<% out.println(user.getNickname()); %>" id="field_username" title="Username must not be blank and contain only letters, numbers and underscores." type="text" required pattern="\w+" name="nickname"></td>
-										<td><input value="<% out.println(user.getEmail()); %>" type="email" name="mail" required></td>
+										<td><input value="<% out.print(user.getNickname()); %>" id="field_username" title="Username must not be blank and contain only letters, numbers and underscores." type="text" required pattern="\w+" name="nickname"></td>
+										<td><input value="<% out.print(user.getEmail()); %>" type="email" name="mail" required></td>
 										<td><input id="field_pwd1" title="Old password" placeholder="Old password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="opwd"></td>
 										<td><input id="field_pwd1" title="New password" placeholder="New password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="npwd"></td>
 									</tr>
@@ -47,17 +47,17 @@
 										<td>Day of birth</td>
 									</tr>
 									<tr>
-										<td><input value="<% out.println(user.getName()); %>" id="field_pwd2" title="Your name" type="text" name="name" pattern="\w+"></td>
-										<td><input value="<% out.println(user.getSurname()); %>" type="text" size="15" maxlength="30" name="surname" pattern="\w+"></td>
-										<td><input value="<% out.println(DateUtils.toString(user.getBornDate())); %>" type="date" name="bornDateLong"></td>
+										<td><input value="<% out.print(user.getName()); %>" id="field_pwd2" title="Your name" type="text" name="name" pattern="\w+"></td>
+										<td><input value="<% out.print(user.getSurname()); %>" type="text" size="15" maxlength="30" name="surname" pattern="\w+"></td>
+										<td><input value="<% out.print(DateUtils.toString(user.getBornDate())); %>" type="date" name="bornDateLong"></td>
 									</tr>
 										<tr>
 											<td>Skype account</td>
 											<td>A little description about yourself</td>
 										</tr>
 										<tr>
-											<td><input value="<% out.println(user.getSkypeUser()); %>" type="text" name="skype" required pattern="\w+"></td>
-											<td><textarea rows="4" cols="50" form="signup" name="desc"><% out.println(user.getRawDescription()); %></textarea></td>
+											<td><input value="<% out.print(user.getSkypeUser()); %>" type="text" name="skype" required pattern="\w+"></td>
+											<td><textarea rows="4" cols="50" form="signup" name="desc"><% out.print(user.getRawDescription()); %></textarea></td>
 										</tr>
 										<tr>
 										<td></td>
