@@ -12,7 +12,7 @@
         <div id ="contenedor">
             <div id ="cabecera">
 									<img src="https://raw.githubusercontent.com/CoderDojoMaj/Beta-Gaming/master/templogo.png" alt="logo" class="avatar" style="width:70px;height:70px;">
-								<button align="center" id="usuario"></button>
+								<button align="center" id="usuario"><% out.println(((User) session.getAttribute("user")).getNickname()); %></button>
 								<input align="right" type="image" src="Imagenes/lupa.png" width="30" height="30">
 						</div>
 
