@@ -53,6 +53,7 @@ public class SvlMainServlet extends HttpServlet {
 		
 		HttpSession laSesion=(HttpSession)request.getSession(false);
 		System.out.println("Hola caracola");
+		response.getWriter().append("LOADING");
 		//Si no hay sesion (no hay logeo) envialo a la pagina principal
 		if (laSesion==null)
 		{

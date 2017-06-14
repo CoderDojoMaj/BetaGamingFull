@@ -23,6 +23,7 @@ public class DateUtils {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); // your template here
 		String dateStr = null;
 		dateStr = formatter.format(d);
+		System.out.println("SQL DATE TO STRING --> " + dateStr);
 		return dateStr;
 	}
 	
@@ -30,6 +31,7 @@ public class DateUtils {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); // your template here
 		String dateStr = null;
 		dateStr = formatter.format(d);
+		System.out.println("UTIL DATE TO STRING --> " + dateStr);
 		return dateStr;
 	}
 

@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -61,6 +62,8 @@ public class SvlEditProfile extends HttpServlet {
 		boolean hasNewPass = (npwd != null);
 		boolean updatePass = false;
 		boolean updateDesc = false;
+		System.out.println("Old desc---" + oldUser.getRawDescription() + ">");
+		System.out.println("New desc---" + desc + ">");
 		if(hasNewPass){
 			if(opwd != null){
 				if(opwd.equals(oldUser.getPasswordHash())){
@@ -72,9 +75,15 @@ public class SvlEditProfile extends HttpServlet {
 		}
 		
 		if(hasDesc){
-			if(desc.equals(oldUser.getRawDescription())){
+			String oldDesc = oldUser.getRawDescription();
+			if(oldDesc.contentEquals(oldDesc)){
 				updateDesc = true;
+				System.out.print("UPDATING DESCRIPTION");
+			}else{
+				System.out.println("DESCRIPTION IS THE SAME");
 			}
+		}else{
+			System.out.println("DESCRIPTION IS NULL");
 		}
 		
 		FabricaConexiones f = FabricaConexiones.getFabrica();
@@ -82,7 +91,7 @@ public class SvlEditProfile extends HttpServlet {
     	
 		try {
 			conn = f.dameConexion();
-			String queryCheck = "UPDATE users SET nickname = ?,name = ?,surname = ?,email = ?,born_date = ?,skype = ? WHERE user_id = ?";
+			String queryCheck = "UPDATE users SET nickname = ?,name = ?,surname = ?,email = ?,born_date = ?,skype_user = ? WHERE user_id = ?";
 	    	PreparedStatement ps = conn.prepareStatement(queryCheck);
 	    	ps.setString(1, username);
 	    	ps.setString(2, name);
@@ -94,13 +103,9 @@ public class SvlEditProfile extends HttpServlet {
 
 	    	System.out.println("Nickname query prepared");
 
-	    	ResultSet resultSet = ps.executeQuery();
+	    	ps.execute();
 
 	    	System.out.println("Nickname query executed");
-
-	    	while(resultSet.next()){
-
-	    	}
 
 	    	conn.close();
 
@@ -135,13 +140,9 @@ public class SvlEditProfile extends HttpServlet {
 
 				System.out.println("Nickname query prepared");
 
-				ResultSet resultSet = ps.executeQuery();
+				ps.execute();
 
 				System.out.println("Nickname query executed");
-
-				while(resultSet.next()){
-
-				}
 
 				conn.close();
 
@@ -172,13 +173,9 @@ public class SvlEditProfile extends HttpServlet {
 
 				System.out.println("Nickname query prepared");
 
-				ResultSet resultSet = ps.executeQuery();
+				ps.execute();
 
 				System.out.println("Nickname query executed");
-
-				while(resultSet.next()){
-
-				}
 
 				conn.close();
 

@@ -44,9 +44,9 @@ public class LoginSvl extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nick = request.getParameter("usuario");
 		String pass = request.getParameter("clave");
-		User user = null;
-		if(checkUser(nick, pass, user)){
+		if(checkUser(nick, pass)){
 			HttpSession sesion=(HttpSession) request.getSession();
+			User user = getUser(nick,pass);
 			sesion.setAttribute("user", user);
 			response.sendRedirect("welcomePage.jsp");
 			System.out.println("LOGGING IN"); //Baia Baia 
@@ -57,7 +57,7 @@ public class LoginSvl extends HttpServlet {
 		//response.getWriter().append("Usuario: " + user + "\nClave: " + pass);
 	}
 	
-	private boolean checkUser(String nick, String pass, User user){
+	private boolean checkUser(String nick, String pass){
 		boolean resultado=false;
     	FabricaConexiones f = FabricaConexiones.getFabrica();
     	Connection conn=null;
@@ -72,23 +72,8 @@ public class LoginSvl extends HttpServlet {
 	    		//TODO Add a tester
 	    		String claveBuena=resultSet.getString("password");
 
-	    		if(claveBuena.equals( pass))
-	    		{
+	    		if(claveBuena.equals(pass)){
 	    			resultado = true;
-	    			queryCheck = "SELECT * from users WHERE nickname = ?";
-	    			ps = conn.prepareStatement(queryCheck);
-	    			ps.setString(1, nick);
-	    			ResultSet resultSetUser = ps.executeQuery();
-	    			while (resultSetUser.next()){
-	    				//Load the user
-	    				
-	    				user = new User(resultSetUser.getInt("user_id"), nick, pass, resultSetUser.getString("name"), 
-	    						resultSetUser.getString("surname"), resultSetUser.getString("email"), resultSetUser.getDate("registry_date"),
-	    						resultSetUser.getDate("born_date"), resultSetUser.getString("skype_user"), resultSetUser.getString("description"));
-	    				user.setReputation(resultSetUser.getInt("rep"));
-
-	    			}
-
 	    		}
 
 	    	}
@@ -128,6 +113,31 @@ public class LoginSvl extends HttpServlet {
 //			r = true;
 //		}
 		return resultado;
+	}
+
+	private User getUser(String nick, String pass){
+		Connection conn = null;
+		FabricaConexiones f = FabricaConexiones.getFabrica();
+		User r = null;
+		try {
+			conn = f.dameConexion();
+			String queryCheck = "SELECT * from users WHERE nickname = ?";
+			PreparedStatement ps = conn.prepareStatement(queryCheck);
+			ps.setString(1, nick);
+			ResultSet resultSetUser = ps.executeQuery();
+			while (resultSetUser.next()){
+				//Load the user
+				r = new User(resultSetUser.getInt("user_id"), nick, pass, resultSetUser.getString("name"), 
+						resultSetUser.getString("surname"), resultSetUser.getString("email"), resultSetUser.getDate("registry_date"),
+						resultSetUser.getDate("born_date"), resultSetUser.getString("skype_user"), resultSetUser.getString("description"));
+
+				r.setReputation(resultSetUser.getInt("rep"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return r;
 	}
 
 }

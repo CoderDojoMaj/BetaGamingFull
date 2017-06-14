@@ -38,8 +38,8 @@
 									<tr>
 										<td><input value="<% out.println(user.getNickname()); %>" id="field_username" title="Username must not be blank and contain only letters, numbers and underscores." type="text" required pattern="\w+" name="nickname"></td>
 										<td><input value="<% out.println(user.getEmail()); %>" type="email" name="mail" required></td>
-										<td><input id="field_pwd1" title="Old password" placeholder="Old password" type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="opwd"></td>
-										<td><input id="field_pwd1" title="New password" placeholder="New password" type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="npwd"></td>
+										<td><input id="field_pwd1" title="Old password" placeholder="Old password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="opwd"></td>
+										<td><input id="field_pwd1" title="New password" placeholder="New password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="npwd"></td>
 									</tr>
 									<tr>
 										<td>Name</td>
@@ -47,9 +47,9 @@
 										<td>Day of birth</td>
 									</tr>
 									<tr>
-										<td><input value="<% out.println(user.getName()); %>" id="field_pwd2" title="Your name" type="text" name="name" required pattern="\w+"></td>
-										<td><input value="<% out.println(user.getSurname()); %>" type="text" size="15" maxlength="30" name="surname" required pattern="\w+"></td>
-										<td><input value="<% out.println(DateUtils.toString(user.getBornDate())); %>" type="date" name="bornDateLong" required pattern="\w+"></td>
+										<td><input value="<% out.println(user.getName()); %>" id="field_pwd2" title="Your name" type="text" name="name" pattern="\w+"></td>
+										<td><input value="<% out.println(user.getSurname()); %>" type="text" size="15" maxlength="30" name="surname" pattern="\w+"></td>
+										<td><input value="<% out.println(DateUtils.toString(user.getBornDate())); %>" type="date" name="bornDateLong"></td>
 									</tr>
 										<tr>
 											<td>Skype account</td>
