@@ -49,9 +49,19 @@ public class SvlAddFriend extends HttpServlet {
 		HttpSession sesion=request.getSession();
 		
 		User ferUser = (User) sesion.getAttribute("user");
-		ArrayList<Buscable> searchResult = (ArrayList<Buscable>) sesion.getAttribute("searchResult");
-		User fedUser = (User) searchResult.get(Integer.valueOf(request.getParameter("pos")));
-		sesion.removeAttribute("searchResult");
+		String r = request.getParameter("pos"); 
+	    if(r==null){
+	    	System.out.println("Hubo un problema al recoger pos");
+	    	return;
+	    }
+	    int posicion = Integer.valueOf(r);
+	    ArrayList<Buscable> lista = (ArrayList<Buscable>) sesion.getAttribute("searchResult");
+	    sesion.removeAttribute("searchResult");
+	    if(lista==null){
+	    	System.out.println("Hubo un problema al recoger lista");
+	    	return;
+	    }
+	    User fedUser = (User) lista.get(posicion);
 		
 		FabricaConexiones f = FabricaConexiones.getFabrica();
     	Connection conn=null;

@@ -48,10 +48,19 @@ public class PlayMatch extends HttpServlet {
 		HttpSession sesion = request.getSession();
 		
 		User u = ((User)sesion.getAttribute("user"));
-		Partida m = ((Partida)sesion.getAttribute("partida"));
-		ArrayList<Buscable> searchResult = (ArrayList<Buscable>) sesion.getAttribute("searchResult");
-		Partida fedUser = (Partida) searchResult.get(Integer.valueOf(request.getParameter("pos")));
-		sesion.removeAttribute("searchResult");
+		String pos = request.getParameter("pos"); 
+	    if(pos==null){
+	    	System.out.println("Hubo un problema al recoger pos");
+	    	return;
+	    }
+	    int posicion = Integer.valueOf(pos);
+	    ArrayList<Buscable> lista = (ArrayList<Buscable>) sesion.getAttribute("searchResult");
+	    sesion.removeAttribute("searchResult");
+	    if(lista==null){
+	    	System.out.println("Hubo un problema al recoger lista");
+	    	return;
+	    }
+	    Partida m = (Partida) lista.get(posicion);
 		
 		int r = 0;
 		if(!isUsrInDB(u,m)){
