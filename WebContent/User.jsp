@@ -21,6 +21,7 @@
     	return;
     }
     User user = (User) lista.get(posicion);
+    session.setAttribute("uToSee", user);
     %> 
         <div id ="contenedor">  
             <div id ="cabecera">

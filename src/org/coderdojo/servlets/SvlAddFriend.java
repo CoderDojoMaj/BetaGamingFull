@@ -14,9 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.coderdojo.bd.FabricaConexiones;
-import org.coderdojo.utils.Buscable;
 import org.coderdojo.utils.Game;
-import org.coderdojo.utils.Partida;
 import org.coderdojo.utils.User;
 
 /**
@@ -49,19 +47,9 @@ public class SvlAddFriend extends HttpServlet {
 		HttpSession sesion=request.getSession();
 		
 		User ferUser = (User) sesion.getAttribute("user");
-		String r = request.getParameter("pos"); 
-	    if(r==null){
-	    	System.out.println("Hubo un problema al recoger pos");
-	    	return;
-	    }
-	    int posicion = Integer.valueOf(r);
-	    ArrayList<Buscable> lista = (ArrayList<Buscable>) sesion.getAttribute("searchResult");
-	    sesion.removeAttribute("searchResult");
-	    if(lista==null){
-	    	System.out.println("Hubo un problema al recoger lista");
-	    	return;
-	    }
-	    User fedUser = (User) lista.get(posicion);
+		
+		User fedUser = (User)sesion.getAttribute("uToSee");
+		sesion.removeAttribute("uToSee");
 		
 		FabricaConexiones f = FabricaConexiones.getFabrica();
     	Connection conn=null;

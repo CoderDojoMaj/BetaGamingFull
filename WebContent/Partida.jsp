@@ -37,6 +37,8 @@
     	System.out.println("Hubo un problema al recoger lista");
     	return;
     }
+    Partida p = (Partida)lista.get(posicion);
+    session.setAttribute("partida", p);
     %>
         <div id ="contenedor">  
             <div id ="cabecera">
