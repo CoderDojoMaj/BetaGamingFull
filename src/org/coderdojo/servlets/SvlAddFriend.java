@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.coderdojo.bd.FabricaConexiones;
+import org.coderdojo.utils.Buscable;
 import org.coderdojo.utils.Game;
+import org.coderdojo.utils.Partida;
 import org.coderdojo.utils.User;
 
 /**
@@ -46,8 +49,9 @@ public class SvlAddFriend extends HttpServlet {
 		HttpSession sesion=request.getSession();
 		
 		User ferUser = (User) sesion.getAttribute("user");
-		User fedUser = (User) sesion.getAttribute("uToSee");
-		sesion.removeAttribute("uToSee");
+		ArrayList<Buscable> searchResult = (ArrayList<Buscable>) sesion.getAttribute("searchResult");
+		User fedUser = (User) searchResult.get(Integer.valueOf(request.getParameter("pos")));
+		sesion.removeAttribute("searchResult");
 		
 		FabricaConexiones f = FabricaConexiones.getFabrica();
     	Connection conn=null;

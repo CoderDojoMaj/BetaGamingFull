@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.coderdojo.bd.FabricaConexiones;
+import org.coderdojo.utils.Buscable;
 import org.coderdojo.utils.Partida;
 import org.coderdojo.utils.User;
 
@@ -47,6 +49,9 @@ public class PlayMatch extends HttpServlet {
 		
 		User u = ((User)sesion.getAttribute("user"));
 		Partida m = ((Partida)sesion.getAttribute("partida"));
+		ArrayList<Buscable> searchResult = (ArrayList<Buscable>) sesion.getAttribute("searchResult");
+		Partida fedUser = (Partida) searchResult.get(Integer.valueOf(request.getParameter("pos")));
+		sesion.removeAttribute("searchResult");
 		
 		int r = 0;
 		if(!isUsrInDB(u,m)){
